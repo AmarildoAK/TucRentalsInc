@@ -31,6 +31,14 @@ public class Individual  extends Customer{
 	public void unmarshal(String data) throws UnMarshalingException {
 	super.unmarshal(data);
 	}
+
+
+
+	@Override
+	public int compareTo(user o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 }

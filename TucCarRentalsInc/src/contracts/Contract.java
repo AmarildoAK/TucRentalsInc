@@ -15,13 +15,28 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 	private Vehicles rentedCar;
 	private LocalDate startDate;
 	private LocalDate endDate;
+	private String tempPlate;
 	
-	
-	public Contract(String status,int contractID) {
+	public Contract(String status,int contractID,Vehicles rentedCar) {
 		this.status = "ACTIVE";
 	this.contractID = contractIDcounter++;
 	this.rentedCar = rentedCar;
+	
 	}
+
+	
+	
+	private String getTempPlate() {
+		return tempPlate;
+	}
+
+
+
+	private void setTempPlate(String tempPlate) {
+		this.tempPlate = tempPlate;
+	}
+
+
 
 	public String getStatus() {
 		return status;
@@ -88,10 +103,13 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 
 	@Override
 	public String marshal() {
-		StringBuffer sb = new StringBuffer("type: ").append(this.getClass().getName()).append(";");
+		StringBuffer sb = new StringBuffer("type:").append(this.getClass().getName()).append(",");
 
-		sb.append("Status").append(this.status).append(",");
-		sb.append("ContractID").append(this.contractID).append(",");
+		sb.append("Status:").append(this.status).append(",");
+		sb.append("ContractID:").append(this.contractID).append(",");
+		sb.append("endDate:").append(this.endDate).append(",");
+		sb.append("startDate:").append(this.startDate).append(",");
+		sb.append("rentedCar:").append(this.rentedCar.getLicensePlate()).append(",");
 
 		return sb.toString();
 
@@ -115,8 +133,23 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 			}else if(keyValue[0].trim().equals("ContractID")) {
 				this.contractID = Integer.parseInt(keyValue[1]);
 			
+			if(contractID >= contractIDcounter) {
+				contractIDcounter = contractID + 1 ;
+			}
+			
+			}
+			else if(keyValue[0].trim().equals("rentedCar")) {
+				this.tempPlate = keyValue[1];
+			}
+			else if(keyValue[0].trim().equals("startDate")) {
+				this.startDate = LocalDate.parse(keyValue[1]);
+			}
+			else if(keyValue[0].trim().equals("endDate")) {
+				this.endDate = LocalDate.parse(keyValue[1]);
+			}
+		
+		
 		}
-	}
 }
 
 

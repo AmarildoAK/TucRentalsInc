@@ -18,7 +18,7 @@ public VehicleManager() {
 	this.vehicleList = new StorableList<>();
 	
 	try {
-		StorageManager.getInstance().loadObject(this.vehicleList,"fleet.csv");
+		StorageManager.getInstance().loadObject(this.vehicleList,"Data/vehicles/fleet.csv");
 		System.out.println("This vehicle have been added succesfully");
 
 	
@@ -56,6 +56,11 @@ private void setVehicle(Vehicles vehicle) {
 
 public Vehicles findVehicle(String licensePlate) {
 	
+	if(vehicle.getLicensePlate() == null) {
+		return null;
+	}
+	
+	
 	for(int i=0; i<vehicleList.size();i++) {
 		if(vehicleList.get(i).getLicensePlate().equals(licensePlate)) {
 			return vehicleList.get(i);
@@ -76,7 +81,7 @@ public boolean addVehicle(Vehicles v) {
 
 		vehicleList.add(v);
 		try {
-			StorageManager.getInstance().storeObject(vehicleList,"fleet.csv");
+			StorageManager.getInstance().storeObject(vehicleList,"Data/vehicles/fleet.csv");
 			System.out.println("Vehicle succesfully added");
 		}catch(Exception e){
 			System.out.println("Error trying to add vehicle");

@@ -3,6 +3,7 @@ package contracts;
 import java.time.LocalDate;
 
 import User.Customer;
+import Vehicles.Vehicles;
 import storage.UnMarshalingException;
 import utils.CarPassengerVehicleType;
 
@@ -15,9 +16,11 @@ public class CarRentals extends Contract {
 	private int days;
 	private Customer customer;
 	private String licenseplate;
+	private String tempVAT;
 	
-	public CarRentals(String status,int contractID,CarPassengerVehicleType categoryCost,int days,LocalDate startDate,LocalDate endDate,String licenseplate,Customer customer) {
-		super(status,contractID);
+	
+	public CarRentals(String status,int contractID,CarPassengerVehicleType categoryCost,int days,LocalDate startDate,LocalDate endDate,String licenseplate,Customer customer,Vehicles rentedCar) {
+		super(status,contractID,rentedCar);
 this.categoryCost = categoryCost;
 this.startDate = startDate;
 this.endDate = endDate;
@@ -226,7 +229,7 @@ public String marshal() {
 			}
 	
 			else if(keyValue[0].trim().equals("customer")) {
-				
+				this.tempVAT = keyValue[1];
 	}
 	
 	
