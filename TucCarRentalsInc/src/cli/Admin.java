@@ -1,4 +1,4 @@
-package cli;
+	package cli;
 
 import utils.MyScanner;
 
@@ -31,6 +31,10 @@ case 3:{
 case 4:{
 	System.out.println("ΕΞΟΔΟΣ ΑΠΟ ΤΟ ΠΡΟΓΡΑΜΜΑ");
 	System.exit(0);
+	break;
+}
+case 5:{
+	System.out.println("test the gitHUb");
 	break;
 }
 		
