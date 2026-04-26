@@ -226,7 +226,7 @@ public String marshal() {
 			}
 	
 			else if(keyValue[0].trim().equals("customer")) {
-				this.customer = keyValue[1].trim();
+				
 	}
 	
 	
