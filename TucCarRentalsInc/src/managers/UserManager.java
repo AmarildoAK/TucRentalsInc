@@ -1,12 +1,14 @@
 package managers;
 
+import User.Customer;
 import User.user;
+import Vehicles.Vehicles;
 import storage.Storable;
 import storage.StorableList;
 import storage.StorageManager;
 
 public class UserManager {
-
+private user user;
 	private StorableList<user> userlist;
 	public UserManager() {
 		this.userlist = new StorableList<>();
@@ -50,7 +52,21 @@ public class UserManager {
 	
 	
 	
-	
+	public Customer findCustomer(int VAT) {
+		for(int i=0;i<userlist.size();i++) {
+			user u = userlist.get(i);
+			
+			if(u instanceof Customer) {
+				Customer customer = (Customer)u;
+				
+				if(customer.getVAT() == VAT) {
+					return customer;
+				}
+			}
+			
+		}
+	return null;
+	}
 	
 	
 	}
