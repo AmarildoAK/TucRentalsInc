@@ -47,7 +47,7 @@ private Wallet wallet;
 	
 public boolean addCredit(Transaction newCredit) {
 	
-	if(findTransaction(t.getTransactionID())!=null) {
+	if(findTransaction(newCredit.getTransactionID())!=null) {
 		return false;
 	}else {
 		transactionList.add(newCredit);

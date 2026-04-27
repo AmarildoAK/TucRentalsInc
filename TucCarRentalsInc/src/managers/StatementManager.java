@@ -2,12 +2,15 @@ package managers;
 
 
 
+
+
+import statements.Statement;
 import storage.StorableList;
 import storage.StorageManager;
 import transaction.Wallet;
 
 public class StatementManager {
-private StorableList<Wallet> statementList;
+private StorableList<Statement> statementList;
 	private Wallet s;
 	
 	
@@ -18,17 +21,17 @@ private StorableList<Wallet> statementList;
 		
 	}
 
-	private StorableList<Wallet> getStatementList() {
+	private StorableList<Statement> getStatementList() {
 		return statementList;
 	}
 
-	private void setStatementList(StorableList<Wallet> statementList) {
+	private void setStatementList(StorableList<Statement> statementList) {
 		this.statementList = statementList;
 	}
 	
-	public Wallet findWallet(int WalletID) {
+	public Statement findStatement(int NoticeID) {
 		for(int i=0;i<statementList.size();i++) {
-			if(statementList.get(i).getWalletID() == WalletID) {
+			if(statementList.get(i).getNoticeID() == NoticeID) {
 				return statementList.get(i);
 			}
 		
@@ -38,8 +41,8 @@ private StorableList<Wallet> statementList;
 	
 	
 	
-	public boolean CreateStatement(Wallet newStatement) {
-		if(findWallet(s.getWalletID())!=null) {
+	public boolean CreateStatement(Statement newStatement,int VAT) {
+		if(findStatement(newStatement.getNoticeID())!=null) {
 			return false;
 		}else {
 			statementList.add(newStatement);
@@ -55,7 +58,7 @@ private StorableList<Wallet> statementList;
 	}
 	
 	
-	public void RetrieveStatements() {
+	public void RetrieveStatements(int VAT) { // den eimai kai poly sigouros gia to int VAT
 		
 		try {
 			StorageManager.getInstance().loadObject(this.statementList,"Data/statements/statement.csv" );

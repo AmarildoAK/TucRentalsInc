@@ -2,9 +2,11 @@ package statements;
 
 import java.time.LocalDate;
 
+import Vehicles.Vehicles;
+import storage.Storable;
 import storage.UnMarshalingException;
 
-public class Statement {
+public class Statement implements Storable,Comparable<Statement>{
 
 	private LocalDate timestamp;
 	private String statementType;
@@ -64,7 +66,7 @@ public class Statement {
 		this.description = description;
 	}
 
-	private int getNoticeID() {
+	public int getNoticeID() {
 		return noticeID;
 	}
 
@@ -119,6 +121,12 @@ public void unmarshal(String data) throws UnMarshalingException {
 	
 	
 	
+}
+
+@Override
+public int compareTo(Statement o) {
+	// TODO Auto-generated method stub
+	return 0;
 }
 
 	

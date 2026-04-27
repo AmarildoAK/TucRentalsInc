@@ -23,7 +23,7 @@ public abstract class user implements Storable,Comparable<user>{
 		this.firstName = firstName;
 		this.lastName = lastName;
 	    this.username = username;
-	
+	this.wallet = new Wallet(0.0);
 	}
 
 	private String getEmail() {
@@ -47,7 +47,7 @@ public abstract class user implements Storable,Comparable<user>{
 	}
 
 	private void setFirstName(String firstName) {
-		firstName = firstName;
+		this.firstName = firstName;
 	}
 
 	private String getLastName() {
@@ -55,7 +55,7 @@ public abstract class user implements Storable,Comparable<user>{
 	}
 
 	private void setLastName(String lastName) {
-		lastName = lastName;
+		this.lastName = lastName;
 	}
 
 	
@@ -80,8 +80,11 @@ public abstract class user implements Storable,Comparable<user>{
 		
 		
 		sb.append("firstName:").append(this.firstName).append(",");
-		sb.append("lastname").append(this.lastName).append(",");
-		sb.append("password").append(this.password).append(",");
+		sb.append("lastname:").append(this.lastName).append(",");
+		sb.append("password:").append(this.password).append(",");
+		sb.append("email:").append(this.email).append(",");
+		sb.append("username:").append(this.username).append(",");
+
 		
 		return sb.toString();
 	}
@@ -99,12 +102,16 @@ public void unmarshal(String data) throws UnMarshalingException {
 			
 			if(keyValue[0].trim().equals("firstName")) {// ιδεα για επεκταση στην εξεταση μπορει να μας βαλλουν να αλλάξουμε τα marshall unmarsall  ανάλογα με το που χωρίζεται
 				this.firstName = keyValue[1];
-			}else if(keyValue[0].trim().equals("lastName")) {
+			}else if(keyValue[0].trim().equals("lastname")) {
 				this.lastName = keyValue[1];
 			}else if(keyValue[0].trim().equals("email")) {
 				this.email = keyValue[1];
 			}else if(keyValue[0].trim().equals("password")) {
 				this.password = keyValue[1];
+			}
+			
+			else if(keyValue[0].trim().equals("username")) {
+				this.username = keyValue[1];
 			}
 		}
 	
@@ -113,7 +120,9 @@ public void unmarshal(String data) throws UnMarshalingException {
 	
 }
 
-
-
+@Override
+public int compareTo(user other ) {
+	return this.username.compareTo(other.username);
+}
 
 }
