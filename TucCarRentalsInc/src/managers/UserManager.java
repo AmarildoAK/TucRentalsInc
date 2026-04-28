@@ -4,6 +4,7 @@ import User.user;
 import storage.Storable;
 import storage.StorableList;
 import storage.StorageManager;
+import utils.MyScanner;
 
 public class UserManager {
 
@@ -24,11 +25,18 @@ public class UserManager {
 	}
 	
 	
-	public user authenticate(String username, String password) {
+	
+	
+	
+	public user authenticate() {
+		
+		MyScanner username=next.String;
+		MyScanner password=nextString;
 
 		for (int i = 0; i < UserCount; i++) {
 
-			if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
+			if (userlist.get(i).getUsername().equals(username) && userlist.get(i).equals(password)) {
+				System.out.println("The user has been loged in succesfully");
 				return u;
 			}
 

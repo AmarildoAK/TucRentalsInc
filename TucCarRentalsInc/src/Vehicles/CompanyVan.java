@@ -4,9 +4,10 @@ import storage.UnMarshalingException;
 
 //import java.time.*;
 public class CompanyVan extends Vehicles {
-
-	public CompanyVan(String licensePlate, String catgerory,String transmission) {
-		super(licensePlate, catgerory,transmission);
+	private String type;
+	public CompanyVan(String licensePlate, String catgerory,String transmission,String make,String model,String year,String type) {
+		super(licensePlate, catgerory,transmission, make, model, year);
+		this.setType(this.getClass().getName());
 		
 	}
 	
@@ -23,6 +24,18 @@ public class CompanyVan extends Vehicles {
 	public void unmarshal(String data) throws UnMarshalingException {
 		super.unmarshal(data);
 		}
+
+
+
+	public String getType() {
+		return type;
+	}
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
 	
 	
 	

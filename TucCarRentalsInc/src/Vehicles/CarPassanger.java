@@ -7,11 +7,16 @@ import storage.UnMarshalingException;
 
 
 public class CarPassanger extends Vehicles {
+	private String type;
+
+
+	
 //	private LocalDate rentDate;
 //	private LocalDate expirationDate;// να τα περασω και σαν ορισματα μέσα στον constructor
 //	private long days;
-public CarPassanger(String licensePlate, String catgerory,String transmission) {
-		super(licensePlate, catgerory,transmission);
+public CarPassanger(String licensePlate, String catgerory,String transmission,String make,String model,String year, String type) {
+		super(licensePlate, catgerory,transmission, make, model, year);
+		this.type=type.getClass().getName();
 //		this.expirationDate=expirationDate;
 //		this.rentDate=rentDate;
 			}
@@ -28,6 +33,16 @@ public String marshal() {
 public void unmarshal(String data) throws UnMarshalingException {
 	super.unmarshal(data);
 	}
+
+
+public String getType() {
+	return type;
+}
+
+
+public void setType(String type) {
+	this.type = type;
+}
 
 
 

@@ -10,12 +10,36 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 	private String category;
 	private boolean available;
 	private String transmission;
+	private String make;
+	private String model;
+	private String year;	
 	
-	public Vehicles(String licensePlate, String catgerory,String transmission) {
+	public String getMake() {
+		return make;
+	}
+	public void setMake(String make) {
+		this.make = make;
+	}
+	public String getModel() {
+		return model;
+	}
+	public void setModel(String model) {
+		this.model = model;
+	}
+	public String getYear() {
+		return year;
+	}
+	private void setYear(String year) {
+		this.year = year;
+	}
+	public Vehicles(String licensePlate, String catgerory,String transmission,String make,String model,String year) {
 		this.licensePlate = licensePlate;
 		this.category = catgerory;
 	this.available = true;
 	this.transmission = transmission;
+	this.make=make;
+	this.model=model;
+	this.year=year;
 	}
 	public String getLicensePlate() {
 		return licensePlate;
@@ -37,7 +61,7 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 		this.available = available;
 	}
 	
-	private String getTransmission() {
+	public String getTransmission() {
 		return transmission;
 	}
 	private void setTransmission(String transmission) {

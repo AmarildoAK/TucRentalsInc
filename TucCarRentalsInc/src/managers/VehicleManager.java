@@ -1,6 +1,9 @@
 package managers;
 
+import Vehicles.CarPassanger;
+import Vehicles.CompanyVan;
 import Vehicles.Vehicles;
+import contracts.VanLeases;
 import storage.StorableList;
 import storage.StorageManager;
 
@@ -106,5 +109,21 @@ if(v!=null) {
 }
 
 
-
+public void printVehicles() {
+	for (int i = 0; i < vehicleList.size(); i++) {
+		
+		if (vehicleList.get(i) instanceof CarPassanger) {
+			CarPassanger c = (CarPassanger) vehicleList.get(i);
+			System.out.println("type: "+c.getType()+"plate"+c.getLicensePlate()+"make"+c.getMake()+"model"+c.getModel()+"transminssion"+c.getTransmission()+"year"+c.getYear());	 
+		}
+		else if (vehicleList.get(i) instanceof CompanyVan) {
+			CompanyVan v = (CompanyVan) vehicleList.get(i);
+				System.out.println("type: "+v.getType()+"plate"+v.getLicensePlate()+"make"+v.getMake()+"model"+v.getModel()+"transminssion"+v.getTransmission()+"year"+v.getYear());	 
+			}
+		}
+	}
 }
+
+
+
+
