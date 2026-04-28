@@ -11,7 +11,7 @@ public class Wallet implements Storable, Comparable<Wallet> {
 	private int WalletID;
 	private static int WalletIdCounter = 1;
 
-	public Wallet(double amount, StorableList<Transaction> statementHistory) {
+	public Wallet(double amount) { // StorableList<Transaction> statementHistory mporei na xreiastei en telei !!!
 
 		this.amount = amount;
 		this.statementHistory = statementHistory;

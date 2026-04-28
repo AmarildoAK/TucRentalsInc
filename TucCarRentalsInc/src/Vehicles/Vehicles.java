@@ -2,18 +2,20 @@ package Vehicles;
 
 import storage.Storable;
 import storage.UnMarshalingException;
+import utils.CarPassengerVehicleType;
 
 //kai edo mporoyme na kanoume enum gia ta tria tier list poy yparxoyn
 //theloume sigoura ena checker gia kathe pinakida oti einia swsto format(ara regex)kai monadikh
 public abstract class Vehicles implements Storable,Comparable<Vehicles> {
-	private String  licensePlate;
-	private String category;
+	private String  licenseplate;
 	private boolean available;
 	private String transmission;
 	private String make;
 	private String model;
 	private String year;	
-	
+
+	protected CarPassengerVehicleType category;
+
 	public String getMake() {
 		return make;
 	}
@@ -33,26 +35,44 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 		this.year = year;
 	}
 	public Vehicles(String licensePlate, String catgerory,String transmission,String make,String model,String year) {
-		this.licensePlate = licensePlate;
+		this.licenseplate = licensePlate;
 		this.category = catgerory;
+
 	this.available = true;
 	this.transmission = transmission;
 	this.make=make;
 	this.model=model;
 	this.year=year;
 	}
-	public String getLicensePlate() {
-		return licensePlate;
+
+	private String getLicenseplate() {
+		return licenseplate;
 	}
-	private void setLicensePlate(String licensePlate) {
-		this.licensePlate = licensePlate;
+
+
+	private void setLicenseplate(String licenseplate) {
+		this.licenseplate = licenseplate;
 	}
-	private String getCatgerory() {
+
+
+
+	private String getCategory() {
 		return category;
 	}
-	private void setCatgerory(String catgerory) {
-		this.category = catgerory;
+
+
+
+	private void setCategory(String category) {
+		this.category = category;
 	}
+
+    public String getLicensePlate() {
+		return licenseplate;
+	}
+	private void setLicensePlate(String licensePlate) {
+		this.licenseplate = licensePlate;
+	}
+	
 
 	public boolean isAvailable() {
 		return available;
@@ -85,10 +105,9 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 		StringBuffer sb = new StringBuffer("type: ").append(this.getClass().getName()).append(";");
 		
 		
-		sb.append("licensePlate").append(this.licensePlate).append(",");
-		sb.append("category").append(this.category).append(",");
-		sb.append("available").append(this.available).append(",");
-		sb.append("transmission").append(this.transmission).append(",");
+		sb.append("licenseplate:").append(this.licenseplate).append(",");
+		sb.append("available:").append(this.available).append(",");
+		sb.append("transmission:").append(this.transmission).append(",");
 		return sb.toString();
 	}
 
@@ -105,13 +124,15 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 		for (String part : parts) {
 			String[] keyValue = part.split(":");
 
-			if (keyValue[0].trim().equals("firstName")) {
-				this.licensePlate = keyValue[1];
-			} else if (keyValue[0].trim().equals("lastName")) {
+			if (keyValue[0].trim().equals("licenseplate")) {
+				this.licenseplate = keyValue[1];
+			}else if (keyValue[0].trim().equals("available")) {
+				this.available = Boolean.parseBoolean(keyValue[1]);}
+			else if(keyValue[0].trim().equals("transmission")) {
+				this.transmission = keyValue[1];
+			}
+			else if(keyValue[0].trim().equals("category")) {
 				this.category = keyValue[1];
-			} else if (keyValue[0].trim().equals("email")) {
-				this.available = Boolean.parseBoolean(keyValue[1]);
-
 			}
 
 		}

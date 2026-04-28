@@ -26,7 +26,7 @@ public class Company extends Customer {
 	
 		StringBuffer sb = new StringBuffer(super.marshal());
 		
-		sb.append("companyName").append(this.companyName).append(",");
+		sb.append("companyName:").append(this.companyName).append(",");
 
 		return sb.toString();
 	}
@@ -46,10 +46,5 @@ public class Company extends Customer {
 	}
 }
 
-	@Override
-	public int compareTo(user o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 }

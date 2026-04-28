@@ -1,28 +1,37 @@
 package Vehicles;
 
 import storage.UnMarshalingException;
+import utils.CarPassengerVehicleType;
+import utils.CompanyVanCategory;
 
 //import java.time.*;
 public class CompanyVan extends Vehicles {
+<<<<<<< HEAD
 	private String type;
 	public CompanyVan(String licensePlate, String catgerory,String transmission,String make,String model,String year,String type) {
 		super(licensePlate, catgerory,transmission, make, model, year);
 		this.setType(this.getClass().getName());
 		
+=======
+
+	private CompanyVanCategory category;
+
+	public CompanyVan(String licensePlate, String transmission, CompanyVanCategory category) {
+		super(licensePlate, transmission, category.name());
+
+>>>>>>> branch 'master' of https://github.com/AmarildoAK/TucRentalsInc
 	}
-	
-	
-	
+
 	public String marshal() {
-		
+
 		StringBuffer sb = new StringBuffer(super.marshal());
 		
 		return sb.toString();
 	}
-	
-	
+
 	public void unmarshal(String data) throws UnMarshalingException {
 		super.unmarshal(data);
+<<<<<<< HEAD
 		}
 
 
@@ -44,4 +53,13 @@ public class CompanyVan extends Vehicles {
 	// edo na kano enum gia ton xrono kai na ton peraso mesa tis times ana mera 
 	
 	
+=======
+	}
+
+>>>>>>> branch 'master' of https://github.com/AmarildoAK/TucRentalsInc
 }
+
+//LocalDate rentDate;
+// int timeOfLease; ara ta amaxia kathe fora poy fairnoyme neo car den dinoume
+// hmeeromhnia
+// edo na kano enum gia ton xrono kai na ton peraso mesa tis times ana mera

@@ -9,7 +9,7 @@ import transaction.Wallet;
 
 public class Individual  extends Customer{
 
-	private Wallet wallet;
+	
 
 	
 	public Individual(int VAT,String firstName,String lastName,String email,String password,String username) {
@@ -34,11 +34,6 @@ public class Individual  extends Customer{
 
 
 
-	@Override
-	public int compareTo(user o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	
 }

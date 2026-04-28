@@ -8,7 +8,7 @@ public abstract class Customer extends user implements Storable {
 
 	private int VAT;
 	
-	private Wallet wallet;// giati na valoyme ;olo to wallet m;esa prin fonajoyme thn ballance to akouw alla mhpvws e;inai overkill
+	
 	
 	public Customer(int VAT,String firstName,String lastName,String email,String password,String username) {
 		super(email,password,firstName,lastName,username);
@@ -32,7 +32,7 @@ public abstract class Customer extends user implements Storable {
 	public String marshal() {
 		
 		StringBuffer sb = new StringBuffer(super.marshal());
-		sb.append("VAT").append(this.VAT).append(",");
+		sb.append("VAT:").append(this.VAT).append(",");
 		
 		
 		return sb.toString();
@@ -40,7 +40,7 @@ public abstract class Customer extends user implements Storable {
 	
 	
 	public void unmarshal(String data) throws UnMarshalingException {
-		
+		super.unmarshal(data);
 		String[] parts = data.split(",");
 		for(String part: parts) {
 			String[] keyValue = part.split(":");
