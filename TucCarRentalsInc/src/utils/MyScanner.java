@@ -25,6 +25,13 @@ public class MyScanner {
 		int input = scan.nextInt();
 		return input;
 	}
+	public int read(String prompt) {
+		
+		System.out.println(prompt+": ");
+		int input = scan.nextInt();
+		return input;
+	}
+
 
 	public static int nextInt() {
 		// TODO Auto-generated method stub

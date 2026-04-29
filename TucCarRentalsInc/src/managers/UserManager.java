@@ -1,8 +1,11 @@
 package managers;
 
+import User.Company;
 import User.Customer;
+import User.Individual;
 import User.user;
 import Vehicles.Vehicles;
+import cli.Admin;
 import storage.Storable;
 import storage.StorableList;
 import storage.StorageManager;
@@ -28,26 +31,32 @@ private user user;
 	
 	
 	
-	public user authenticate() {
-		
-		MyScanner username=next.String;
-		MyScanner password=nextString;
+	public user authenticateAndLogin() {
+	    System.out.print("Enter Username/VAT: ");
+	    String username = scan.next().String;
+	    System.out.print("Enter Password: ");
+	    String password = scan.next().String;
 
-		for (int i = 0; i < userlist.size(); i++) {
+	    for (user user : userlist) {
 
-<<<<<<< HEAD
-			if (userlist.get(i).getUsername().equals(username) && userlist.get(i).equals(password)) {
-				System.out.println("The user has been loged in succesfully");
-				return u;
-=======
-			if (userlist.get(i).getUsername().equals(username) && userlist.get(i).getPassword().equals(password)) {
-				return userlist.get(i);
->>>>>>> branch 'master' of https://github.com/AmarildoAK/TucRentalsInc
-			}
+	        if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+	
+	            if (user instanceof Admin) {
+	            	System.out.println("Welcome Admin");
+	                return (Admin) user;
+	            } else if (user instanceof Individual) {
+	            	System.out.println("Welcome Individual");
+	                return (Individual) user;
+	            } else if (user instanceof Company) {
+	               	System.out.println("Welcome Company");
+	                return (Company) user;
+	            } else {
+	                return user; // Return as base User if no specific subclass match
+	            }
+	        }
+	    }
 
-		}
-
-		return null;
+	    return null; 
 	}
 	
 	
