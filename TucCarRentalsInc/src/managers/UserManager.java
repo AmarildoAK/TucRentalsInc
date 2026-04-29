@@ -31,13 +31,16 @@ private user user;
 	
 	
 	
+
 	public user authenticateAndLogin() {
 	    System.out.print("Enter Username/VAT: ");
 	    String username = scan.next().String;
 	    System.out.print("Enter Password: ");
 	    String password = scan.next().String;
 
+
 	    for (user user : userlist) {
+
 
 	        if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
 	
@@ -71,9 +74,7 @@ private user user;
 		
 		
 	}
-	
-	
-	
+		
 	public Customer findCustomer(int VAT) {
 		for(int i=0;i<userlist.size();i++) {
 			user u = userlist.get(i);

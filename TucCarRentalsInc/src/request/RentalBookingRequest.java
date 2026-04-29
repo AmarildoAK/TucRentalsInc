@@ -2,11 +2,11 @@ package request;
 
 import java.time.LocalDate;
 
-public class RentalBookingRequest extends Request{
+public class RentalBookingRequest extends Request{ // local date den tha eprepe na eixe ????
 
 	private  String name;
 	private String surname;
-	private String licenseplate;
+	private String licenseplate; // mhpws na exei typo Vehicles???
 	private char category;
 	private static final int counter = 000;
 	private String id;

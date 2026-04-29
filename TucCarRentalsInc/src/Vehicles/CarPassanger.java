@@ -8,8 +8,8 @@ import utils.CarPassengerVehicleType;
 
 
 public class CarPassanger extends Vehicles {
-	private String type;
-
+	private String type = "CarPassanger";
+	private CarPassengerVehicleType category;
 
 	
 //	private LocalDate rentDate;
@@ -19,42 +19,58 @@ public class CarPassanger extends Vehicles {
 
 
 
-	public CarPassanger(String licensePlate, String catgerory,String transmission,String make,String model,String year, String type) {
-		super(licensePlate, catgerory,transmission, make, model, year);
-		this.type=type.getClass().getName();
-//github.com/AmarildoAK/TucRentalsInc
+	public CarPassanger(String licenseplate,String transmission,String make,String model,int year,CarPassengerVehicleType category) {
+		super(licenseplate,category.name(),transmission,make,model,year);
+
 //		this.expirationDate=expirationDate;
 //		this.rentDate=rentDate;
-			this.category = category;
+			
 	}
-	private CarPassengerVehicleType getCategory() {
-		return category;
+	
+	
+public String getType() {
+		return type;
+	}
+
+protected void setType(String type) {
+		this.type = type;
 	}
 
 
-	private void setCategory(CarPassengerVehicleType category) {
-		this.category = category;
-	}
+
+
+
 
 public String marshal() {
 	
 	StringBuffer sb = new StringBuffer(super.marshal());
+	
+	sb.append("type:").append(this.type).append(",");
 	return sb.toString();
 }
 
 
 public void unmarshal(String data) throws UnMarshalingException {
 	super.unmarshal(data);
-}
-
-public String getType() {
-	return type;
-}
 
 
-public void setType(String type) {
-	this.type = type;
+	if(data == null) {
+		throw new UnMarshalingException("Empty Data");
+		}
+	
+	
+	String[] parts = data.split(",");
+	for (String part : parts) {
+		String[] keyValue = part.split(":");
+
+		if (keyValue[0].trim().equals("type")) {
+			this.type = keyValue[1];
+		}
+
+	}
 }
+
+
 
 
 
