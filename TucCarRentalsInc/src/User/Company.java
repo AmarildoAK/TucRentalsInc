@@ -5,9 +5,11 @@ import storage.UnMarshalingException;
 public class Company extends Customer {
 
 	private String companyName;
+	private String type = "Company";
 	
-	public Company(int VAT,String firstName,String lastName,String email,String password,String companyName,String username) {
-		super(VAT,firstName,lastName,email,password,username);
+	
+	public Company(int VAT,String name,String password,String companyName) {
+		super(VAT,name,password);
 		this.companyName = companyName;
 	}
 
@@ -27,7 +29,8 @@ public class Company extends Customer {
 		StringBuffer sb = new StringBuffer(super.marshal());
 		
 		sb.append("companyName:").append(this.companyName).append(",");
-
+		sb.append("type:").append(this.type).append(",");
+		
 		return sb.toString();
 	}
 	
@@ -40,6 +43,8 @@ public class Company extends Customer {
 		String[] keyValue = part.split(":");
 	if(keyValue[0].trim().equals("companyName")) {
 		this.companyName = keyValue[1];
+	}else if(keyValue[0].trim().equals("type")) {
+		this.type = keyValue[1];
 	}
 	
 	

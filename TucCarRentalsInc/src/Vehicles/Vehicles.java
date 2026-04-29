@@ -12,38 +12,38 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 	private String transmission;
 	private String make;
 	private String model;
-	private String year;	
+	private int year;	
+    private String category;
+    private String type;
 
-	protected CarPassengerVehicleType category;
-
-	public String getMake() {
-		return make;
-	}
-	public void setMake(String make) {
-		this.make = make;
-	}
-	public String getModel() {
-		return model;
-	}
-	public void setModel(String model) {
-		this.model = model;
-	}
-	public String getYear() {
-		return year;
-	}
-	private void setYear(String year) {
-		this.year = year;
-	}
-	public Vehicles(String licensePlate, String catgerory,String transmission,String make,String model,String year) {
-		this.licenseplate = licensePlate;
-		this.category = catgerory;
-
+	
+	public Vehicles(String licensePlate, String category,String transmission,String make,String model,int  year) {
+	
+	this.licenseplate = licensePlate;
+	this.category = category;
 	this.available = true;
 	this.transmission = transmission;
 	this.make=make;
 	this.model=model;
 	this.year=year;
 	}
+
+	
+	
+	
+	private String getType() {
+		return type;
+	}
+
+
+
+
+	private void setType(String type) {
+		this.type = type;
+	}
+
+
+
 
 	private String getLicenseplate() {
 		return licenseplate;
@@ -62,7 +62,7 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 
 
 
-	private void setCategory(String category) {
+	private void setCategory(String  category) {
 		this.category = category;
 	}
 
@@ -88,7 +88,24 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 		this.transmission = transmission;
 	}
 	
-	
+	public String getMake() {
+		return make;
+	}
+	public void setMake(String make) {
+		this.make = make;
+	}
+	public String getModel() {
+		return model;
+	}
+	public void setModel(String model) {
+		this.model = model;
+	}
+	public int getYear() {
+		return year;
+	}
+	private void setYear(int year) {
+		this.year = year;
+	}
 	
 	
 	
@@ -105,9 +122,13 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 		StringBuffer sb = new StringBuffer("type: ").append(this.getClass().getName()).append(";");
 		
 		
+		sb.append("type:").append(this.type).append(",");
 		sb.append("licenseplate:").append(this.licenseplate).append(",");
-		sb.append("available:").append(this.available).append(",");
+		sb.append("make:").append(this.make).append(",");
+		sb.append("model:").append(this.model).append(",");
 		sb.append("transmission:").append(this.transmission).append(",");
+		sb.append("year").append(this.year).append(",");
+		
 		return sb.toString();
 	}
 
@@ -124,15 +145,23 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 		for (String part : parts) {
 			String[] keyValue = part.split(":");
 
-			if (keyValue[0].trim().equals("licenseplate")) {
+			if (keyValue[0].trim().equals("type")) {
+				this.type = keyValue[1];
+			}
+			else if(keyValue[0].trim().equals("licenseplate")) {
 				this.licenseplate = keyValue[1];
-			}else if (keyValue[0].trim().equals("available")) {
-				this.available = Boolean.parseBoolean(keyValue[1]);}
+			}
+			else if(keyValue[0].trim().equals("make")) {
+				this.make = keyValue[1];
+			}
+			else if(keyValue[0].trim().equals("model")) {
+				this.model = keyValue[1];
+			}
 			else if(keyValue[0].trim().equals("transmission")) {
 				this.transmission = keyValue[1];
 			}
-			else if(keyValue[0].trim().equals("category")) {
-				this.category = keyValue[1];
+			else if(keyValue[0].trim().equals("year")) {
+				this.year = Integer.parseInt(keyValue[1]);
 			}
 
 		}

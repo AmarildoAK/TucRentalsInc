@@ -30,19 +30,15 @@ private user user;
 	
 	public user authenticate() {
 		
-		MyScanner username=next.String;
-		MyScanner password=nextString;
+		//MyScanner username=next.String;
+		//MyScanner password=nextString;
 
 		for (int i = 0; i < userlist.size(); i++) {
 
-<<<<<<< HEAD
-			if (userlist.get(i).getUsername().equals(username) && userlist.get(i).equals(password)) {
-				System.out.println("The user has been loged in succesfully");
-				return u;
-=======
+
 			if (userlist.get(i).getUsername().equals(username) && userlist.get(i).getPassword().equals(password)) {
 				return userlist.get(i);
->>>>>>> branch 'master' of https://github.com/AmarildoAK/TucRentalsInc
+
 			}
 
 		}

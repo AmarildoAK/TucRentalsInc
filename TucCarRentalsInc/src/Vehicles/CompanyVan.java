@@ -6,32 +6,44 @@ import utils.CompanyVanCategory;
 
 //import java.time.*;
 public class CompanyVan extends Vehicles {
-<<<<<<< HEAD
-	private String type;
-	public CompanyVan(String licensePlate, String catgerory,String transmission,String make,String model,String year,String type) {
-		super(licensePlate, catgerory,transmission, make, model, year);
-		this.setType(this.getClass().getName());
-		
-=======
-
 	private CompanyVanCategory category;
+	private String type = "CompanyVan";
+	public CompanyVan(String licensePlate,String transmission,String make,String model,int  year,String type,CompanyVanCategory category) {
+		super(licensePlate,transmission, make, model, category.name(),year);
+		this.setType(this.getClass().getName());
 
-	public CompanyVan(String licensePlate, String transmission, CompanyVanCategory category) {
-		super(licensePlate, transmission, category.name());
-
->>>>>>> branch 'master' of https://github.com/AmarildoAK/TucRentalsInc
 	}
+	
+
+	
 
 	public String marshal() {
 
 		StringBuffer sb = new StringBuffer(super.marshal());
+		
+		sb.append("type:").append(this.type).append(",");
 		
 		return sb.toString();
 	}
 
 	public void unmarshal(String data) throws UnMarshalingException {
 		super.unmarshal(data);
-<<<<<<< HEAD
+
+		if(data == null) {
+			throw new UnMarshalingException("Empty Data");
+			}
+		
+		
+		String[] parts = data.split(",");
+		for (String part : parts) {
+			String[] keyValue = part.split(":");
+
+			if (keyValue[0].trim().equals("type")) {
+				this.type = keyValue[1];
+			}
+
+		}
+		
 		}
 
 
@@ -53,11 +65,11 @@ public class CompanyVan extends Vehicles {
 	// edo na kano enum gia ton xrono kai na ton peraso mesa tis times ana mera 
 	
 	
-=======
+
 	}
 
->>>>>>> branch 'master' of https://github.com/AmarildoAK/TucRentalsInc
-}
+
+
 
 //LocalDate rentDate;
 // int timeOfLease; ara ta amaxia kathe fora poy fairnoyme neo car den dinoume

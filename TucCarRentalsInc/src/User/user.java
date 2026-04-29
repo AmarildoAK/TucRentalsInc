@@ -7,32 +7,32 @@ import transaction.Wallet;
 
 public abstract class user implements Storable,Comparable<user>{
 
-	private String email;
+	// String email;
 	private String password;
-	private String firstName;
-	private String lastName;
+	private String name;
+	//private String lastName;
 	private String username;
 	private Wallet wallet;
+	private String type;
 	
 	
-	
-	public user(String email, String password, String firstName, String lastName,String username) {
+	public user( String password, String name) {
 		
-		this.email = email;
+		//this.email = email;
 		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		//this.firstName = firstName;
+		//this.lastName = lastName;
 	    this.username = username;
-	this.wallet = new Wallet(0.0);
+	
 	}
 
-	private String getEmail() {
-		return email;
-	}
+//	private String getEmail() {
+//		return email;
+//	}
 
-	private void setEmail(String email) {
-		this.email = email;
-	}
+//	private void setEmail(String email) {
+//		this.email = email;
+//	}
 
 	public String getPassword() {
 		return password;
@@ -42,21 +42,21 @@ public abstract class user implements Storable,Comparable<user>{
 		this.password = password;
 	}
 
-	private String getFirstName() {
-		return firstName;
-	}
+//	private String getFirstName() {
+//		return firstName;
+//	}
 
-	private void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+//	private void setFirstName(String firstName) {
+//		this.firstName = firstName;
+//	}
 
-	private String getLastName() {
-		return lastName;
-	}
+//	private String getLastName() {
+//		return lastName;
+//	}
 
-	private void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+//	private void setLastName(String lastName) {
+//		this.lastName = lastName;
+//	}
 
 	
 	public String getUsername() {
@@ -79,12 +79,12 @@ public abstract class user implements Storable,Comparable<user>{
 		StringBuffer sb = new StringBuffer("type: ").append(this.getClass().getName()).append(";");
 		
 		
-		sb.append("firstName:").append(this.firstName).append(",");
-		sb.append("lastname:").append(this.lastName).append(",");
+		//sb.append("firstName:").append(this.firstName).append(",");
+		//sb.append("lastname:").append(this.lastName).append(",");
 		sb.append("password:").append(this.password).append(",");
-		sb.append("email:").append(this.email).append(",");
-		sb.append("username:").append(this.username).append(",");
-
+		//sb.append("email:").append(this.email).append(",");
+		sb.append("name:").append(this.name).append(",");
+		sb.append("type:").append(this.type).append(",");
 		
 		return sb.toString();
 	}
@@ -100,16 +100,9 @@ public void unmarshal(String data) throws UnMarshalingException {
 		for(String part: parts) {
 			String[] keyValue = part.split(":");
 			
-			if(keyValue[0].trim().equals("firstName")) {// ιδεα για επεκταση στην εξεταση μπορει να μας βαλλουν να αλλάξουμε τα marshall unmarsall  ανάλογα με το που χωρίζεται
-				this.firstName = keyValue[1];
-			}else if(keyValue[0].trim().equals("lastname")) {
-				this.lastName = keyValue[1];
-			}else if(keyValue[0].trim().equals("email")) {
-				this.email = keyValue[1];
-			}else if(keyValue[0].trim().equals("password")) {
-				this.password = keyValue[1];
-			}
-			
+			if(keyValue[0].trim().equals("name")) {// ιδεα για επεκταση στην εξεταση μπορει να μας βαλλουν να αλλάξουμε τα marshall unmarsall  ανάλογα με το που χωρίζεται
+				this.name = keyValue[1];
+		}
 			else if(keyValue[0].trim().equals("username")) {
 				this.username = keyValue[1];
 			}
