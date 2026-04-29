@@ -41,7 +41,7 @@ private StorableList<Statement> statementList;
 	
 	
 	
-	public boolean CreateStatement(Statement newStatement,int VAT) {
+	public boolean CreateStatement(Statement newStatement,int VAT) {// πως σκατα θα κάνουμε create statement δεχόμενοι τύπο  sTATEMENT ΔΕΝ ΒΓΑΖΕΙ ΝΟΗΜΑ 
 		if(findStatement(newStatement.getNoticeID())!=null) {
 			return false;
 		}else {
@@ -68,6 +68,11 @@ private StorableList<Statement> statementList;
 		}
 		
 		
+	}
+	
+	public String getStatement(int i) {
+		
+		return statementList.get(i).toString();
 	}
 	
 }

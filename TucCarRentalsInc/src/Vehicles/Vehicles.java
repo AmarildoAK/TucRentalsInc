@@ -38,7 +38,7 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 
 
 
-	private void setType(String type) {
+	protected void setType(String type) {
 		this.type = type;
 	}
 
