@@ -1,6 +1,7 @@
 package managers;
 
 
+import User.Customer;
 import User.user;
 import storage.StorableList;
 import transaction.Transaction;
@@ -56,7 +57,16 @@ public boolean addCredit(Transaction newCredit) {
 	
 }
 	
-	
+	public void PayBalance(Customer customer, double amount) {
+		
+		Wallet customerWallet = customer.getWallet();
+		
+		customerWallet.setAmount(amount);
+		
+		System.out.println("The payment has been completed");
+		
+		
+	}
 	
 	
 }

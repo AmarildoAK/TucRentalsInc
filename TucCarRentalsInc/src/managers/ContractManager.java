@@ -98,7 +98,7 @@ public void CancelContract(int contractID) {
 	
 	c = findContract(contractID);
 	
-	if(c!= null && c.getStatus().equalsIgnoreCase("ACTIVE")) {
+	if(c!= null && c.getStatus().equals("ACTIVE")) {
 		c.setStatus("Cancelled");
 		
 		Vehicles rentedCar = c.getRentedCar();
