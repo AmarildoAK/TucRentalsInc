@@ -109,7 +109,7 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 		sb.append("ContractID:").append(this.contractID).append(",");
 		sb.append("endDate:").append(this.endDate).append(",");
 		sb.append("startDate:").append(this.startDate).append(",");
-		sb.append("rentedCar:").append(this.rentedCar.getLicensePlate()).append(",");
+		sb.append("rentedCar:").append(this.rentedCar.getLicenseplate()).append(",");
 
 		return sb.toString();
 

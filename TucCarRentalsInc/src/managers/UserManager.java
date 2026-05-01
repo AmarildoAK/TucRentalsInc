@@ -1,5 +1,8 @@
 package managers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import User.Company;
 import User.Customer;
 import User.Individual;
@@ -9,6 +12,7 @@ import cli.Admin;
 import storage.Storable;
 import storage.StorableList;
 import storage.StorageManager;
+import transaction.Wallet;
 import utils.MyScanner;
 
 public class UserManager {
@@ -75,7 +79,7 @@ private user user;
 		
 	}
 		
-	public Customer findCustomer(int VAT) {
+	public Customer findCustomer(String VAT) {
 		for(int i=0;i<userlist.size();i++) {
 			user u = userlist.get(i);
 			
@@ -91,8 +95,47 @@ private user user;
 	return null;
 	}
 	
+public void showBalance(Customer customer) {
 	
+	if(customer !=null) {
+		Wallet customerWallet = customer.getWallet();
+		System.out.println(customerWallet.getAmount());
+	
+	}else {
+		System.out.println("There has been an error trying to print the balance of the user");
+	return;
 	}
+}
+
+
+public void ShowBalanceOfAllUsers() {
+	
+	for(user u: userlist) {
+		if (u instanceof Customer) {
+			Customer c= (Customer) u;
+			showBalance(c);
+		}
+	}
+	
+}
+
+
+public List<Customer> AllCustomerList(){ // opote tha kaloume thn synarthsh auth sto cli opou auth h synarthsh exei oles tis aparaithtes plhrofories pou tha thelame na paroume 
+	List<Customer> customerlist = new ArrayList<>();
+	
+	for(user u:this.userlist) {
+		if(u instanceof Customer) {
+			customerlist.add((Customer) u);
+		}
+	}
+return customerlist;
+}
+
+
+
+
+
+}
 	
 	
 	

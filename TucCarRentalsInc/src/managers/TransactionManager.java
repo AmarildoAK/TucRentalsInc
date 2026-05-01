@@ -1,6 +1,9 @@
 package managers;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import User.Customer;
 import User.user;
 import storage.StorableList;
@@ -67,6 +70,31 @@ public boolean addCredit(Transaction newCredit) {
 		
 		
 	}
+	
+	
+	public List<Transaction> showWalletStatementsOfUser(Customer VAT){ // to megalo kommatitha ginei sto cli kai mhpws prepei na ginei typou customer h string na to skeftw  
+		
+		List<Transaction> customerStatementHistoryWallet = new ArrayList<>();
+		
+		
+	for(Transaction t: this.transactionList) {
+		
+		if(t.getVAT() == VAT) {
+			
+			
+			customerStatementHistoryWallet.add(t);
+			
+		}
+		
+		
+	}
+		
+	return customerStatementHistoryWallet;
+	
+	}
+	
+	
+	
 	
 	
 }

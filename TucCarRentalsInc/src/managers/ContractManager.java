@@ -70,7 +70,7 @@ public Contract findContract(int contractId) {
 
 public Contract findContractViolation(String licenseplate,LocalDate violationDate) {
 	for(int i=0;i<contractList.size();i++) {
-		if(contractList.get(i).getRentedCar().getLicensePlate().equals(licenseplate) && contractList.get(i).getStartDate().isBefore(violationDate)&& contractList.get(i).getEndDate().isAfter(violationDate)) {
+		if(contractList.get(i).getRentedCar().getLicenseplate().equals(licenseplate) && contractList.get(i).getStartDate().isBefore(violationDate)&& contractList.get(i).getEndDate().isAfter(violationDate)) {
 			return contractList.get(i);
 		}
 	}
@@ -103,21 +103,22 @@ public void CancelContract(int contractID) {
 		
 		Vehicles rentedCar = c.getRentedCar();
 		rentedCar.setAvailable(true);
+	}
 		System.out.println("Contract cancelled succesfully");
 	
+		
+		
 		try {
 			StorageManager.getInstance().storeObject(contractList,"Data/contracts/contracts.csv");
-			System.out.println("The new Contract has been added!!!");
+			System.out.println("The new Contract has been cancelled!!!");
 		}catch(Exception e){
 			System.out.println("The contract has met an Error"+e.getMessage());
 		}
 	
-	
-	}else {
-		System.out.println("error while cancelling the contract");
+		
 	}
-	
-}
+
+
 
 public void CompletedContract(int contractID) {
 	c = findContract(contractID);
@@ -141,6 +142,7 @@ public void CompletedContract(int contractID) {
 		System.out.println("error while trying for completion");
 	}
 }
+}
 
 
 //public void Overview(Customer customer) {
@@ -162,4 +164,4 @@ public void CompletedContract(int contractID) {
 
 
 
-}
+

@@ -19,13 +19,16 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 	
 	public Vehicles(String licensePlate, String category,String transmission,String make,String model,int  year) {
 	
-	this.licenseplate = licensePlate;
+	if(CheckType(type)&&CheckLicenseplate(licenseplate)&&CheckCategory(category)&&CheckTransmission(transmission)&&CheckMake(make)&&CheckModel(model) ) {
+		
+		this.licenseplate = licensePlate;
 	this.category = category;
 	this.available = true;
 	this.transmission = transmission;
 	this.make=make;
 	this.model=model;
 	this.year=year;
+	}
 	}
 
 	
@@ -36,6 +39,9 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 	}
 
 
+	private boolean CheckType(String type) {
+		return this.type!=null && !type.trim().isEmpty();
+	}
 
 
 	protected void setType(String type) {
@@ -45,10 +51,13 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 
 
 
-	private String getLicenseplate() {
+	public String getLicenseplate() {
 		return licenseplate;
 	}
 
+	private boolean CheckLicenseplate(String licenseplate) {
+		return licenseplate!=null && !licenseplate.trim().isEmpty();
+	}
 
 	private void setLicenseplate(String licenseplate) {
 		this.licenseplate = licenseplate;
@@ -60,18 +69,15 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 		return category;
 	}
 
-
+private boolean CheckCategory(String category) {
+	return category!=null && !category.trim().isEmpty();
+}
 
 	private void setCategory(String  category) {
 		this.category = category;
 	}
 
-    public String getLicensePlate() {
-		return licenseplate;
-	}
-	private void setLicensePlate(String licensePlate) {
-		this.licenseplate = licensePlate;
-	}
+  
 	
 
 	public boolean isAvailable() {
@@ -84,6 +90,11 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 	public String getTransmission() {
 		return transmission;
 	}
+	
+	private boolean CheckTransmission(String transmission) {
+		return transmission!=null && !transmission.trim().isEmpty();
+	}
+	
 	private void setTransmission(String transmission) {
 		this.transmission = transmission;
 	}
@@ -91,12 +102,23 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 	public String getMake() {
 		return make;
 	}
+	
+	private boolean CheckMake(String make) {
+		return make!=null && !make.trim().isEmpty();
+	}
+	
 	public void setMake(String make) {
 		this.make = make;
 	}
 	public String getModel() {
 		return model;
 	}
+	
+	private boolean CheckModel(String model) {
+		return model!=null &&!model.trim().isEmpty();
+	}
+	
+	
 	public void setModel(String model) {
 		this.model = model;
 	}
@@ -112,7 +134,7 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 	
 	@Override
 	public int compareTo(Vehicles other) {
-		return this.getLicensePlate().compareTo(other.getLicensePlate());
+		return this.getLicenseplate().compareTo(other.getLicenseplate());
 	}
 	
 	

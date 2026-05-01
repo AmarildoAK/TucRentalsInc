@@ -59,13 +59,13 @@ private void setVehicle(Vehicles vehicle) {
 
 public Vehicles findVehicle(String licensePlate) {
 	
-	if(vehicle.getLicensePlate() == null) {
+	if(vehicle.getLicenseplate() == null) {
 		return null;
 	}
 	
 	
 	for(int i=0; i<vehicleList.size();i++) {
-		if(vehicleList.get(i).getLicensePlate().equals(licensePlate)) {
+		if(vehicleList.get(i).getLicenseplate().equals(licensePlate)) {
 			return vehicleList.get(i);
 		}
 	}
@@ -77,7 +77,7 @@ public Vehicles findVehicle(String licensePlate) {
 
 public boolean addVehicle(Vehicles v) {
 
-	if (findVehicle(v.getLicensePlate()) != null) {
+	if (findVehicle(v.getLicenseplate()) != null) {
 
 		return false;
 	} else {
@@ -114,11 +114,11 @@ public void printVehicles() {
 		
 		if (vehicleList.get(i) instanceof CarPassanger) {
 			CarPassanger c = (CarPassanger) vehicleList.get(i);
-			System.out.println("type: "+c.getType()+"plate"+c.getLicensePlate()+"make"+c.getMake()+"model"+c.getModel()+"transminssion"+c.getTransmission()+"year"+c.getYear());	 
+			System.out.println("type: "+c.getType()+"plate"+c.getLicenseplate()+"make"+c.getMake()+"model"+c.getModel()+"transminssion"+c.getTransmission()+"year"+c.getYear());	 
 		}
 		else if (vehicleList.get(i) instanceof CompanyVan) {
 			CompanyVan v = (CompanyVan) vehicleList.get(i);
-				System.out.println("type: "+v.getType()+"plate"+v.getLicensePlate()+"make"+v.getMake()+"model"+v.getModel()+"transminssion"+v.getTransmission()+"year"+v.getYear());	 
+				System.out.println("type: "+v.getType()+"plate"+v.getLicenseplate()+"make"+v.getMake()+"model"+v.getModel()+"transminssion"+v.getTransmission()+"year"+v.getYear());	 
 			}
 		}
 	}
