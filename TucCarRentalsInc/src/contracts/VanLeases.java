@@ -63,7 +63,7 @@ public String marshal() {
 				this.months = LeaseDuration.valueOf(keyValue[1]); 
 				}
 			else if(keyValue[0].trim().equals("customerVAT")) {
-				this.tempVAT = keyValue[1];
+				this.setTempVAT(keyValue[1]);
 			}
 	
 	
@@ -74,6 +74,16 @@ public String marshal() {
 	
 	
 	
+	}
+
+
+	public String getTempVAT() {
+		return tempVAT;
+	}
+
+
+	public void setTempVAT(String tempVAT) {
+		this.tempVAT = tempVAT;
 	}                                         
 	
 }

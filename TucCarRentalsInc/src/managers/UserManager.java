@@ -38,9 +38,9 @@ private user user;
 
 	public user authenticateAndLogin() {
 	    System.out.print("Enter Username/VAT: ");
-	    String username = scan.next().String;
+	    String username =  MyScanner.nextString();
 	    System.out.print("Enter Password: ");
-	    String password = scan.next().String;
+	    String password = MyScanner.nextString();
 
 
 	    for (user user : userlist) {
