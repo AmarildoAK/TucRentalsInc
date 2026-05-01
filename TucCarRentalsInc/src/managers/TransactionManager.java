@@ -41,7 +41,7 @@ private Wallet wallet;
 		}
 	}
 	
-	public void UpdateWallet(user customer,double newWallet) {
+	public void UpdateWallet(user customer,double newWallet) {// να κάνουμε τύπου customer και να κάνουμε έτσι accessτο wallet καθε customer
 	customer.getWallet().setAmount(newWallet);
 	}
 	

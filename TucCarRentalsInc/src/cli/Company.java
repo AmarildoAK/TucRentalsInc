@@ -3,7 +3,7 @@ package cli;
 import utils.MyScanner;
 
 public class Company {
-public void companyMenu() {// mhpws aytes tis methodoys na tis kano static?
+public static  void companyMenu() {// mhpws aytes tis methodoys na tis kano static?
 	System.out.println(Globals.separetor);
 	System.out.println(Globals.CompanyPrompt);
 	int choice = MyScanner.nextInt();

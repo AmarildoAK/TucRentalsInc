@@ -10,7 +10,7 @@ import storage.UnMarshalingException;
 public abstract class Contract implements Storable,Comparable<Contract> {
 
 	private String status;
-	private int contractID;
+	private String contractID;// mas eipame na to kanoyme string alla an to kanoume String πως θα το αυξάνουμε
 	private static int contractIDcounter=1;
 	private Vehicles rentedCar;
 	private LocalDate startDate;
@@ -19,7 +19,7 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 	
 	public Contract(String status,int contractID,Vehicles rentedCar) {
 		this.status = "ACTIVE";
-	this.contractID = contractIDcounter++;
+	this.contractID = "CID"+contractIDcounter++;
 	this.rentedCar = rentedCar;
 	
 	}
@@ -50,14 +50,14 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 	
 	
 	
-	public int getContractID() {
+	public String getContractID() {
 		return contractID;
 	}
 
 
 
 
-	private void setContractID(int contractID) {
+	private void setContractID(String contractID) {
 		this.contractID = contractID;
 	}
 
@@ -93,10 +93,10 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 	}
 
 	
-	@Override
-	public int compareTo(Contract other) {
-		return this.getContractID() - other.contractID;
-	}
+//	@Override
+//	public int compareTo(Contract other) {
+//		return this.getContractID() - other.contractID;
+//	} NA ALAJOYME TO OVERRRIDE 
 
 
 
@@ -133,10 +133,10 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 			}else if(keyValue[0].trim().equals("ContractID")) {
 				this.contractID = Integer.parseInt(keyValue[1]);
 			
-			if(contractID >= contractIDcounter) {
-				contractIDcounter = contractID + 1 ;
-			}
-			
+//			if(contractID >= contractIDcounter) {
+//				contractIDcounter = contractID + 1 ;
+//			}
+//			WTF IS THAT TI ΕΛΕΓΧΕΙ ΑΥΤΟ?
 			}
 			else if(keyValue[0].trim().equals("rentedCar")) {
 				this.tempPlate = keyValue[1];

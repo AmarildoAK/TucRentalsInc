@@ -3,8 +3,11 @@ package managers;
 import java.time.LocalDate;
 
 import User.Customer;
+import User.Individual;
 import Vehicles.Vehicles;
+import contracts.CarRentals;
 import contracts.Contract;
+import contracts.VanLeases;
 import storage.StorableList;
 import storage.StorageManager;
 import transaction.Wallet;
@@ -14,6 +17,7 @@ public class ContractManager {
 	public StorableList<Contract> contractList;
 	private Contract c;
 	private Wallet wallet;
+	private LocalDate today;
 	
 	public ContractManager() {
 		this.contractList = new StorableList<>();
@@ -58,9 +62,9 @@ private StorableList<Contract> getContractList() {
 	}
 
 
-public Contract findContract(int contractId) {
+public Contract findContract(String contractId) {
 	for(int i=0;i<contractList.size();i++) {
-		if(contractList.get(i).getContractID() == contractId) {
+		if(contractList.get(i).getContractID().equals(contractId)) {
 			return contractList.get(i);
 		}
 	}
@@ -94,7 +98,7 @@ public boolean CreateContract(Contract newContract) {
 return true;
 }
 
-public void CancelContract(int contractID) {
+public void CancelContract(String contractID) {
 	
 	c = findContract(contractID);
 	
@@ -119,7 +123,7 @@ public void CancelContract(int contractID) {
 	
 }
 
-public void CompletedContract(int contractID) {
+public void CompletedContract(String contractID) {
 	c = findContract(contractID);
 	if(c!=null && c.getStatus().equalsIgnoreCase("ACTIVE")) {
 		c.setStatus("Completed");
@@ -143,6 +147,41 @@ public void CompletedContract(int contractID) {
 }
 
 
+ public boolean checkMotion(Contract c, LocalDate today) {
+	 
+	 if (c.getStartDate().isBefore(today)&&c.getEndDate().isAfter(today)&&c.getStatus().equals("ACTIVE")) {
+		return true;
+	}
+	return false;
+	 
+ 
+
+ }
+ public String getInMotionContracts(Individual i) {
+	 
+	 for(Contract con : contractList) {
+		 if(con instanceof CarRentals) {
+			 CarRentals cr = (CarRentals) con;
+			 if (cr.getTempVAT().equals(i.getVAT())&& checkMotion(con, today)) {
+				 return cr.toString(); // ή την toString ή την marshal
+				
+			}
+			 
+		 }
+		 else if (con instanceof VanLeases) {
+			VanLeases vl =(VanLeases) con;
+			if (vl.getTempVAT().equals(i.getVAT())&& checkMotion(con, today)) {
+				 return vl.toString(); // ή την toString ή την marshal
+		}
+	
+			
+		}
+		 return "No match found";
+	 }
+	 return null;
+	 	}}
+ 
+
 //public void Overview(Customer customer) {
 //	int activeContracts = 0;
 //	int pendingcontracts = 0;
@@ -158,8 +197,6 @@ public void CompletedContract(int contractID) {
 //}
 
 
+ 
 
 
-
-
-}

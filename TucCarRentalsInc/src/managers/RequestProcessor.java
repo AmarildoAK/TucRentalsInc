@@ -57,10 +57,6 @@ public void SimulateTimePassing() {
 while(currentDate.isBefore(targetDate)) {
 	System.out.println("report for today :"+currentDate);
 
-	
-	
-	
-	
 	try {
 		StorageManager.getInstance().loadObject(this.dailyRequestList,"");
 	}catch(Exception e) {

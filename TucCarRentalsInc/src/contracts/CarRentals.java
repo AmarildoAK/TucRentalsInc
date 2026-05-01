@@ -229,12 +229,30 @@ public String marshal() {
 			}
 	
 			else if(keyValue[0].trim().equals("customer")) {
-				this.tempVAT = keyValue[1];
+				this.setTempVAT(keyValue[1]);
 	}
 	
 	
 	
 }
+	}
+
+
+
+
+
+
+	public String getTempVAT() {
+		return tempVAT;
+	}
+
+
+
+
+
+
+	public void setTempVAT(String tempVAT) {
+		this.tempVAT = tempVAT;
 	}
 	
 }
