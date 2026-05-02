@@ -254,5 +254,16 @@ public String marshal() {
 	public void setTempVAT(String tempVAT) {
 		this.tempVAT = tempVAT;
 	}
+
+
+
+
+
+
+	@Override
+	public int compareTo(Contract o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }
