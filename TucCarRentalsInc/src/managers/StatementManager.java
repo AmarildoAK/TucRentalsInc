@@ -4,6 +4,8 @@ package managers;
 
 
 
+import java.util.Iterator;
+
 import statements.Statement;
 import storage.StorableList;
 import storage.StorageManager;
@@ -12,14 +14,7 @@ import transaction.Wallet;
 public class StatementManager {
 private StorableList<Statement> statementList;
 	private Wallet s;
-	
-	
-	
-	public StatementManager() {
-		this.statementList = new StorableList<>();
-		
-		
-	}
+
 
 	private StorableList<Statement> getStatementList() {
 		return statementList;
@@ -58,21 +53,20 @@ private StorableList<Statement> statementList;
 	}
 	
 	
-	public void RetrieveStatements(int VAT) { // den eimai kai poly sigouros gia to int VAT
+	public void retrieveStatementsForUser(String VAT) { // den eimai kai poly sigouros gia to int VAT
 		
 		try {
 			StorageManager.getInstance().loadObject(this.statementList,"Data/statements/statement.csv" );
 		System.out.println("The statement has been retrieved succesfully");
+		
 		}catch(Exception e){
 			System.out.println("The statement has met an error while retrieving it "+e.getMessage());
 		}
 		
-		
 	}
 	
-	public String getStatement(int i) {
+	public String getStatement() {
 		
-		return statementList.get(i).toString();
-	}
+		
 	
 }
