@@ -7,6 +7,7 @@ import storage.StorageManager;
 import utils.MyScanner;
 import managers.TransactionManager;
 import managers.UserManager;
+import managers.VehicleManager;
 
 
 public class Admin {
@@ -22,6 +23,7 @@ switch (choice) {
 case 1: {
 	
 	System.out.println("Loading the vehicle fleet......");// na ftiajoyme mia methodo printVehivcles που θα τυπωνει τον στόλο και να την καλέσουμε 
+	VehicleManager.getInstance().printVehicles();
 	break;
 }
 case 2:{
@@ -33,12 +35,12 @@ case 3:{
 	break;
 }
 case 4:{
-	System.out.println("ΕΞΟΔΟΣ ΑΠΟ ΤΟ ΠΡΟΓΡΑΜΜΑ");
+	System.out.println("");
 	System.exit(0);
 	break;
 }
-case 5:{
-	System.out.println("test the gitHUb");
+default:{
+	System.out.println("error");
 	break;
 }
 		

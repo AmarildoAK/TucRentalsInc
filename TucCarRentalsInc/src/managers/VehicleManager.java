@@ -13,11 +13,18 @@ public class VehicleManager {
 
 private StorableList<Vehicles> vehicleList;
 private Vehicles vehicle;
+private static VehicleManager instance;
+
+public static VehicleManager getInstance() {
+	if(instance == null) {
+		instance = new VehicleManager();
+	}
+return instance;
+}
 
 
 
-
-public VehicleManager() {
+private  VehicleManager() {
 	this.vehicleList = new StorableList<>();
 	
 	try {
