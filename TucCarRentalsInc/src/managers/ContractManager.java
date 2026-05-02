@@ -159,6 +159,16 @@ public void CompletedContract(String contractID) {
  
 
  }
+public boolean checkFuture(Contract c, LocalDate today) {
+	 
+	 if (c.getStartDate().isAfter(today)&&c.getStatus().equals("ACTIVE")) {
+		return true;
+	}
+	return false;
+	 
+ 
+
+ }
  public String getInMotionContracts(Individual i) {
 	 
 	 for(Contract con : contractList) {
@@ -181,7 +191,38 @@ public void CompletedContract(String contractID) {
 		 return "No match found";
 	 }
 	 return null;
-	 	}}
+	 	}
+ 
+ 
+ 
+ public String getFutureContracts(Individual i) {
+	 
+	 for(Contract con : contractList) {
+		 if(con instanceof CarRentals) {
+			 CarRentals cr = (CarRentals) con;
+			 if (cr.getTempVAT().equals(i.getVAT())&& checkFuture(con, today)) {
+				 return cr.toString(); // ή την toString ή την marshal
+				
+			}
+			 
+		 }
+		 else if (con instanceof VanLeases) {
+			VanLeases vl =(VanLeases) con;
+			if (vl.getTempVAT().equals(i.getVAT())&& checkFuture(con, today)) {
+				 return vl.toString(); // ή την toString ή την marshal
+		}
+	
+			
+		}
+		 return "No match found";
+	 }
+	 return null;
+ }
+ 
+
+
+
+}
  
 
 //public void Overview(Customer customer) {
