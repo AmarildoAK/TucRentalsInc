@@ -8,15 +8,22 @@ public class Company extends Customer {
 	private String type = "Company";
 	
 	
-	public Company(int VAT,String name,String password,String companyName) {
+	public Company(String VAT,String name,String password,String companyName) {
 		super(VAT,name,password);
+		if(CheckCompanyName(companyName)) {
 		this.companyName = companyName;
-	}
+		}
+		}
 
 	private String getCompanyName() {
 		return companyName;
 	}
 
+	
+	private boolean CheckCompanyName(String companyName) {
+		return this.companyName !=null && !this.companyName.trim().isEmpty();
+	}
+	
 	private void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}

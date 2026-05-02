@@ -1,5 +1,6 @@
 package transaction;
 
+import User.Customer;
 import storage.Storable;
 import storage.UnMarshalingException;
 
@@ -9,12 +10,36 @@ public abstract  class Transaction  implements Storable,Comparable<Transaction>{
 	private int TransactionID;
 	private double amount;
 	private String name;// mhpos na mpei ayto se customer payment kai refund
+	private Customer VAT;
+	
+	
 	
 	public Transaction(int transactionID,double amount) {
 	
 		setTransactionID(TransactionIdCounter++);
 		this.amount=amount;
 	}
+	
+	
+	
+	
+	
+	public Customer getVAT() {
+		return VAT;
+	}
+
+
+
+
+
+	private void setVAT(Customer vAT) {
+		VAT = vAT;
+	}
+
+
+
+
+
 	public double getAmount() {
 		return amount;
 	}

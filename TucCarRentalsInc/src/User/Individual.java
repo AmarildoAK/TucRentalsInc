@@ -12,7 +12,7 @@ public class Individual  extends Customer{
 	private String type = "Individual";
 
 	
-	public Individual(int VAT,String name,String password) {
+	public Individual(String VAT,String name,String password) {
 		super(VAT,name,password);
 	
 	}

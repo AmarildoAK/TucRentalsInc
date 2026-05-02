@@ -7,10 +7,10 @@ import transaction.Wallet;
 
 public abstract class user implements Storable,Comparable<user>{
 
-	// String email;
+	
 	private String password;
 	private String name;
-	//private String lastName;
+	
 	private String username;
 	private Wallet wallet;
 	private String type;
@@ -18,51 +18,45 @@ public abstract class user implements Storable,Comparable<user>{
 	
 	public user( String password, String name) {
 		
-		//this.email = email;
+		if(CheckUsername(username)&&CheckPassword(password)) {
 		this.password = password;
-		//this.firstName = firstName;
-		//this.lastName = lastName;
 	    this.username = username;
-	
+		}
 	}
 
-//	private String getEmail() {
-//		return email;
-//	}
 
-//	private void setEmail(String email) {
-//		this.email = email;
-//	}
 
 	public String getPassword() {
 		return password;
 	}
 
+	
+	private boolean CheckPassword(String password) {
+		return password!= null && !password.trim().isEmpty();
+	}
+	
 	private void setPassword(String password) {
-		this.password = password;
+		
+		if(password !=null && password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=!]).{8,}$")) {
+			this.password = password;
+		}else {
+			System.out.println("There is an error with the password you typed");
+		}
 	}
 
-//	private String getFirstName() {
-//		return firstName;
-//	}
 
-//	private void setFirstName(String firstName) {
-//		this.firstName = firstName;
-//	}
-
-//	private String getLastName() {
-//		return lastName;
-//	}
-
-//	private void setLastName(String lastName) {
-//		this.lastName = lastName;
-//	}
 
 	
 	public String getUsername() {
 		return username;
 	}
 
+	
+	private boolean CheckUsername(String username) {
+		return this.username!=null && !username.trim().isEmpty();
+	}
+	
+	
 	private void setUsername(String username) {
 		this.username = username;
 	}
@@ -79,10 +73,8 @@ public abstract class user implements Storable,Comparable<user>{
 		StringBuffer sb = new StringBuffer("type: ").append(this.getClass().getName()).append(";");
 		
 		
-		//sb.append("firstName:").append(this.firstName).append(",");
-		//sb.append("lastname:").append(this.lastName).append(",");
+		
 		sb.append("password:").append(this.password).append(",");
-		//sb.append("email:").append(this.email).append(",");
 		sb.append("name:").append(this.name).append(",");
 		sb.append("type:").append(this.type).append(",");
 		

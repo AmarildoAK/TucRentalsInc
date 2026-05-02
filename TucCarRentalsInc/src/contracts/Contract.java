@@ -109,7 +109,7 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 		sb.append("ContractID:").append(this.contractID).append(",");
 		sb.append("endDate:").append(this.endDate).append(",");
 		sb.append("startDate:").append(this.startDate).append(",");
-		sb.append("rentedCar:").append(this.rentedCar.getLicensePlate()).append(",");
+		sb.append("rentedCar:").append(this.rentedCar.getLicenseplate()).append(",");
 
 		return sb.toString();
 
@@ -131,7 +131,7 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 			if(keyValue[0].trim().equals("Status")) {
 				this.status = keyValue[1];
 			}else if(keyValue[0].trim().equals("ContractID")) {
-				this.contractID = Integer.parseInt(keyValue[1]);
+				this.contractID = keyValue[1];
 			
 //			if(contractID >= contractIDcounter) {
 //				contractIDcounter = contractID + 1 ;
