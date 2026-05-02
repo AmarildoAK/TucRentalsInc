@@ -12,11 +12,44 @@ private String type = "Admin";
 
 public Admin(String password,String name,String username) {
     super(password,name);
-
+if(CheckUserName(username)) {
+	this.username = username;
+}
 
 
 
 }
+
+
+
+
+
+
+
+
+private String getUsername() {
+	return username;
+}
+
+
+
+
+private boolean CheckUserName(String username) {
+	return this.username != null && !username.trim().isEmpty();
+}
+
+
+
+private void setUsername(String username) {
+	this.username = username;
+}
+
+
+
+
+
+
+
 
 public LocalDate getTargetDate() {
     return targetDate;

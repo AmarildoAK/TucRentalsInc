@@ -6,7 +6,7 @@ public class Company {
 public static  void companyMenu() {// mhpws aytes tis methodoys na tis kano static?
 	System.out.println(Globals.separetor);
 	System.out.println(Globals.CompanyPrompt);
-	int choice = MyScanner.nextInt();
+	int choice = MyScanner.readInt();
 	switch (choice) {
 	
 	// pali prepei na kano ena parathyro login ;h register kai meta na fortwsw ton xrhsth an einai login

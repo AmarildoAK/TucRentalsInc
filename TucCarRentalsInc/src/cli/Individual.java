@@ -8,7 +8,7 @@ public class Individual {
 	public static void IndividualMenu() {
 		System.out.println(Globals.separetor);
 		System.out.println(Globals.IndividualPrompt);
-		int choice = MyScanner.nextInt();
+		int choice = MyScanner.readInt();
 		switch (choice) {
 		case 1: {
 			System.out.println("Showing the balance overview of the user .......");

@@ -16,7 +16,16 @@ public class TransactionManager {
 	private Transaction t;
 private Wallet wallet;
 	
-	public TransactionManager() {
+private static TransactionManager instance;
+
+public static TransactionManager getInstance() {
+	if(instance == null) {
+	 instance = new TransactionManager();
+	}
+return instance;
+}
+
+	private  TransactionManager() {
 		this.transactionList = new StorableList<>();
 		
 		

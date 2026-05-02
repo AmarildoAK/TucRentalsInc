@@ -4,45 +4,26 @@ import java.util.Scanner;
 
 public class MyScanner {
 
-	private Scanner scan;
+	private static Scanner scan = new Scanner(System.in);
 	
-	public MyScanner() {
-		this.scan = new Scanner(System.in);
-	}
+	public MyScanner() {}
 
-	public String  readString(String prompt) {
+	public static String readString() {
 		
-		System.out.println(prompt+": ");
-		String input = scan.next();
-		return input;
+		return scan.next();
 		
 		
 	}
 
-	public int readInt(String prompt) {
-		
-		System.out.println(prompt+": ");
-		int input = scan.nextInt();
-		return input;
+	public static int readInt() {
+		int value = scan.nextInt();
+		scan.nextLine();
+		return value;
 	}
-	public int read(String prompt) {
-		
-		System.out.println(prompt+": ");
-		int input = scan.nextInt();
-		return input;
-	}
+	
 
 
-	public static int nextInt() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public static int nextInt1() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	
 	
 	
 }

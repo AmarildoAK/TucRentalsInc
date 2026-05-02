@@ -15,10 +15,26 @@ import storage.StorageManager;
 import transaction.Wallet;
 import utils.MyScanner;
 
+
 public class UserManager {
-private user user;
+
+	
+	
+	
+	
+	private user user;
 	private StorableList<user> userlist;
-	public UserManager() {
+	
+	private static UserManager instance;
+	
+	public static UserManager getInstance() {
+		if(instance == null) {
+			instance = new UserManager();
+		}
+	return instance;
+	}
+	
+	private  UserManager() {
 		this.userlist = new StorableList<>();
 		
 		try {
@@ -86,7 +102,7 @@ private user user;
 			if(u instanceof Customer) {
 				Customer customer = (Customer)u;
 				
-				if(customer.getVAT() == VAT) {
+				if(customer.getVAT().equals(VAT)) {
 					return customer;
 				}
 			}

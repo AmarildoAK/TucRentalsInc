@@ -11,7 +11,7 @@ public static void main(String[] args) {
 	Individual iCli;
 	System.out.println(Globals.separetor);
 	System.out.println(Globals.LoginPrompt);
-	 int choice = MyScanner.nextInt();
+	 int choice = MyScanner.readInt();
 	switch (choice) {
 	case 1: {
 		System.out.println("Re-routing to individual menu.......");
