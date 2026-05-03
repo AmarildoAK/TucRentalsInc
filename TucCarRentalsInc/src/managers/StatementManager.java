@@ -4,6 +4,7 @@ package managers;
 
 
 
+import java.io.File;
 import java.util.Iterator;
 
 import statements.Statement;
@@ -12,61 +13,96 @@ import storage.StorageManager;
 import transaction.Wallet;
 
 public class StatementManager {
-private StorableList<Statement> statementList;
-	private Wallet s;
+	
+public StorableList<Statement> getStatementsForUser(String VAT){
+	File file = new File("Data/statements"+VAT+"_statements.csv");
+	StorableList<Statement>  userStatements = new StorableList<>();
 
+	try {
+		StorageManager.getInstance().loadObject(userStatements, file);// na kano metablhth filename pou tha kaloume edo??
+	} catch (Exception e) {
+		System.out.println("Error loading the file");
+		
+		// TODO: handle exception
+	}
+	return userStatements;
+}
 
-	private StorableList<Statement> getStatementList() {
-		return statementList;
-	}
-
-	private void setStatementList(StorableList<Statement> statementList) {
-		this.statementList = statementList;
-	}
-	
-	public Statement findStatement(int NoticeID) {
-		for(int i=0;i<statementList.size();i++) {
-			if(statementList.get(i).getNoticeID() == NoticeID) {
-				return statementList.get(i);
-			}
-		
-		}
-		return null;
-	}
-	
-	
-	
-	public boolean CreateStatement(Statement newStatement,int VAT) {// πως σκατα θα κάνουμε create statement δεχόμενοι τύπο  sTATEMENT ΔΕΝ ΒΓΑΖΕΙ ΝΟΗΜΑ 
-		if(findStatement(newStatement.getNoticeID())!=null) {
-			return false;
-		}else {
-			statementList.add(newStatement);
-			try {
-				StorageManager.getInstance().storeObject(statementList,"Data/statements/statement.csv"); // se poio arxeio tha prepei na ginei h apotikeush 
-			System.out.println("The statement has been stored succesfully");
-			
-			}catch(Exception e) {
-				System.out.println("There has been an error storing the statement"+e.getMessage());
-			}
-			return true;
-		}
-	}
-	
-	
-	public void retrieveStatementsForUser(String VAT) { // den eimai kai poly sigouros gia to int VAT
-		
-		try {
-			StorageManager.getInstance().loadObject(this.statementList,"Data/statements/statement.csv" );
-		System.out.println("The statement has been retrieved succesfully");
-		
-		}catch(Exception e){
-			System.out.println("The statement has met an error while retrieving it "+e.getMessage());
+public void createStatement(Statement snew,String Vat) {
+	StorableList<Statement> userStatements = getStatementsForUser(Vat);
+	for(Statement s: userStatements) {
+		if (s.getNoticeID()==snew.getNoticeID()) {
+			System.out.println("The statement is already in the list ");
 		}
 		
 	}
+	userStatements.add(snew);
+
+	String filename ="Data/statements"+Vat+"_statements.csv";
+	try {
+		StorageManager.getInstance().storeObject(userStatements, filename);
+	} catch (Exception e) {
+		System.out.println("ERRORRRRRR");
+	}
 	
-	public String getStatement() {
+}
+
+
+public String getAllUserStatements(String Vat) {
+	String  printable="";
+	StorableList<Statement> userStatements = getStatementsForUser(Vat);
+	for(Statement s: userStatements) {
+		printable+=s.toString();
 		
-		
+	}
+}
+
+
+
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 }
