@@ -1,5 +1,8 @@
 package cli;
 
+import User.Customer;
+import managers.TransactionManager;
+import managers.UserManager;
 import utils.MyScanner;
 
 public class Company {
@@ -20,6 +23,19 @@ public static  void companyMenu() {// mhpws aytes tis methodoys na tis kano stat
 	}
 	case 2:{
 		System.out.println("Executing payment transaction....");// na fww=najo ton transcation manager
+		
+		System.out.println("Give the VAT of the company");
+		String VAT = MyScanner.readString();
+		
+		
+		
+		Customer selectedCustomer = UserManager.getInstance().findCustomer(VAT);
+		
+		System.out.println("Type the amount");
+		double amount = MyScanner.readDouble();
+		TransactionManager.getInstance().PayBalance(selectedCustomer,amount);
+
+		
 		break;
 	}
 	case 3:{

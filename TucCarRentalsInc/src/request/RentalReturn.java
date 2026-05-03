@@ -11,6 +11,11 @@ public class RentalReturn extends Request{
 		this.RentalbookingreferencetID=RentalbookingreferencetID;
 		this.id="RRRQ"+counter;
 	}
+	@Override
+	public int compareTo(Request o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
    
 	
 	

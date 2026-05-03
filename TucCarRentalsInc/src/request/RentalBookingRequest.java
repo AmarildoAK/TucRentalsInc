@@ -19,5 +19,11 @@ public class RentalBookingRequest extends Request{ // local date den tha eprepe 
 		this.category = category;
 		this.id="RBRQ"+ counter;
 	}
+
+	@Override
+	public int compareTo(Request o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

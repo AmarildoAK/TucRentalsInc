@@ -17,6 +17,13 @@ public class FinePayment extends Request{
 	this.violationDay = violationDay;
 	
 	}
+
+
+	@Override
+	public int compareTo(Request o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 

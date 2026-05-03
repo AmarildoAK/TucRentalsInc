@@ -22,8 +22,16 @@ public class MyScanner {
 	}
 	
 
-
-	
-	
+public static double readDouble() {
+	double value = scan.nextDouble();
+	scan.nextLine();
+	return value;
 	
 }
+
+
+}
+	
+	
+	
+

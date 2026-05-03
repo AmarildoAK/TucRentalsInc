@@ -21,6 +21,12 @@ public CustomerPayment(int referenceId, LocalDate timestamp, String status,Custo
 	this.paymentId="PRQ"+counter;
 }
 
+@Override
+public int compareTo(Request o) {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
 
 }
 

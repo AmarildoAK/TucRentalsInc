@@ -2,11 +2,14 @@ package request;
 
 import java.time.LocalDate;
 
-public abstract class Request {
+public abstract class Request implements Comparable<Request>{
 
 	private static int referenceIDcounter =1;
 	private int referenceId;
 	protected String status;
+	private LocalDate requestDay;
+	
+	
 	private static int getReferenceIDcounter() {
 		return referenceIDcounter;
 	}
@@ -58,4 +61,15 @@ public abstract class Request {
 	private LocalDate setTimestamp(LocalDate timestamp) {
 		return this.timestamp = timestamp;
 	}
+
+
+
+@Override
+public int compareTo(Request other) {
+	return this.requestDay.compareTo(other.requestDay);
+	
+}
+
+
+
 }

@@ -1,11 +1,13 @@
 package managers;
 import java.awt.Taskbar.State;
 import java.time.*;
-
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 //import com.sun.source.tree.WhileLoopTree;
 
 import User.Admin;
+import request.Request;
 import storage.StorableList;
 import storage.StorageManager;
 
@@ -21,7 +23,7 @@ LocalDate currentDate;
 private StorableList dailyRequestList;
 
 
-
+private Queue<Request> requestQueue = new PriorityQueue<>();
 
 
 
@@ -40,7 +42,14 @@ public RequestProcessor(ContractManager contractManager, StatementManager statem
 	this.targetDate = targetDate;
 	this.currentDate = currentDate;
 
-	
+	try {
+		
+		StorageManager.getInstance().loadObject(this.dailyRequestList,"Data/request/pending");
+		
+		
+	}catch(Exception e) {
+		System.out.println(e.getMessage());
+	}
 
 }
 
@@ -49,7 +58,9 @@ public RequestProcessor(ContractManager contractManager, StatementManager statem
 
 
 
-
+public void addRequest(Request request) {
+	requestQueue.add(request);
+}
 
 
 

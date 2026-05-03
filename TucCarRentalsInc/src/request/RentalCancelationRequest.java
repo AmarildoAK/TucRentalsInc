@@ -15,6 +15,12 @@ public class RentalCancelationRequest extends Request {
 		this.RentalbookingreferencetID = rentalbookingreferencetID;
 		this.Id="RCRQ"+counter;
 	}
+
+	@Override
+	public int compareTo(Request o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
 
 // mallon tha prepei edo na kanoume mia method find requets by id h opoia tha scanarei ola ta rentalBooking request kai tha epistrefei ayto to request kai tis plhrofories tou 

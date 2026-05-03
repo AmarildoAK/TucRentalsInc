@@ -1,5 +1,8 @@
 package cli;
 
+import User.Customer;
+import managers.TransactionManager;
+import managers.UserManager;
 import utils.MyScanner;
 
 public class Individual {
@@ -19,7 +22,17 @@ public class Individual {
 			break;
 		}
 		case 2:{
+			
 			System.out.println("Executing payment transaction....");// na fww=najo ton transcation manager
+			
+			System.out.println("Give your VAT in order to pay the balance that you owe:");
+			String VAT = MyScanner.readString();
+			
+		Customer selectedCustomer = UserManager.getInstance().findCustomer(VAT);
+			
+		System.out.println("Type the amount:");
+		double amount = MyScanner.readDouble();	
+		TransactionManager.getInstance().PayBalance(selectedCustomer,amount);
 			break;
 		}
 		case 3:{
@@ -27,7 +40,7 @@ public class Individual {
 			break;// να φορτώσω τον statement manager και να τυπώσω όλες τις κινήσεις του χρήστη που έχουν καταγραφεί 
 		}
 		case 4:{
-			System.out.println("ΕΞΟΔΟΣ ΑΠΟ ΤΟ ΠΡΟΓΡΑΜΜΑ");
+			System.out.println("exit the individual menu");
 			System.exit(0);
 			break;
 		}
