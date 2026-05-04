@@ -1,8 +1,8 @@
 package contracts;
 
-import User.Customer;
 import Vehicles.Vehicles;
 import storage.UnMarshalingException;
+import users.Customer;
 import utils.CompanyVanCategory;
 import utils.LeaseDuration;
 

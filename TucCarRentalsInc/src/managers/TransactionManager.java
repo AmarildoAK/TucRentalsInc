@@ -4,11 +4,11 @@ package managers;
 import java.util.ArrayList;
 import java.util.List;
 
-import User.Customer;
-import User.user;
 import storage.StorableList;
 import transaction.Transaction;
 import transaction.Wallet;
+import users.Customer;
+import users.User;
 
 public class TransactionManager {
 
@@ -54,7 +54,7 @@ return instance;
 		}
 	}
 	
-	public void UpdateWallet(user customer,double newWallet) {// να κάνουμε τύπου customer και να κάνουμε έτσι accessτο wallet καθε customer
+	public void UpdateWallet(User customer,double newWallet) {// να κάνουμε τύπου customer και να κάνουμε έτσι accessτο wallet καθε customer
 	customer.getWallet().setAmount(newWallet);
 	}
 	

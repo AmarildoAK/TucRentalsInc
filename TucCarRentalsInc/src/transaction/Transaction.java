@@ -1,8 +1,8 @@
 package transaction;
 
-import User.Customer;
 import storage.Storable;
 import storage.UnMarshalingException;
+import users.Customer;
 
 public abstract  class Transaction  implements Storable,Comparable<Transaction>{
 // ρεφερψε ιδ να μπει

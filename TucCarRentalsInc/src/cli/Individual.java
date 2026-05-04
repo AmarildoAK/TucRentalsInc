@@ -1,8 +1,8 @@
 package cli;
 
-import User.Customer;
 import managers.TransactionManager;
 import managers.UserManager;
+import users.Customer;
 import utils.MyScanner;
 
 public class Individual {

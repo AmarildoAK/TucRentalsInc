@@ -1,9 +1,10 @@
 package request;
 
 import java.time.LocalDate;
-import User.Customer;
-import User.Individual;
-import User.Company;
+
+import users.Company;
+import users.Customer;
+import users.Individual;
 public class CustomerPayment extends Request{
 private static int requestidCounter =1;
 private int requestId;

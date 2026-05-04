@@ -2,9 +2,9 @@ package contracts;
 
 import java.time.LocalDate;
 
-import User.Customer;
 import Vehicles.Vehicles;
 import storage.UnMarshalingException;
+import users.Customer;
 import utils.CarPassengerVehicleType;
 
 public class CarRentals extends Contract {

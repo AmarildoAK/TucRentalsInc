@@ -1,12 +1,12 @@
 package transaction;
 import java.time.LocalDate;
 
-import User.Customer;
 import contracts.CarRentals;
 import contracts.Contract;
 import contracts.VanLeases;
 import managers.UserManager;
 import storage.UnMarshalingException;
+import users.Customer;
 import utils.CarPassengerVehicleType;
 import utils.CompanyVanCategory;
 public class RentalCharge extends Charge {

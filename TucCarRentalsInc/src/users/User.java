@@ -1,11 +1,11 @@
-package User;
+package users;
 
 import Vehicles.Vehicles;
 import storage.Storable;
 import storage.UnMarshalingException;
 import transaction.Wallet;
 
-public abstract class user implements Storable,Comparable<user>{
+public abstract class User implements Storable,Comparable<User>{
 
 	
 	private String password;
@@ -14,7 +14,7 @@ public abstract class user implements Storable,Comparable<user>{
 	private String type;
 	
 	
-	public user( String password, String name) {
+	public User( String password, String name) {
 		
 		if(Checkname(name)&&CheckPassword(password)) {
 		this.password = password;
@@ -109,7 +109,7 @@ public void unmarshal(String data) throws UnMarshalingException {
 }
 
 @Override
-public int compareTo(user other ) {
+public int compareTo(User other ) {
 	return this.name.compareTo(other.name);
 }
 

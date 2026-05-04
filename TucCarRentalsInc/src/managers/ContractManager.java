@@ -2,8 +2,6 @@ package managers;
 
 import java.time.LocalDate;
 
-import User.Customer;
-import User.Individual;
 import Vehicles.Vehicles;
 import contracts.CarRentals;
 import contracts.Contract;
@@ -11,6 +9,8 @@ import contracts.VanLeases;
 import storage.StorableList;
 import storage.StorageManager;
 import transaction.Wallet;
+import users.Customer;
+import users.Individual;
 
 public class ContractManager {
 

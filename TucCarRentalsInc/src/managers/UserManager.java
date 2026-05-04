@@ -3,16 +3,16 @@ package managers;
 import java.util.ArrayList;
 import java.util.List;
 
-import User.Company;
-import User.Customer;
-import User.Individual;
-import User.user;
 import Vehicles.Vehicles;
 import cli.Admin;
 import storage.Storable;
 import storage.StorableList;
 import storage.StorageManager;
 import transaction.Wallet;
+import users.Company;
+import users.Customer;
+import users.Individual;
+import users.User;
 import utils.MyScanner;
 
 
@@ -22,8 +22,8 @@ public class UserManager {
 	
 	
 	
-	private user user;
-	private StorableList<user> userlist;
+	private User user;
+	private StorableList<User> userlist;
 	
 	private static UserManager instance;
 	
@@ -52,17 +52,17 @@ public class UserManager {
 	
 	
 
-	public user authenticateAndLogin() {
+	public User authenticateAndLogin() {
 	    System.out.print("Enter Username/VAT: ");
-	    String username =  MyScanner.nextString();
+	    String username =  MyScanner.readString();
 	    System.out.print("Enter Password: ");
-	    String password = MyScanner.nextString();
+	    String password = MyScanner.readString();
 
 
-	    for (user user : userlist) {
+	    for (User user : userlist) {
 
 
-	        if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+	        if (user.getName().equals(username) && user.getPassword().equals(password)) {
 	
 	            if (user instanceof Admin) {
 	            	System.out.println("Welcome Admin");
@@ -97,7 +97,7 @@ public class UserManager {
 		
 	public Customer findCustomer(String VAT) {
 		for(int i=0;i<userlist.size();i++) {
-			user u = userlist.get(i);
+			User u = userlist.get(i);
 			
 			if(u instanceof Customer) {
 				Customer customer = (Customer)u;
@@ -126,7 +126,7 @@ public void showBalance(Customer customer) {
 
 public void ShowBalanceOfAllUsers() {
 	
-	for(user u: userlist) {
+	for(User u: userlist) {
 		if (u instanceof Customer) {
 			Customer c= (Customer) u;
 			showBalance(c);
@@ -139,7 +139,7 @@ public void ShowBalanceOfAllUsers() {
 public List<Customer> AllCustomerList(){ // opote tha kaloume thn synarthsh auth sto cli opou auth h synarthsh exei oles tis aparaithtes plhrofories pou tha thelame na paroume 
 	List<Customer> customerlist = new ArrayList<>();
 	
-	for(user u:this.userlist) {
+	for(User u:this.userlist) {
 		if(u instanceof Customer) {
 			customerlist.add((Customer) u);
 		}

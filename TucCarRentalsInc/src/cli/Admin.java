@@ -2,8 +2,8 @@
 
 import java.util.List;
 
-import User.Customer;
 import storage.StorageManager;
+import users.Customer;
 import utils.MyScanner;
 import managers.TransactionManager;
 import managers.UserManager;

@@ -1,7 +1,7 @@
 package transaction;
 
-import User.Customer;
 import storage.UnMarshalingException;
+import users.Customer;
 
 public class CustomerPayment extends Credit {
  

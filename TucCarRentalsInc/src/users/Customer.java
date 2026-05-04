@@ -1,10 +1,10 @@
-package User;
+package users;
 
 import storage.Storable;
 import storage.UnMarshalingException;
 import transaction.Wallet;
 
-public abstract class Customer extends user implements Storable {
+public abstract class Customer extends User implements Storable {
 
 	private String VAT;
 	private Wallet balance;

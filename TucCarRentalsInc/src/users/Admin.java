@@ -1,9 +1,9 @@
-package User;
+package users;
 import java.time.*;
 
 import storage.UnMarshalingException;
 
-public class Admin extends user {
+public class Admin extends User {
 
 LocalDate targetDate;
 private String username;
