@@ -19,6 +19,19 @@ public class ContractManager {
 	private Wallet wallet;
 	private LocalDate today;
 	
+	public static ContractManager instance;
+	
+	public ContractManager getInstance() {
+		if(instance == null) {
+			instance = new ContractManager();
+		}
+	
+	return instance;
+	}
+	
+	
+	
+	
 	public ContractManager() {
 		this.contractList = new StorableList<>();
 		

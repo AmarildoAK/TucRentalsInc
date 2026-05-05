@@ -14,6 +14,19 @@ import transaction.Wallet;
 
 public class StatementManager {
 	
+	
+	public static StatementManager instance;
+	
+	public StatementManager getInstance() {
+		if(instance == null) {
+			instance = new StatementManager();
+		}
+	return instance;
+	}
+	
+	
+	
+	
 public StorableList<Statement> getStatementsForUser(String VAT){
 	File file = new File("Data/statements"+VAT+"_statements.csv");
 	StorableList<Statement>  userStatements = new StorableList<>();

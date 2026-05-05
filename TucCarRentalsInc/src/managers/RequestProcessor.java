@@ -23,7 +23,13 @@ private StorableList dailyRequestList;
 
 private Queue<Request> requestQueue = new PriorityQueue<>();
 
+public static RequestProcessor instance;
 
+//public RequestProcessor getInstance() {
+//	if(instance == null) {
+//		instance = new RequestProcessor();
+//	}
+//}
 
 
 
