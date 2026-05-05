@@ -52,19 +52,37 @@ public class UserManager {
 	
 	
 
-	public User authenticateAndLogin(String identifier,String password) {
+	public User authenticateAndLogin(String verification,String password) {
 	   
 
 	    for (User user : userlist) {
 
        if(user instanceof Admin) {
     	   
+    	   Admin admin = (Admin) user;
+    	   
+    	   if(admin.getUsername().equals(verification) && admin.getPassword().equals(password) ) {
+    		   return admin;
+    	   }
     	   
     	   
+    	  }
+       else if(user instanceof Individual) {
+    	   Individual ind = (Individual) user;
+    	   if(ind.getVAT().equals(verification)&& ind.getPassword().equals(password)) {
+    		   return ind;
+    	   }
+       }
+       else if(user instanceof Company) {
+    	   Company comp = (Company) user;
+    	   if(comp.getVAT().equals(verification)&& comp.getPassword().equals(password)) {
+    		   return comp;
+    	   }
        }
 	        
 	
 	    }          
+	return null;
 	}
 	
 	

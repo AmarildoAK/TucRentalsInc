@@ -2,11 +2,12 @@ package cli;
 
 import managers.TransactionManager;
 import managers.UserManager;
+import users.Company;
 import users.Customer;
 import utils.MyScanner;
 
-public class CompanyCLI {
-public static  void companyMenu() {// mhpws aytes tis methodoys na tis kano static?
+public  class CompanyCLI {
+public static  void companyMenu(Company login) {// mhpws aytes tis methodoys na tis kano static?
 	System.out.println(Globals.separetor);
 	System.out.println(Globals.CompanyPrompt);
 	int choice = MyScanner.readInt();

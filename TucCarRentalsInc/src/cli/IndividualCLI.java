@@ -3,12 +3,13 @@ package cli;
 import managers.TransactionManager;
 import managers.UserManager;
 import users.Customer;
+import users.Individual;
 import utils.MyScanner;
 
 public class IndividualCLI {
 
 	
-	public static void IndividualMenu() {
+	public static void IndividualMenu(Individual login) {
 		System.out.println(Globals.separetor);
 		System.out.println(Globals.IndividualPrompt);
 		int choice = MyScanner.readInt();

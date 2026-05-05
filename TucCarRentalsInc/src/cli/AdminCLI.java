@@ -3,6 +3,7 @@
 import java.util.List;
 
 import storage.StorageManager;
+import users.Admin;
 import users.Customer;
 import utils.MyScanner;
 import managers.TransactionManager;
@@ -12,7 +13,7 @@ import managers.VehicleManager;
 
 public class AdminCLI {
 	
-public void adminMenu() {
+public static void adminMenu(Admin login) {
 System.out.println(Globals.separetor);
 System.out.println(Globals.AdminPrompt);
 int choice = MyScanner.readInt();
@@ -50,7 +51,7 @@ default:{
 
 
 
-private void customerSubMenu() {
+private static void customerSubMenu() {
 	boolean back = false;
 	
 	while(!back) {
