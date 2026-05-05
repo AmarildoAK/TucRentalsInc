@@ -10,7 +10,7 @@ import managers.UserManager;
 import managers.VehicleManager;
 
 
-public class Admin {
+public class AdminCLI {
 	
 public void adminMenu() {
 System.out.println(Globals.separetor);

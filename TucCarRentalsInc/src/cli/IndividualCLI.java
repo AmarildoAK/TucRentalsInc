@@ -5,7 +5,7 @@ import managers.UserManager;
 import users.Customer;
 import utils.MyScanner;
 
-public class Individual {
+public class IndividualCLI {
 
 	
 	public static void IndividualMenu() {

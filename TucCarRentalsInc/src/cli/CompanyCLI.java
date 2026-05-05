@@ -5,7 +5,7 @@ import managers.UserManager;
 import users.Customer;
 import utils.MyScanner;
 
-public class Company {
+public class CompanyCLI {
 public static  void companyMenu() {// mhpws aytes tis methodoys na tis kano static?
 	System.out.println(Globals.separetor);
 	System.out.println(Globals.CompanyPrompt);

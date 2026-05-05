@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Vehicles.Vehicles;
-import cli.Admin;
+import users.Admin;
 import storage.Storable;
 import storage.StorableList;
 import storage.StorageManager;
@@ -52,34 +52,19 @@ public class UserManager {
 	
 	
 
-	public User authenticateAndLogin() {
-	    System.out.print("Enter Username/VAT: ");
-	    String username =  MyScanner.readString();
-	    System.out.print("Enter Password: ");
-	    String password = MyScanner.readString();
-
+	public User authenticateAndLogin(String identifier,String password) {
+	   
 
 	    for (User user : userlist) {
 
-
-	        if (user.getName().equals(username) && user.getPassword().equals(password)) {
+       if(user instanceof Admin) {
+    	   
+    	   
+    	   
+       }
+	        
 	
-	            if (user instanceof Admin) {
-	            	System.out.println("Welcome Admin");
-	                return (Admin) user;
-	            } else if (user instanceof Individual) {
-	            	System.out.println("Welcome Individual");
-	                return (Individual) user;
-	            } else if (user instanceof Company) {
-	               	System.out.println("Welcome Company");
-	                return (Company) user;
-	            } else {
-	                return user; // Return as base User if no specific subclass match
-	            }
-	        }
-	    }
-
-	    return null; 
+	    }          
 	}
 	
 	
