@@ -88,7 +88,7 @@ public Contract<?,?> findContract(String contractId) {
 
 public Contract<?,?> findContractViolation(String licenseplate,LocalDate violationDate) {
 	for(int i=0;i<contractList.size();i++) {
-		if(contractList.get(i).getRentedCar().getLicenseplate().equals(licenseplate) && contractList.get(i).getStartDate().isBefore(violationDate)&& contractList.get(i).getEndDate().isAfter(violationDate)) {
+		if(contractList.get(i).getcar.getLicenseplate().equals(licenseplate) && contractList.get(i).getStartDate().isBefore(violationDate)&& contractList.get(i).getEndDate().isAfter(violationDate)) {
 			return contractList.get(i);
 		}
 	}
