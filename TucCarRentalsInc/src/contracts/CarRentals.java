@@ -2,12 +2,14 @@ package contracts;
 
 import java.time.LocalDate;
 
+import Vehicles.CarPassanger;
 import Vehicles.Vehicles;
 import storage.UnMarshalingException;
 import users.Customer;
+import users.Individual;
 import utils.CarPassengerVehicleType;
 
-public class CarRentals extends Contract {
+public class CarRentals extends Contract<CarPassanger,Individual> {
 
 	private CarPassengerVehicleType categoryCost;
 	private LocalDate startDate;
@@ -257,13 +259,28 @@ public String marshal() {
 
 
 
+//	@Override
+//	public int compareTo(Contract o) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 
 
 
-	@Override
-	public int compareTo(Contract o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
+
+
+
+
+
+
+
+
+
+@Override
+public int compareTo(Contract<CarPassanger, Individual> o) {
+	// TODO Auto-generated method stub
+	return 0;
+}
 	
 }

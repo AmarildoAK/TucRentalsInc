@@ -10,6 +10,9 @@ public class RentalBookingRequest extends Request{ // local date den tha eprepe 
 	private char category;
 	private static final int counter = 000;
 	private String id;
+	private LocalDate startDate;
+	private LocalDate endDate;
+	
 	
 	public RentalBookingRequest(int referenceId,LocalDate timestamp,String status,String name,String surname,String licenseplate,char category) {
 		super(referenceId,timestamp, status);
