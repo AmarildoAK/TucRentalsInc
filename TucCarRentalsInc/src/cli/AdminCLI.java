@@ -62,21 +62,21 @@ private static void customerSubMenu() {
 		
 		switch(choice) {
 		
-		case 1: 
+		case 1: {
 			System.out.println("--USER LIST--");
 			List<Customer> userlist = UserManager.getInstance().AllCustomerList();
 		
 			for(Customer c:userlist) {
 				System.out.println(c.getName());
 			}
-			break;
+			break;}
 		
-		case 2:
+		case 2:{
 			System.out.println("--USER BALANCE--");
 		UserManager.getInstance().ShowBalanceOfAllUsers();
 		break;
-		
-		case 3:
+		}
+		case 3:{
 			System.out.println("--Transaction History Of selected user--");
 	
 			System.out.println("Give the VAT of the user you want to see:");
@@ -85,15 +85,15 @@ private static void customerSubMenu() {
 		Customer customer = UserManager.getInstance().findCustomer(VAT);
 		
 		TransactionManager.getInstance().showWalletStatementsOfUser(customer);
-		break;
+		break;}
 		
-		case 0:
+		case 0:{
 			back = true;
-			break;
+			break;}
 			
-		 default:
+		 default:{
 		System.out.println("Wrong choice");	
-		break;
+		break;}
 			
 			
 	}

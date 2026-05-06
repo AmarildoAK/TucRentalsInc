@@ -4,6 +4,7 @@ import java.time.*;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+import request.RentalBookingRequest;
 import request.Request;
 import storage.StorableList;
 import storage.StorageManager;
@@ -71,6 +72,10 @@ while(currentDate.isBefore(targetDate)) {
 	}catch(Exception e) {
 		
 	}
+
+ 
+	
+
 	
 	
 	
@@ -90,7 +95,9 @@ while(currentDate.isBefore(targetDate)) {
 }	
 }
 
-
+private StorableList <Request> getRentalRequest(StorableList<Request> dailyRequestList){
+	 
+}
 }
 
 
