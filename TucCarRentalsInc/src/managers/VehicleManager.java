@@ -116,6 +116,41 @@ if(v!=null) {
 }
 
 
+public Vehicles availabilityByCategoryForCar(String Categ) {
+	
+for(Vehicles v : vehicleList) {
+	if (v instanceof CarPassanger) {
+		CarPassanger car =  (CarPassanger) v;
+		if (car.getType().equals(Categ)) {
+			return v;
+		}
+		
+	}
+		
+	}
+return null;
+
+}
+public Vehicles availabilityByCategoryForVan(String Categ) {
+	
+for(Vehicles v : vehicleList) {
+	if (v instanceof CompanyVan) {
+		CompanyVan van =  (CompanyVan) v;
+		if (van.getType().equals(Categ)) {
+			return v;
+		}
+	
+		
+	}
+
+	}
+return null;
+
+}
+	
+
+
+
 public void printVehicles() {
 	for (int i = 0; i < vehicleList.size(); i++) {
 		

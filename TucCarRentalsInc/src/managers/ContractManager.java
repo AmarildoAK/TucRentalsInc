@@ -86,9 +86,9 @@ public Contract<?,?> findContract(String contractId) {
 }
 
 
-public Contract<?,?> findContractViolation(String licenseplate,LocalDate violationDate) {
+public Contract<?,?> findFineViolation(String licenseplate,LocalDate violationDate) {
 	for(int i=0;i<contractList.size();i++) {
-		if(contractList.get(i).getcar.getLicenseplate().equals(licenseplate) && contractList.get(i).getStartDate().isBefore(violationDate)&& contractList.get(i).getEndDate().isAfter(violationDate)) {
+		if(contractList.get(i).getCar().getLicenseplate().equals(licenseplate) && contractList.get(i).getStartDate().isBefore(violationDate)&& contractList.get(i).getEndDate().isAfter(violationDate)) {
 			return contractList.get(i);
 		}
 	}
@@ -119,7 +119,7 @@ public void CancelContract(String contractID) {
 	if(c!= null && c.getStatus().equals("ACTIVE")) {
 		c.setStatus("Cancelled");
 		
-		Vehicles rentedCar = c.getRentedCar();
+		Vehicles rentedCar = c.getCar();
 		rentedCar.setAvailable(true);
 	}
 		System.out.println("Contract cancelled succesfully");
@@ -143,7 +143,7 @@ public void CompletedContract(String contractID) {
 	if(c!=null && c.getStatus().equalsIgnoreCase("ACTIVE")) {
 		c.setStatus("Completed");
 		
-		Vehicles rentedCar = c.getRentedCar();
+		Vehicles rentedCar = c.getCar();
 		
 		
 		rentedCar.setAvailable(true);
