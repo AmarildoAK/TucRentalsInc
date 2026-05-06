@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import storage.Storable;
 import storage.UnMarshalingException;
 
-public class RentalBookingRequest extends Request implements Storable{ // local date den tha eprepe na eixe ????
+public class RentalBookingRequest extends Request { // local date den tha eprepe na eixe ????
 
 	private  String name;
 	private String surname;
