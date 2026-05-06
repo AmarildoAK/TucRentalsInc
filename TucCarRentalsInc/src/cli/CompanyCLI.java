@@ -1,5 +1,6 @@
 package cli;
 
+import managers.ContractManager;
 import managers.TransactionManager;
 import managers.UserManager;
 import users.Company;
@@ -17,9 +18,11 @@ public static  void companyMenu(Company login) {// mhpws aytes tis methodoys na 
 	case 1: {
 		System.out.println("Showing the balance overview of the user .......");
 		// kai pairno to wallet toy user
-		System.out.println("Balance: ");//ayto mhpws na ginei methodos?
+		System.out.println("Balance:"+login.getWallet().getAmount());
 		System.out.println("Active contracts:...");
-		System.out.println("Other contarcts: "+"Status: ");
+		System.out.println(ContractManager.getInstance().getInMotionContracts(login));
+		System.out.println("Future contracts");
+		System.out.println(ContractManager.getInstance().getFutureContracts(login));
 		break;
 	}
 	case 2:{
@@ -41,13 +44,15 @@ public static  void companyMenu(Company login) {// mhpws aytes tis methodoys na 
 	}
 	case 3:{
 		System.out.println("Here are your active contracts:");// na fvnajo ton contract manager na checkaro an einai active to symbolaio kai na ftiajo mia print gia ayto print	ContractDetails
+		System.out.println(ContractManager.getInstance().getActiveCompanyContracts(login));
 		break;
 	}
 	case 4:{
-		System.out.println("ΕΞΟΔΟΣ ΑΠΟ ΤΟ ΠΡΟΓΡΑΜΜΑ");
+		System.out.println("Exiting from the program");
 		System.exit(0);
 		break;
-	}}
+	}
+	}
 	
 	
 	

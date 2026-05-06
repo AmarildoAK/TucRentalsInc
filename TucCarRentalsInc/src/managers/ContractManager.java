@@ -183,12 +183,12 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
  
 
  }
- public String getInMotionContracts(Individual i) {
+ public String getInMotionContracts(Customer c) {
 	 
 	 for(Contract con : contractList) {
 		 if(con instanceof CarRentals) {
 			 CarRentals cr = (CarRentals) con;
-			 if (cr.getTempVAT().equals(i.getVAT())&& checkMotion(con, today)) {
+			 if (cr.getTempVAT().equals(c.getVAT())&& checkMotion(con, today)) {
 				 return cr.toString(); // ή την toString ή την marshal
 				
 			}
@@ -196,7 +196,7 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 		 }
 		 else if (con instanceof VanLeases) {
 			VanLeases vl =(VanLeases) con;
-			if (vl.getTempVAT().equals(i.getVAT())&& checkMotion(con, today)) {
+			if (vl.getTempVAT().equals(c.getVAT())&& checkMotion(con, today)) {
 				 return vl.toString(); // ή την toString ή την marshal
 		}
 	
@@ -209,12 +209,12 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
  
  
  
- public String getFutureContracts(Individual i) {
+ public String getFutureContracts(Customer c) {
 	 
 	 for(Contract<?,?> con : contractList) {
 		 if(con instanceof CarRentals) {
 			 CarRentals cr = (CarRentals) con;
-			 if (cr.getTempVAT().equals(i.getVAT())&& checkFuture(con, today)) {
+			 if (cr.getTempVAT().equals(c.getVAT())&& checkFuture(con, today)) {
 				 return cr.toString(); // ή την toString ή την marshal
 				
 			}
@@ -222,7 +222,7 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 		 }
 		 else if (con instanceof VanLeases) {
 			VanLeases vl =(VanLeases) con;
-			if (vl.getTempVAT().equals(i.getVAT())&& checkFuture(con, today)) {
+			if (vl.getTempVAT().equals(c.getVAT())&& checkFuture(con, today)) {
 				 return vl.toString(); // ή την toString ή την marshal
 		}
 	

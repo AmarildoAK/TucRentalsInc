@@ -3,80 +3,44 @@ package contracts;
 import java.time.LocalDate;
 
 import Vehicles.Vehicles;
+import managers.UserManager;
+import managers.VehicleManager;
 import storage.Storable;
 import storage.UnMarshalingException;
 import users.Customer;
 
-
-public abstract class Contract<V extends Vehicles,C extends Customer> implements Storable,Comparable<Contract<V,C>> {
+public abstract class Contract<V extends Vehicles, C extends Customer> implements Storable, Comparable<Contract<V, C>> {
 
 	private String status;
 	private String contractID;// mas eipame na to kanoyme string alla an to kanoume String πως θα το αυξάνουμε
-	
+
 	private V car;
 	private C customer;
-	
+
 	private LocalDate startDate;
 	private LocalDate endDate;
-	private String tempPlate;
-	
-	public Contract(String status,int contractID,Vehicles rentedCar) {
+
+	public Contract(String status, int contractID, Vehicles rentedCar) {
 		this.status = "ACTIVE";
 
-//	this.rentedCar = rentedCar;
-	
 	}
-
-	
-	
-	private String getTempPlate() {
-		return tempPlate;
-	}
-
-
-
-	private void setTempPlate(String tempPlate) {
-		this.tempPlate = tempPlate;
-	}
-
-
 
 	public String getStatus() {
 		return status;
 	}
 
-
 	public String setStatus(String status) {
 		return this.status = status;
 	}
-	
-	
-	
-	
+
 	public String getContractID() {
 		return contractID;
 	}
-
-
-
 
 	private void setContractID(String contractID) {
 		this.contractID = contractID;
 	}
 
-
-
-
-//	public Vehicles getRentedCar() {
-//		return rentedCar;
-//	}
-//
-//
-//
-//
-//	private void setRentedCar(Vehicles rentedCar) {
-//		this.rentedCar = rentedCar;
-//	}
 
 
 	public LocalDate getStartDate() {
@@ -87,7 +51,7 @@ public abstract class Contract<V extends Vehicles,C extends Customer> implements
 		this.startDate = startDate;
 	}
 
-	public  LocalDate getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
@@ -95,14 +59,10 @@ public abstract class Contract<V extends Vehicles,C extends Customer> implements
 		this.endDate = endDate;
 	}
 
-	
 //	@Override
 //	public int compareTo(Contract other) {
 //		return this.getContractID() - other.contractID;
 //	} NA ALAJOYME TO OVERRRIDE 
-
-
-
 
 	@Override
 	public String marshal() {
@@ -112,53 +72,55 @@ public abstract class Contract<V extends Vehicles,C extends Customer> implements
 		sb.append("ContractID:").append(this.contractID).append(",");
 		sb.append("endDate:").append(this.endDate).append(",");
 		sb.append("startDate:").append(this.startDate).append(",");
-//		sb.append("rentedCar:").append(this.rentedCar.getLicenseplate()).append(",");
-
+		sb.append("licenseplate:").append(this.car.getLicenseplate()).append(",");
+        sb.append("VAT:").append(this.customer.getVAT()).append(",");
 		return sb.toString();
 
 	}
 
-
-
 	@Override
 	public void unmarshal(String data) throws UnMarshalingException {
-		
-		if(data == null) {
+
+		if (data == null) {
 			throw new UnMarshalingException("Empty Data");
-			}
-		
+		}
+
 		String[] parts = data.split(",");
-		for(String part: parts) {
+		for (String part : parts) {
 			String[] keyValue = part.split(":");
-			
-			if(keyValue[0].trim().equals("Status")) {
+
+			if (keyValue[0].trim().equals("Status")) {
 				this.status = keyValue[1];
-			}else if(keyValue[0].trim().equals("ContractID")) {
+			} else if (keyValue[0].trim().equals("ContractID")) {
 				this.contractID = keyValue[1];
-			
+
 //			if(contractID >= contractIDcounter) {
 //				contractIDcounter = contractID + 1 ;
 //			}
 //			WTF IS THAT TI ΕΛΕΓΧΕΙ ΑΥΤΟ?
 			}
-			else if(keyValue[0].trim().equals("rentedCar")) {
-				this.tempPlate = keyValue[1];
-			}
-			else if(keyValue[0].trim().equals("startDate")) {
+
+			else if (keyValue[0].trim().equals("licenseplate")) {
+				try {
+
+					this.car = (V) VehicleManager.getInstance().findVehicle(keyValue[1]);
+				} catch (Exception e) {
+					System.out.println("The vehicle has not been found");
+				}
+			} else if (keyValue[0].trim().equals("startDate")) {
 				this.startDate = LocalDate.parse(keyValue[1]);
-			}
-			else if(keyValue[0].trim().equals("endDate")) {
+			} else if (keyValue[0].trim().equals("endDate")) {
 				this.endDate = LocalDate.parse(keyValue[1]);
 			}
-		
-		
+			else if (keyValue[0].trim().equals("VAT")) {
+				try {
+				this.customer = (C) UserManager.getInstance().findCustomer(keyValue[1]);
+				}catch(Exception e) {
+					System.out.println("User vat has not been allocated");
+				}
+			}
+
 		}
-}
-
-
-
-
-
-
+	}
 
 }

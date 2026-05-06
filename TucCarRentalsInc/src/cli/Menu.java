@@ -34,26 +34,26 @@ public static void main(String[] args) {
 
 		 switch(choice) {
 		 
-		 case 1:
+		 case 1:{
 			 if(login instanceof Individual) {
 				 
 				 IndividualCLI.IndividualMenu((Individual)login);
 				 
 			 }
-		 break;
+		 break;}
 		 
-		 case 2:
+		 case 2:{
 			 if(login instanceof Company) {
 				 CompanyCLI.companyMenu((Company) login);
-			 }
+			 }}
 		 break;
 		 
-		 case 3:
+		 case 3:{
 			 if(login instanceof Admin) {
 				 AdminCLI.adminMenu((Admin) login);
 			 }
 		 break;
-		 
+		 }
 		 
 
 	}
