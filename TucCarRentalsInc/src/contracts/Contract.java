@@ -5,22 +5,25 @@ import java.time.LocalDate;
 import Vehicles.Vehicles;
 import storage.Storable;
 import storage.UnMarshalingException;
+import users.Customer;
 
 
-public abstract class Contract implements Storable,Comparable<Contract> {
+public abstract class Contract<V extends Vehicles,C extends Customer> implements Storable,Comparable<Contract<V,C>> {
 
 	private String status;
 	private String contractID;// mas eipame na to kanoyme string alla an to kanoume String πως θα το αυξάνουμε
-	private static int contractIDcounter=1;
-	private Vehicles rentedCar;
+	
+	private V car;
+	private C customer;
+	
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private String tempPlate;
 	
 	public Contract(String status,int contractID,Vehicles rentedCar) {
 		this.status = "ACTIVE";
-	this.contractID = "CID"+contractIDcounter++;
-	this.rentedCar = rentedCar;
+
+//	this.rentedCar = rentedCar;
 	
 	}
 
@@ -64,16 +67,16 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 
 
 
-	public Vehicles getRentedCar() {
-		return rentedCar;
-	}
-
-
-
-
-	private void setRentedCar(Vehicles rentedCar) {
-		this.rentedCar = rentedCar;
-	}
+//	public Vehicles getRentedCar() {
+//		return rentedCar;
+//	}
+//
+//
+//
+//
+//	private void setRentedCar(Vehicles rentedCar) {
+//		this.rentedCar = rentedCar;
+//	}
 
 
 	public LocalDate getStartDate() {
@@ -109,7 +112,7 @@ public abstract class Contract implements Storable,Comparable<Contract> {
 		sb.append("ContractID:").append(this.contractID).append(",");
 		sb.append("endDate:").append(this.endDate).append(",");
 		sb.append("startDate:").append(this.startDate).append(",");
-		sb.append("rentedCar:").append(this.rentedCar.getLicenseplate()).append(",");
+//		sb.append("rentedCar:").append(this.rentedCar.getLicenseplate()).append(",");
 
 		return sb.toString();
 

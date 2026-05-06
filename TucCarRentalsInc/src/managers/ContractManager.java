@@ -9,13 +9,14 @@ import contracts.VanLeases;
 import storage.StorableList;
 import storage.StorageManager;
 import transaction.Wallet;
+import users.Company;
 import users.Customer;
 import users.Individual;
 
 public class ContractManager {
 
-	public StorableList<Contract> contractList;
-	private Contract c;
+	public StorableList<Contract<?,?>> contractList;
+	private Contract<?,?> c;
 	private Wallet wallet;
 	private LocalDate today;
 	
@@ -33,7 +34,7 @@ public class ContractManager {
 	
 	
 	public ContractManager() {
-		this.contractList = new StorableList<>();
+		this.contractList = new StorableList<Contract<?, ?>>();
 		
 		try {
 			StorageManager.getInstance().loadObject(this.contractList,"Data/contracts/contracts.csv");
@@ -49,11 +50,11 @@ public class ContractManager {
 	
 	
 	
-private StorableList<Contract> getContractList() {
+private StorableList<Contract<?,?>> getContractList() {
 		return contractList;
 	}
 
-	private void setContractList(StorableList<Contract> contractList) {
+	private void setContractList(StorableList<Contract<?,?>> contractList) {
 		this.contractList = contractList;
 	}
 
@@ -75,7 +76,7 @@ private StorableList<Contract> getContractList() {
 	}
 
 
-public Contract findContract(String contractId) {
+public Contract<?,?> findContract(String contractId) {
 	for(int i=0;i<contractList.size();i++) {
 		if(contractList.get(i).getContractID().equals(contractId)) {
 			return contractList.get(i);
@@ -85,7 +86,7 @@ public Contract findContract(String contractId) {
 }
 
 
-public Contract findContractViolation(String licenseplate,LocalDate violationDate) {
+public Contract<?,?> findContractViolation(String licenseplate,LocalDate violationDate) {
 	for(int i=0;i<contractList.size();i++) {
 		if(contractList.get(i).getRentedCar().getLicenseplate().equals(licenseplate) && contractList.get(i).getStartDate().isBefore(violationDate)&& contractList.get(i).getEndDate().isAfter(violationDate)) {
 			return contractList.get(i);
@@ -96,7 +97,7 @@ public Contract findContractViolation(String licenseplate,LocalDate violationDat
 
 
 
-public boolean CreateContract(Contract newContract) {
+public boolean CreateContract(Contract<?,?> newContract) {
 	if(findContract(newContract.getContractID())!=null) {
 		return false;
 	}
@@ -162,7 +163,7 @@ public void CompletedContract(String contractID) {
 
 
 
- public boolean checkMotion(Contract c, LocalDate today) {
+ public boolean checkMotion(Contract<?,?> c, LocalDate today) {
 	 
 	 if (c.getStartDate().isBefore(today)&&c.getEndDate().isAfter(today)&&c.getStatus().equals("ACTIVE")) {
 		return true;
@@ -172,7 +173,7 @@ public void CompletedContract(String contractID) {
  
 
  }
-public boolean checkFuture(Contract c, LocalDate today) {
+public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 	 
 	 if (c.getStartDate().isAfter(today)&&c.getStatus().equals("ACTIVE")) {
 		return true;
@@ -210,7 +211,7 @@ public boolean checkFuture(Contract c, LocalDate today) {
  
  public String getFutureContracts(Individual i) {
 	 
-	 for(Contract con : contractList) {
+	 for(Contract<?,?> con : contractList) {
 		 if(con instanceof CarRentals) {
 			 CarRentals cr = (CarRentals) con;
 			 if (cr.getTempVAT().equals(i.getVAT())&& checkFuture(con, today)) {
@@ -232,25 +233,24 @@ public boolean checkFuture(Contract c, LocalDate today) {
 	 return null;
  }
  
+ 
+ public String getActiveCompanyContracts(Company comp) {
+	 String printable ="";
+	 for(Contract c : contractList) {
+		 if (c instanceof VanLeases && c.getStatus().equals("ACTIVE")) {
+			printable+=c.toString();
+		}
+	 }
+	 return printable;
+ }
+ 
 
 
 
 }
  
 
-//public void Overview(Customer customer) {
-//	int activeContracts = 0;
-//	int pendingcontracts = 0;
-//	
-//	
-//	System.out.println("Your current balance is:"+customer.getWallet().getAmount());
-//	
-//	
-//	
-//	
-//	
-//	
-//}
+
 
 
  

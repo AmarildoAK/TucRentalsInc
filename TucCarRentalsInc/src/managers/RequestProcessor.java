@@ -23,13 +23,7 @@ private StorableList dailyRequestList;
 
 private Queue<Request> requestQueue = new PriorityQueue<>();
 
-public static RequestProcessor instance;
 
-//public RequestProcessor getInstance() {
-//	if(instance == null) {
-//		instance = new RequestProcessor();
-//	}
-//}
 
 
 
@@ -82,17 +76,17 @@ while(currentDate.isBefore(targetDate)) {
 	
 	
 	
-	//	contractManager;
+//	contractManager;
 //	statementManager;
 //	transactionManager;
 //	userManager;
 //	vehicleManager;
-
+//
 	
 	
 	
 	
-	currentDate=currentDate.plusDays(1);
+	
 }	
 }
 

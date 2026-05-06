@@ -1,12 +1,16 @@
 package contracts;
 
+import Vehicles.CarPassanger;
+import Vehicles.CompanyVan;
 import Vehicles.Vehicles;
 import storage.UnMarshalingException;
+import users.Company;
 import users.Customer;
+import users.Individual;
 import utils.CompanyVanCategory;
 import utils.LeaseDuration;
 
-public class VanLeases extends Contract {
+public class VanLeases extends Contract<CompanyVan,Company> {
 
 	private CompanyVanCategory categoryVanCost;
 	private LeaseDuration months;
