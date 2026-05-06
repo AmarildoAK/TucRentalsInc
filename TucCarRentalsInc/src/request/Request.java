@@ -2,7 +2,9 @@ package request;
 
 import java.time.LocalDate;
 
-public abstract class Request implements Comparable<Request>{
+import storage.Storable;
+
+public abstract class Request implements Storable,Comparable<Request>{
 
 	private static int referenceIDcounter =1;
 	private int referenceId;
