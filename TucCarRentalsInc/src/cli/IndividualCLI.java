@@ -1,5 +1,7 @@
 package cli;
 
+import managers.ContractManager;
+import managers.StatementManager;
 import managers.TransactionManager;
 import managers.UserManager;
 import users.Customer;
@@ -16,10 +18,13 @@ public class IndividualCLI {
 		switch (choice) {
 		case 1: {
 			System.out.println("Showing the balance overview of the user .......");
-			// kai pairno to wallet toy user
-			System.out.println("Balance: ");//ayto mhpws na ginei methodos?
+	
+			System.out.println("Balance: "+login.getWallet().getAmount());//ayto mhpws na ginei methodos?
 			System.out.println("Active contracts:...");
-			System.out.println("Other contarcts: "+"Status: ");
+			System.out.println(ContractManager.getInstance().getInMotionContracts(login));
+			
+			System.out.println("Future contracts:");
+			System.out.println(ContractManager.getInstance().getFutureContracts(login));
 			break;
 		}
 		case 2:{
@@ -38,6 +43,10 @@ public class IndividualCLI {
 		}
 		case 3:{
 			System.out.println("Here is your transaction history:");// na fvnajo ton contract manager na checkaro an einai active to symbolaio kai na ftiajo mia print gia ayto print	ContractDetails
+			
+			String transactionHistory = StatementManager.getInstance().getAllUserStatements(login.getVAT());
+			System.out.println(transactionHistory);
+			
 			break;// να φορτώσω τον statement manager και να τυπώσω όλες τις κινήσεις του χρήστη που έχουν καταγραφεί 
 		}
 		case 4:{

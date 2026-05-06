@@ -21,7 +21,7 @@ public class ContractManager {
 	
 	public static ContractManager instance;
 	
-	public ContractManager getInstance() {
+	public static ContractManager getInstance() {
 		if(instance == null) {
 			instance = new ContractManager();
 		}

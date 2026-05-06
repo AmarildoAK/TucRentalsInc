@@ -17,7 +17,7 @@ public class StatementManager {
 	
 	public static StatementManager instance;
 	
-	public StatementManager getInstance() {
+	public static StatementManager getInstance() {
 		if(instance == null) {
 			instance = new StatementManager();
 		}
