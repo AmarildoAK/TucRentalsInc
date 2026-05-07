@@ -142,14 +142,11 @@ for(Vehicles v : vehicleList) {
 	
 		
 	}
-
 	}
 return null;
 
 }
 	
-
-
 
 public void printVehicles() {
 	for (int i = 0; i < vehicleList.size(); i++) {
