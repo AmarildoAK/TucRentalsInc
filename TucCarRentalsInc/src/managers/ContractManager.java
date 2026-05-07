@@ -244,8 +244,8 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 	 return printable;
  }
  
-
-
+khikn
+    
 
 }
  
