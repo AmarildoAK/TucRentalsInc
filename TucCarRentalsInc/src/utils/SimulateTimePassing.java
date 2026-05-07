@@ -4,21 +4,29 @@ import java.time.LocalDate;
 
 public class SimulateTimePassing {
 
-	LocalDate startDate;
-	LocalDate targetDate;
-	LocalDate currentDate;
+	private LocalDate startDate;
+	
+	private static LocalDate currentDate;
 	public SimulateTimePassing(LocalDate startDate, LocalDate targetDate, LocalDate currentDate) {
 		super();
 		this.startDate = startDate;
-		this.targetDate = targetDate;
-		this.currentDate = currentDate;
+		
+		SimulateTimePassing.currentDate = currentDate;//why this fixes it?  because its static?
 	}
 		
-	public LocalDate getCurrentDate() {
+	public static LocalDate getCurrentDate() {
 		return currentDate;
 	}
-	public LocalDate setStartDate(LocalDate sDate) {
-		return sDate;
+	private LocalDate getStartDate() {
+		return startDate;
+	}
+
+	private static void setCurrentDate(LocalDate currentDate) {
+		SimulateTimePassing.currentDate = currentDate;
+	}
+
+	public void setStartDate(LocalDate sDate) {
+		this.startDate=sDate;
 	}
 	public void addOneDay() {
 		currentDate=currentDate.plusDays(1);

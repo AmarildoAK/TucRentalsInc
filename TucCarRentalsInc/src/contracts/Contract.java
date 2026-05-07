@@ -58,6 +58,10 @@ public abstract class Contract<V extends Vehicles, C extends Customer> implement
 	private void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
+	public V getCar() {
+	    return car;
+	}
+
 
 //	@Override
 //	public int compareTo(Contract other) {
