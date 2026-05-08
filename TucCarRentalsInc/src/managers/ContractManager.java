@@ -12,6 +12,7 @@ import transaction.Wallet;
 import users.Company;
 import users.Customer;
 import users.Individual;
+import request.RentalBookingRequest;
 import request.Request;
 public class ContractManager {
 

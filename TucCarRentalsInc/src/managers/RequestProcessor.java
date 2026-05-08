@@ -25,7 +25,7 @@ LocalDate targetDate;
 LocalDate currentDate;
 private StorableList<Request> dailyRequestList;
 
-
+private StorableList<RentalBookingRequest> dailyRentalRequestList;
 private Queue<Request> requestQueue = new PriorityQueue<>();
 
 
@@ -46,6 +46,7 @@ public RequestProcessor(ContractManager contractManager, StatementManager statem
 	this.currentDate = currentDate;
 
 	this.dailyRequestList = new StorableList<>();
+	this.dailyRequestList = new StorableList<>();
 	
 	try {
 		
@@ -63,6 +64,9 @@ public void processrequestloader() {
 	for(Request requests:this.dailyRequestList) {
 		requestQueue.add(requests);
 	}
+	
+	
+
 
 
 while(!requestQueue.isEmpty()) {
