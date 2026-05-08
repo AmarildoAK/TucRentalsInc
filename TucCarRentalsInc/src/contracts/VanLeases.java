@@ -19,8 +19,8 @@ public class VanLeases extends Contract<CompanyVan,Company> {
 
 
 	
-	public VanLeases(String status,Company company,CompanyVan van,CompanyVanCategory cost,LeaseDuration months,Vehicles rentedCar,String referenceId,LocalDate startDate,LocalDate endDate) {
-		super(status,company,van,referenceId,startDate,endDate);
+	public VanLeases(Company company,CompanyVan van,CompanyVanCategory cost,LeaseDuration months,Vehicles rentedCar,String referenceId,LocalDate startDate,LocalDate endDate) {
+		super(company,van,referenceId,startDate,endDate);
 		this.categoryVanCost = cost;
 		this.months = months;
 	}

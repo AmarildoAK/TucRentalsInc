@@ -2,6 +2,7 @@ package managers;
 
 import java.time.LocalDate;
 
+import Vehicles.CarPassanger;
 import Vehicles.Vehicles;
 import contracts.CarRentals;
 import contracts.Contract;
@@ -102,7 +103,22 @@ public Contract<?,?> findFineViolation(String licenseplate,LocalDate violationDa
 	return null;
 }
 
-public void CreateContract(RentalBookingRequest request) {
+public Contract<?,?> CreateContract(RentalBookingRequest request) {
+	
+	Customer customer = UserManager.getInstance().findCustomer(request.getCustomer().getVAT());
+	
+	if(customer == null) {
+		throw new IllegalArgumentException("ERROR");
+	}
+	
+	if(customer instanceof Individual) {
+		Vehicles vehicle = VehicleManager.getInstance().findVehicleByCategory(request.getVehicle().getCategory());
+	if(vehicle!=null) {
+		CarRentals carRental = new CarRentals(request.getStartDate(),request.getEndDate(),request.getReferenceId(),(Individual)customer, , , );
+	}
+	
+	}
+	
 	
 }
 
