@@ -71,9 +71,9 @@ public Vehicles findVehicle(String licensePlate) {
 	}
 	
 	
-	for(int i=0; i<vehicleList.size();i++) {
-		if(vehicleList.get(i).getLicenseplate().equals(licensePlate)) {
-			return vehicleList.get(i);
+	for(Vehicles v:vehicleList) {
+		if(v.getLicenseplate().equals(licensePlate)) {
+			return v;
 		}
 	}
 	
@@ -81,6 +81,20 @@ public Vehicles findVehicle(String licensePlate) {
 	
 }
 
+public Vehicles findVehicleByCategory(String category) {
+	if(vehicle.getCategory() == null) {
+		return null;
+	}
+
+	
+for(Vehicles v:vehicleList) {
+	if(v.getCategory().toString().equals(category)) {
+		return v;
+	}
+
+}
+return null;
+}
 
 public boolean addVehicle(Vehicles v) {
 

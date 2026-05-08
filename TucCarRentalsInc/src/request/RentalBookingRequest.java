@@ -10,14 +10,13 @@ public class RentalBookingRequest extends Request { // local date den tha eprepe
 	private  String name;
 	private String surname;
 	private String licenseplate; // mhpws na exei typo Vehicles???
-	private char category;
 	private static final int counter = 000;
 	private String id;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	
 	
-	public RentalBookingRequest(int referenceId,LocalDate timestamp,String status,String name,String surname,String licenseplate,char category) {
+	public RentalBookingRequest(String referenceId,LocalDate timestamp,String status,String name,String surname,String licenseplate,char category) {
 		super(referenceId,timestamp, status);
 		this.name = name;
 		this.surname = surname;
@@ -35,7 +34,7 @@ public class RentalBookingRequest extends Request { // local date den tha eprepe
 
 	@Override
 	public String marshal() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

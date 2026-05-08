@@ -13,17 +13,40 @@ public abstract class Contract<V extends Vehicles, C extends Customer> implement
 
 	private String status;
 	private String contractID;// mas eipame na to kanoyme string alla an to kanoume String πως θα το αυξάνουμε
-
-	private V car;
+    private String refernceId;
+	
+    private V car;
 	private C customer;
 
 	private LocalDate startDate;
 	private LocalDate endDate;
 
-	public Contract(String status, int contractID, Vehicles rentedCar) {
+	public Contract(String status,C customer,V vehicle,String referenceId,LocalDate startDate,LocalDate endDate) {
 		this.status = "ACTIVE";
-
+this.refernceId = referenceId;
 	}
+
+	
+	
+	
+	
+
+
+
+
+	public String getReferenceId() {
+		return refernceId;
+	}
+
+
+
+
+	private void setReferenceId(String refernceId) {
+		this.refernceId = refernceId;
+	}
+
+
+
 
 	public String getStatus() {
 		return status;
@@ -73,7 +96,7 @@ public abstract class Contract<V extends Vehicles, C extends Customer> implement
 		StringBuffer sb = new StringBuffer("type:").append(this.getClass().getName()).append(",");
 
 		sb.append("Status:").append(this.status).append(",");
-		sb.append("ContractID:").append(this.contractID).append(",");
+		sb.append("referenceId:").append(this.refernceId).append(",");
 		sb.append("endDate:").append(this.endDate).append(",");
 		sb.append("startDate:").append(this.startDate).append(",");
 		sb.append("licenseplate:").append(this.car.getLicenseplate()).append(",");
@@ -95,15 +118,10 @@ public abstract class Contract<V extends Vehicles, C extends Customer> implement
 
 			if (keyValue[0].trim().equals("Status")) {
 				this.status = keyValue[1];
-			} else if (keyValue[0].trim().equals("ContractID")) {
-				this.contractID = keyValue[1];
+			} else if (keyValue[0].trim().equals("referenceId")) {
+				this.refernceId = keyValue[1];
 
-//			if(contractID >= contractIDcounter) {
-//				contractIDcounter = contractID + 1 ;
-//			}
-//			WTF IS THAT TI ΕΛΕΓΧΕΙ ΑΥΤΟ?
 			}
-
 			else if (keyValue[0].trim().equals("licenseplate")) {
 				try {
 

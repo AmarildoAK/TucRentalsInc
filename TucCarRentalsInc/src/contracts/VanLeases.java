@@ -1,5 +1,7 @@
 package contracts;
 
+import java.time.LocalDate;
+
 import Vehicles.CarPassanger;
 import Vehicles.CompanyVan;
 import Vehicles.Vehicles;
@@ -14,11 +16,11 @@ public class VanLeases extends Contract<CompanyVan,Company> {
 
 	private CompanyVanCategory categoryVanCost;
 	private LeaseDuration months;
-	private Customer customer ;
-	private String tempVAT;
+
+
 	
-	public VanLeases(String status,int contractID,CompanyVanCategory cost,LeaseDuration months,Vehicles rentedCar) {
-		super(status,contractID,rentedCar);
+	public VanLeases(String status,Company company,CompanyVan van,CompanyVanCategory cost,LeaseDuration months,Vehicles rentedCar,String referenceId,LocalDate startDate,LocalDate endDate) {
+		super(status,company,van,referenceId,startDate,endDate);
 		this.categoryVanCost = cost;
 		this.months = months;
 	}
@@ -45,7 +47,7 @@ public String marshal() {
 		
 		sb.append("CategoryVanCost").append(this.categoryVanCost).append(",");
 		sb.append("Months").append(this.months).append(",");
-		sb.append("customerVAT").append(this.customer.getVAT()).append(",");
+		
 
 		
 		
@@ -66,9 +68,7 @@ public String marshal() {
 			}else if(keyValue[0].trim().equals("CategoryCost")) {
 				this.months = LeaseDuration.valueOf(keyValue[1]); 
 				}
-			else if(keyValue[0].trim().equals("customerVAT")) {
-				this.setTempVAT(keyValue[1]);
-			}
+			
 	
 	
 	
@@ -81,14 +81,7 @@ public String marshal() {
 	}
 
 
-	public String getTempVAT() {
-		return tempVAT;
-	}
-
-
-	public void setTempVAT(String tempVAT) {
-		this.tempVAT = tempVAT;
-	}
+	
 
 
 	@Override

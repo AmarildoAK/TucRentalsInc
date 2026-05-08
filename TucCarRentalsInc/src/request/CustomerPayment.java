@@ -16,7 +16,7 @@ double amount;
 private static final int counter = 000;
 private String paymentId;
 
-public CustomerPayment(int referenceId, LocalDate timestamp, String status,Customer c,double amount) {
+public CustomerPayment(String referenceId, LocalDate timestamp, String status,Customer c,double amount) {
 	super(referenceId, timestamp, status);
 	this.c = c;
 	this.amount = amount;

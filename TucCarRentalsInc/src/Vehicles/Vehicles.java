@@ -65,7 +65,7 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 
 
 
-	private String getCategory() {
+	public String getCategory() {
 		return category;
 	}
 

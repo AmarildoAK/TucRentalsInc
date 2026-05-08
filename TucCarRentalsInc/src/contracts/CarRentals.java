@@ -17,44 +17,22 @@ public class CarRentals extends Contract<CarPassanger,Individual> {
 	private LocalDate currentDay;
 	private int days;
 	private Customer customer;
-	private String licenseplate;
-	private String tempVAT;
+	// licenseplate , estimatedcost 
+	private double estimatedCarRentalCost;
 	
 	
-	public CarRentals(String status,int contractID,CarPassengerVehicleType categoryCost,int days,LocalDate startDate,LocalDate endDate,String licenseplate,Customer customer,Vehicles rentedCar) {
-		super(status,contractID,rentedCar);
+	public CarRentals(String status,Individual individual,CarPassanger carpass,CarPassengerVehicleType categoryCost,double estimatedCarRentalCost,LocalDate startDate,LocalDate endDate,String referenceId) {
+		super(status,individual,carpass,referenceId,startDate,endDate);
 this.categoryCost = categoryCost;
 this.startDate = startDate;
 this.endDate = endDate;
 	this.days = days;
-	this.licenseplate = licenseplate;
+	
 	this.customer = customer;
 	this.currentDay = LocalDate.now();
 	}
 	
 	
-	
-	
-	
-	
-	private String getLicenseplate() {
-		return licenseplate;
-	}
-
-
-
-
-
-
-	private void setLicenseplate(String licenseplate) {
-		this.licenseplate = licenseplate;
-	}
-
-
-
-
-
-
 	private CarPassengerVehicleType getCost() {
 		return categoryCost;
 	}
@@ -176,7 +154,11 @@ this.endDate = endDate;
 
 
 	public double CalculateCost() {
-		return this.findDays(days) * this.categoryCost.getPrice();
+		int Days = this.findDays(days); 
+		
+		estimatedCarRentalCost = Days * this.categoryCost.getPrice();
+	
+	return estimatedCarRentalCost;
 	}
 	
 
@@ -205,7 +187,7 @@ public String marshal() {
 		sb.append("startDate").append(this.startDate).append(",");
 		sb.append("endDate").append(this.endDate).append(",");
 		sb.append("customer").append(this.customer.getVAT()).append(",");
-		sb.append("licenseplate").append(this.licenseplate).append(",");
+	
 
 		
 		return sb.toString();
@@ -230,10 +212,7 @@ public String marshal() {
 			this.endDate = LocalDate.parse(keyValue[1].trim());
 			}
 	
-			else if(keyValue[0].trim().equals("customer")) {
-				this.setTempVAT(keyValue[1]);
-	}
-	
+		
 	
 	
 }
@@ -244,18 +223,6 @@ public String marshal() {
 
 
 
-	public String getTempVAT() {
-		return tempVAT;
-	}
-
-
-
-
-
-
-	public void setTempVAT(String tempVAT) {
-		this.tempVAT = tempVAT;
-	}
 
 
 

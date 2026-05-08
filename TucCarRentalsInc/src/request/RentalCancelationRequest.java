@@ -12,7 +12,7 @@ public class RentalCancelationRequest extends Request {
 	private static final int counter = 000;
 	private String Id;
 
-	public RentalCancelationRequest(int referenceId,LocalDate timestamp,String status,int rentalbookingreferencetID) {
+	public RentalCancelationRequest(String referenceId,LocalDate timestamp,String status,int rentalbookingreferencetID) {
 		super(referenceId,timestamp, status);
 		this.RentalbookingreferencetID = rentalbookingreferencetID;
 		this.Id="RCRQ"+counter;

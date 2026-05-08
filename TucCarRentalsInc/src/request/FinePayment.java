@@ -12,7 +12,7 @@ public class FinePayment extends Request{
 	private LocalDate violationDay;
 
 	
-	public FinePayment(int referenceId, LocalDate timestamp,String status,String licenseplate,LocalDate violationDay) {
+	public FinePayment(String referenceId, LocalDate timestamp,String status,String licenseplate,LocalDate violationDay) {
 		super(referenceId, timestamp, status);
 		this.id="FRQ"+id;
 	this.licenseplate = licenseplate;

@@ -12,14 +12,14 @@ import transaction.Wallet;
 import users.Company;
 import users.Customer;
 import users.Individual;
-
+import request.Request;
 public class ContractManager {
 
 	public StorableList<Contract<?,?>> contractList;
 	private Contract<?,?> c;
 	private Wallet wallet;
 	private LocalDate today;
-	
+	private Request request;
 	public static ContractManager instance;
 	
 	public static ContractManager getInstance(){
@@ -76,14 +76,20 @@ private StorableList<Contract<?,?>> getContractList() {
 	}
 
 
-public Contract<?,?> findContract(String contractId) {
-	for(int i=0;i<contractList.size();i++) {
-		if(contractList.get(i).getContractID().equals(contractId)) {
-			return contractList.get(i);
+public Contract<?,?> findContract(String referenceId) {
+
+	for(Contract c:contractList) {
+		if(c.getReferenceId().equals(referenceId)) {
+			return c;
 		}
 	}
+	
+	
 	return null;
 }
+	
+	
+
 
 
 public Contract<?,?> findFineViolation(String licenseplate,LocalDate violationDate) {
@@ -95,22 +101,11 @@ public Contract<?,?> findFineViolation(String licenseplate,LocalDate violationDa
 	return null;
 }
 
-
-
-public boolean CreateContract(Contract<?,?> newContract) {
-	if(findContract(newContract.getContractID())!=null) {
-		return false;
-	}
-	contractList.add(newContract);
-	try {
-		StorageManager.getInstance().storeObject(contractList,"Data/contracts/contracts.csv");
-		System.out.println("The new Contract has been added!!!");
-	}catch(Exception e){
-		System.out.println("The contract has met an Error"+e.getMessage());
-	}
-
-return true;
+public void CreateContract(RentalBookingRequest request) {
+	
 }
+
+
 
 public void CancelContract(String contractID) {
 	
@@ -244,7 +239,7 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 	 return printable;
  }
  
-khikn
+
     
 
 }

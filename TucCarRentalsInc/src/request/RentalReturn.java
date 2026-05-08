@@ -8,7 +8,7 @@ public class RentalReturn extends Request{
 	private int  RentalbookingreferencetID;
 	private static final int counter = 000;
 	private String id;
-	public RentalReturn(int referenceId, LocalDate timestamp,String status,int RentalbookingreferencetID) {
+	public RentalReturn(String referenceId, LocalDate timestamp,String status,int RentalbookingreferencetID) {
 		super(referenceId, timestamp, status);
 		this.RentalbookingreferencetID=RentalbookingreferencetID;
 		this.id="RRRQ"+counter;

@@ -11,7 +11,7 @@ public class CompanyVan extends Vehicles {
     public CompanyVan(String licensePlate,String transmission,String make,String model,int  year,String type,CompanyVanCategory category) {
         super(licensePlate,transmission, make, model, category.name(),year);
         this.setType(this.getClass().getName());
-
+this.category = category;
     }
 
 
