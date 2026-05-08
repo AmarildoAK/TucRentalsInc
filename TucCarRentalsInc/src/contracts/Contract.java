@@ -21,7 +21,7 @@ public abstract class Contract<V extends Vehicles, C extends Customer> implement
 	private LocalDate startDate;
 	private LocalDate endDate;
 
-	public Contract(String status,C customer,V vehicle,String referenceId,LocalDate startDate,LocalDate endDate) {
+	public Contract(C customer,V vehicle,String referenceId,LocalDate startDate,LocalDate endDate) {
 		this.status = "ACTIVE";
 this.refernceId = referenceId;
 	}

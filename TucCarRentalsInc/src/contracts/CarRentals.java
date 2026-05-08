@@ -21,8 +21,8 @@ public class CarRentals extends Contract<CarPassanger,Individual> {
 	private double estimatedCarRentalCost;
 	
 	
-	public CarRentals(String status,Individual individual,CarPassanger carpass,CarPassengerVehicleType categoryCost,double estimatedCarRentalCost,LocalDate startDate,LocalDate endDate,String referenceId) {
-		super(status,individual,carpass,referenceId,startDate,endDate);
+	public CarRentals(LocalDate startDate,LocalDate endDate,String referenceId,Individual individual,CarPassanger carpass,CarPassengerVehicleType categoryCost,double estimatedCarRentalCost) {
+		super(individual,carpass,referenceId,startDate,endDate);
 this.categoryCost = categoryCost;
 this.startDate = startDate;
 this.endDate = endDate;
@@ -183,7 +183,7 @@ public String marshal() {
 		StringBuffer sb = new StringBuffer(super.marshal());
 		
 		sb.append("days").append(this.days).append(",");
-		sb.append("categoryCost").append(this.categoryCost).append(",");
+		sb.append("categoryCost").append(this.categoryCost.name()).append(",");
 		sb.append("startDate").append(this.startDate).append(",");
 		sb.append("endDate").append(this.endDate).append(",");
 		sb.append("customer").append(this.customer.getVAT()).append(",");

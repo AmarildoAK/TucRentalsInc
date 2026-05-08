@@ -14,48 +14,41 @@ public abstract class Request<V extends Vehicles,C extends Customer> implements 
 
 	
 	private String referenceId;
-	protected String status;
+	
 	private LocalDate requestDay;
 	protected V vehicle;
 	protected C customer;
 private String type;
 private String requestId;
 private LocalDate timestamp;
-private LocalDate startDate;
-private LocalDate endDate;
-	
-// marshal kai unmarshal sto request !!!!!
 
 	
+	public Request(String referenceId,LocalDate timestamp,String type) {
+		this.referenceId = referenceId;
+		this.timestamp=timestamp;
+	
 
-
-	private String getStatus() {
-		return status;
+	}
+	
+	public V getVehicle() {
+		return vehicle;
 	}
 
-
-
-	private void setStatus(String status) {
-		this.status = status;
+	private void setVehicle(V vehicle) {
+		this.vehicle = vehicle;
 	}
 
+	public C getCustomer() {
+		return customer;
+	}
 
+	private void setCustomer(C customer) {
+		this.customer = customer;
+	}
 
 	public String getReferenceId() {
 		return referenceId;
 	}
-
-	
-	
-
-	public Request(String referenceId,LocalDate timestamp,String status) {
-		this.referenceId = referenceId;
-		this.timestamp=timestamp;
-		this.status=status;
-
-	}
-	
-
 
 	private void setReferenceId(String referenceId) {
 		this.referenceId = referenceId;
@@ -82,12 +75,11 @@ public String marshal() {
 	StringBuffer sb = new StringBuffer("type:").append(this.getClass().getName()).append(",");
 	sb.append("type").append(this.type).append(",");
 	sb.append("requestId").append(this.requestId).append(",");
-	sb.append("referenceId").append(this.referenceId).append(",");
+	//sb.append("referenceId").append(this.referenceId).append(",");
 	sb.append("timestamp").append(this.timestamp).append(",");
-	sb.append("vat").append(this.customer.getVAT()).append(",");
-	sb.append("startDate").append(this.startDate).append(",");
-	sb.append("endDate").append(this.endDate).append(",");
-	sb.append("category").append(this.vehicle.getCategory()).append(",");
+	//sb.append("vat").append(this.customer.getVAT()).append(",");
+	
+	
 	
 	return sb.toString();
 }
@@ -107,27 +99,29 @@ public void unmarshal(String data) throws UnMarshalingException {
 			this.type = keyValue[1];
 		}else if(keyValue[0].trim().equals("requestId")) {
 			this.requestId = keyValue[1];
-		}else if(keyValue[0].trim().equals("referenceId")) {
-			this.referenceId = keyValue[1];
-		}else if(keyValue[0].trim().equals("timestamp")) {
+		}//else if(keyValue[0].trim().equals("referenceId")) {
+//			this.referenceId = keyValue[1];}
+		else if(keyValue[0].trim().equals("timestamp")) {
 			this.timestamp = LocalDate.parse(keyValue[1]);
-		}else if(keyValue[0].trim().equals("vat")) {
-			try {
-				this.customer = (C)UserManager.getInstance().findCustomer(keyValue[1]);
-			}catch(Exception e) {
-				System.out.println(e.getMessage());
-			}
-		}else if(keyValue[0].trim().equals("startDate")) {
-			this.startDate = LocalDate.parse(keyValue[1]);
-		}else if(keyValue[0].trim().equals("endDate")) {
-			this.endDate = LocalDate.parse(keyValue[1]);
-		}else if(keyValue[0].trim().equals("category")) {
-			try {
-				this.vehicle = (V) VehicleManager.getInstance().findVehicleByCategory(keyValue[1]);
-			}catch(Exception e) {
-				System.out.println(e.getMessage());
-			}
 		}
+//		else if(keyValue[0].trim().equals("vat")) {
+//			try {
+//				this.customer = (C)UserManager.getInstance().findCustomer(keyValue[1]);
+//			}catch(Exception e) {
+//				System.out.println(e.getMessage());
+//			}
+//		}
+//		else if(keyValue[0].trim().equals("startDate")) {
+//			this.startDate = LocalDate.parse(keyValue[1]);
+//		}else if(keyValue[0].trim().equals("endDate")) {
+//			this.endDate = LocalDate.parse(keyValue[1]);
+//		}else if(keyValue[0].trim().equals("category")) {
+//			try {
+//				this.vehicle = (V) VehicleManager.getInstance().findVehicleByCategory(keyValue[1]);
+//			}catch(Exception e) {
+//				System.out.println(e.getMessage());
+//			}
+//		}
 		
 		
 	}
