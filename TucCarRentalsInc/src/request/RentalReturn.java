@@ -59,6 +59,11 @@ public class RentalReturn extends Request<Vehicles,Customer>{
             
         }
 	}
+	@Override
+	public int getPriority() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
    
 	
 	

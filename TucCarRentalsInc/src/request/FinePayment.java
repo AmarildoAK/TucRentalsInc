@@ -80,6 +80,13 @@ private double amount;
         }
 		
 	}
+
+
+	@Override
+	public int getPriority() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 

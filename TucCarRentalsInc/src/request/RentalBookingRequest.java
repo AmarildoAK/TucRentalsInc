@@ -14,8 +14,8 @@ public class RentalBookingRequest extends Request<Vehicles,Customer> { // local 
 	
 	private static final int counter = 000; // auto to theloume ???? 
 	private String referenceId;
-	private LocalDate startDate;
-	private LocalDate endDate;
+	protected LocalDate startDate;
+	protected LocalDate endDate;
 	
 	
 	public RentalBookingRequest(String referenceId,String requestId,LocalDate timestamp,String type,LocalDate startDate,LocalDate endDate) {
@@ -129,5 +129,27 @@ public class RentalBookingRequest extends Request<Vehicles,Customer> { // local 
         
         }
 	}
-	
+
+
+
+
+
+	@Override
+	public int getPriority() {
+		int days = 0;
+		
+		LocalDate indexDate = this.startDate;
+		
+		while(indexDate.isBefore(endDate)) {
+			days++;
+			
+			indexDate = indexDate.plusDays(1);
+		}
+		
+		if(days>0) {
+			return days;
+		}else {
+		return 1;
+	}
+	}
 }
