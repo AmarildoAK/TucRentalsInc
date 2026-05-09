@@ -10,10 +10,10 @@ import storage.Storable;
 import storage.UnMarshalingException;
 import users.Customer;
 
-public abstract class Request<V extends Vehicles,C extends Customer> implements Storable,Comparable<Request>{
+public abstract class Request<V extends Vehicles,C extends Customer> implements Storable,Comparable<Request<?,?>>{
 
 	
-	private String referenceId;
+	protected String referenceId;
 	
 	private LocalDate requestDay;
 	protected V vehicle;

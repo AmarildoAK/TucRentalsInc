@@ -12,32 +12,22 @@ import users.Customer;
 public class RentalBookingRequest extends Request<Vehicles,Customer> { // local date den tha eprepe na eixe ????
 
 	
-	private static final int counter = 000; // auto to theloume ???? 
-	private String referenceId;
+
+
 	private LocalDate startDate;
 	private LocalDate endDate;
 	
 	
+	
 	public RentalBookingRequest(String referenceId,String requestId,LocalDate timestamp,String type,LocalDate startDate,LocalDate endDate) {
 		super(referenceId,timestamp,type);
-	    this.referenceId="RBRQ"+ counter;
+	   
 	}
 
 	
 	
 	
 	
-	public String getReferenceId() {
-		return referenceId;
-	}
-
-
-
-
-
-	private void setReferenceId(String referenceId) {
-		this.referenceId = referenceId;
-	}
 
 
 

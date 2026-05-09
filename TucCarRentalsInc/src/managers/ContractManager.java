@@ -103,24 +103,7 @@ public Contract<?,?> findFineViolation(String licenseplate,LocalDate violationDa
 	return null;
 }
 
-public Contract<?,?> CreateContract(RentalBookingRequest request) {
-	
-	Customer customer = UserManager.getInstance().findCustomer(request.getCustomer().getVAT());
-	
-	if(customer == null) {
-		throw new IllegalArgumentException("ERROR");
-	}
-	
-	if(customer instanceof Individual) {
-		Vehicles vehicle = VehicleManager.getInstance().findVehicleByCategory(request.getVehicle().getCategory());
-	if(vehicle!=null) {
-		CarRentals carRental = new CarRentals(request.getStartDate(),request.getEndDate(),request.getReferenceId(),(Individual)customer, , , );
-	}
-	
-	}
-	
-	
-}
+
 
 
 
@@ -257,6 +240,28 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
  }
  
 
+ public Contract<?,?> CreateContract(RentalBookingRequest request) {
+		
+		Customer customer = UserManager.getInstance().findCustomer(request.getCustomer().getVAT());
+		
+		if(customer == null) {
+			throw new IllegalArgumentException("ERROR");
+		}
+		
+		if(customer instanceof Individual) {
+			Individual i = (Individual) customer;
+			Vehicles vehicle = VehicleManager.getInstance().findVehicleByCategory(request.getVehicle().getCategory());
+		if(vehicle!=null) {
+			CarRentals carRental = new CarRentals(
+					request.getStartDate(),
+					request.getEndDate(),
+					request.getReferenceId(),			);// εδω λογικά θα θέλει  Individual i = new (Individual) customer
+ 		}
+		
+		}
+		
+		
+	}
     
 
 }

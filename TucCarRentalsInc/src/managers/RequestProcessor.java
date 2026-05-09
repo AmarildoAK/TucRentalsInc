@@ -4,6 +4,7 @@ import java.time.*;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+import Vehicles.Vehicles;
 import request.CustomerPayment;
 import request.FinePayment;
 import request.RentalBookingRequest;
@@ -13,6 +14,7 @@ import request.Request;
 import storage.StorableList;
 import storage.StorageManager;
 import users.Admin;
+import users.Customer;
 
 public class RequestProcessor  {
 private ContractManager contractManager;
@@ -23,10 +25,11 @@ private VehicleManager vehicleManager;
 private int requestid;
 LocalDate targetDate;
 LocalDate currentDate;
-private StorableList<Request> dailyRequestList;
+private StorableList<Request<?,?>> dailyRequestList;
+//
+//private StorableList<RentalBookingRequest> dailyRentalRequestList;αστο ακυρο δεν πρέπει να χρειάζεται καν να το κάνουμε αυτό γιατί αν κάνουμε κάτι τέτοιο θα πρέπει να εξυπηρετούμε όλα τα rentallbookingρε;θεστβ πρώτα κάτι που τελικα δεν είναι και πολύ σωστό
 
-private StorableList<RentalBookingRequest> dailyRentalRequestList;
-private Queue<Request> requestQueue = new PriorityQueue<>();
+private Queue<Request<?,?>> requestQueue = new PriorityQueue<>();
 
 
 
