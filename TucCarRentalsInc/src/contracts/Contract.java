@@ -34,6 +34,42 @@ this.refernceId = referenceId;
 
 
 
+	public C getCustomer() {
+		return customer;
+	}
+
+
+
+
+
+
+
+
+
+	private void setCustomer(C customer) {
+		this.customer = customer;
+	}
+
+
+
+
+
+
+
+
+
+	private void setCar(V car) {
+		this.car = car;
+	}
+
+
+
+
+
+
+
+
+
 	public String getReferenceId() {
 		return refernceId;
 	}

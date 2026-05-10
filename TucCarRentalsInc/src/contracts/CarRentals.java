@@ -135,10 +135,7 @@ this.endDate = endDate;
 
 
 
-	private Customer getCustomer() {
-		return customer;
-	}
-
+	
 
 
 
@@ -244,10 +241,6 @@ public String marshal() {
 
 
 
-@Override
-public int compareTo(Contract<CarPassanger, Individual> o) {
-	// TODO Auto-generated method stub
-	return 0;
-}
+
 	
 }

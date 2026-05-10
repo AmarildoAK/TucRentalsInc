@@ -3,6 +3,7 @@ package managers;
 import java.time.LocalDate;
 
 import Vehicles.CarPassanger;
+import Vehicles.CompanyVan;
 import Vehicles.Vehicles;
 import contracts.CarRentals;
 import contracts.Contract;
@@ -184,7 +185,7 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 	 for(Contract con : contractList) {
 		 if(con instanceof CarRentals) {
 			 CarRentals cr = (CarRentals) con;
-			 if (cr.getTempVAT().equals(c.getVAT())&& checkMotion(con, today)) {
+			 if (cr.getCustomer().getVAT().equals(c.getVAT())&& checkMotion(con, today)) {
 				 return cr.toString(); // ή την toString ή την marshal
 				
 			}
@@ -192,7 +193,7 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 		 }
 		 else if (con instanceof VanLeases) {
 			VanLeases vl =(VanLeases) con;
-			if (vl.getTempVAT().equals(c.getVAT())&& checkMotion(con, today)) {
+			if (vl.getCustomer().getVAT().equals(c.getVAT())&& checkMotion(con, today)) {
 				 return vl.toString(); // ή την toString ή την marshal
 		}
 	
@@ -210,7 +211,7 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 	 for(Contract<?,?> con : contractList) {
 		 if(con instanceof CarRentals) {
 			 CarRentals cr = (CarRentals) con;
-			 if (cr.getTempVAT().equals(c.getVAT())&& checkFuture(con, today)) {
+			 if (cr.getCustomer().getVAT().equals(c.getVAT())&& checkFuture(con, today)) {
 				 return cr.toString(); // ή την toString ή την marshal
 				
 			}
@@ -218,7 +219,7 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 		 }
 		 else if (con instanceof VanLeases) {
 			VanLeases vl =(VanLeases) con;
-			if (vl.getTempVAT().equals(c.getVAT())&& checkFuture(con, today)) {
+			if (vl.getCustomer().getVAT().equals(c.getVAT())&& checkFuture(con, today)) {
 				 return vl.toString(); // ή την toString ή την marshal
 		}
 	
@@ -242,7 +243,7 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
  
 
  public Contract<?,?> CreateContract(RentalBookingRequest request) {
-	 double estmitaedCost = 0;
+	 double estimatedCost = 0;
 		
 		Customer customer = UserManager.getInstance().findCustomer(request.getCustomer().getVAT());
 		
@@ -263,12 +264,47 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 					car,
 					request.getCateg());// εδω λογικά θα θέλει  Individual i = new (Individual) customer
  		
-			estmitaedCost= carRental.CalculateCost();
+			estimatedCost= carRental.CalculateCost();
+			car.setAvailable(false);
+			this.contractList.add(carRental);
 			
+			try {
+				StorageManager.getInstance().storeObject(contractList,"Data/contracts/contracts.csv");
+				System.out.println("The new Contract has been added!!!");
+			}catch(Exception e){
+				System.out.println("The contract has met an Error"+e.getMessage());
+			}
+			
+			
+		
 			return carRental;
+		
 		}
 		
 		
+		
+		}else if(customer instanceof Company) {
+			Company c = (Company) customer;
+			Vehicles vehicle = VehicleManager.getInstance().findVehicleByCategory(request.getVehicle().getCategory());
+		CompanyVan van = (CompanyVan) vehicle;
+		
+		if(vehicle!= null) {
+			VanLeases vanlease = new VanLeases(request.getStartDate(),request.getEndDate(),request.getReferenceId(),c,van,request.getCategoryVan());
+		estimatedCost = vanlease.CalculateCost();
+		van.setAvailable(false);
+		this.contractList.add(vanlease);
+		
+		try {
+			StorageManager.getInstance().storeObject(contractList,"Data/contracts/contracts.csv");
+			System.out.println("The new Contract has been added!!!");
+		}catch(Exception e){
+			System.out.println("The contract has met an Error"+e.getMessage());
+		}
+		
+		
+		
+		return vanlease;
+		}
 		
 		}
 		return null;

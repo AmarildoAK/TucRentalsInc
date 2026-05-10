@@ -1,4 +1,6 @@
 
+package request;
+
 import java.time.LocalDate;
 
 import Vehicles.Vehicles;
@@ -8,6 +10,7 @@ import storage.Storable;
 import storage.UnMarshalingException;
 import users.Customer;
 import utils.CarPassengerVehicleType;
+import utils.CompanyVanCategory;
 
 public class RentalBookingRequest extends Request<Vehicles,Customer> { // local date den tha eprepe na eixe ????
 
@@ -16,17 +19,11 @@ public class RentalBookingRequest extends Request<Vehicles,Customer> { // local 
 	protected LocalDate startDate;
 	protected LocalDate endDate;
 	private CarPassengerVehicleType categ;
-	
+	private CompanyVanCategory categoryVan;
 	
 	public CarPassengerVehicleType getCateg() {
 		return categ;
 	}
-
-
-
-
-
-
 
 
 
@@ -38,7 +35,15 @@ public class RentalBookingRequest extends Request<Vehicles,Customer> { // local 
 
 
 
+	public CompanyVanCategory getCategoryVan() {
+		return categoryVan;
+	}
 
+
+
+	private void setCategoryVan(CompanyVanCategory categoryVan) {
+		this.categoryVan = categoryVan;
+	}
 
 
 

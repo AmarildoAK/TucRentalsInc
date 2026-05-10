@@ -5,10 +5,12 @@ import java.time.LocalDate;
 import Vehicles.CarPassanger;
 import Vehicles.CompanyVan;
 import Vehicles.Vehicles;
+import request.RentalBookingRequest;
 import storage.UnMarshalingException;
 import users.Company;
 import users.Customer;
 import users.Individual;
+import utils.CarPassengerVehicleType;
 import utils.CompanyVanCategory;
 import utils.LeaseDuration;
 
@@ -19,10 +21,10 @@ public class VanLeases extends Contract<CompanyVan,Company> {
 
 
 	
-	public VanLeases(Company company,CompanyVan van,CompanyVanCategory cost,LeaseDuration months,Vehicles rentedCar,String referenceId,LocalDate startDate,LocalDate endDate) {
-		super(company,van,referenceId,startDate,endDate);
-		this.categoryVanCost = cost;
-		this.months = months;
+	public VanLeases(LocalDate startDate,LocalDate endDate,String referenceId,Company company,CompanyVan compaVan,CompanyVanCategory categoryCost) {
+		super(company,compaVan,referenceId,startDate,endDate);
+		this.categoryVanCost = categoryCost;
+		;
 	}
 
 	
@@ -89,5 +91,38 @@ public String marshal() {
 		// TODO Auto-generated method stub
 		return 0;
 	}                                         
+
 	
+	private int calculateMonthsVan(RentalBookingRequest request) {
+
+		int calculatedMonths = 0;
+		LocalDate indexMonth = request.getStartDate();
+		while (indexMonth.isBefore(request.getEndDate())) {
+
+			calculatedMonths++;
+
+			indexMonth = indexMonth.plusMonths(1);
+		}
+
+		if (calculatedMonths == 6) {
+			this.months = LeaseDuration.SMALL;
+		} else if (calculatedMonths == 12) {
+			this.months = LeaseDuration.MEDIUM;
+		} else if (calculatedMonths == 24) {
+			this.months = LeaseDuration.BIG;
+		}
+
+		else {
+			System.out.println("Wrong month error while trying to calcualte");
+			this.months = LeaseDuration.SMALL;
+		}
+
+		return calculatedMonths;
+
+	}
 }
+	
+	
+	
+	
+

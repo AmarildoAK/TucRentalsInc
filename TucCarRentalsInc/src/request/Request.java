@@ -16,7 +16,7 @@ import users.Customer;
 public abstract class Request<V extends Vehicles,C extends Customer> implements Storable,Comparable<Request<V,C>>{
 
 	
-	private String referenceId;
+	protected String referenceId;
 	
 	private LocalDate requestDay;
 	protected V vehicle;
