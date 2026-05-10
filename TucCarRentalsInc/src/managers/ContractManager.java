@@ -14,6 +14,7 @@ import users.Company;
 import users.Customer;
 import users.Individual;
 import request.RentalBookingRequest;
+import request.RentalCancelationRequest;
 import request.Request;
 public class ContractManager {
 
@@ -107,9 +108,9 @@ public Contract<?,?> findFineViolation(String licenseplate,LocalDate violationDa
 
 
 
-public void CancelContract(String contractID) {
+public void CancelContract(RentalCancelationRequest request) {
 	
-	c = findContract(contractID);
+	c = findContract(request.getReferenceId());
 	
 	if(c!= null && c.getStatus().equals("ACTIVE")) {
 		c.setStatus("Cancelled");
@@ -241,6 +242,7 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
  
 
  public Contract<?,?> CreateContract(RentalBookingRequest request) {
+	 double estmitaedCost = 0;
 		
 		Customer customer = UserManager.getInstance().findCustomer(request.getCustomer().getVAT());
 		
@@ -251,14 +253,25 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 		if(customer instanceof Individual) {
 			Individual i = (Individual) customer;
 			Vehicles vehicle = VehicleManager.getInstance().findVehicleByCategory(request.getVehicle().getCategory());
+			CarPassanger car = (CarPassanger) vehicle;
 		if(vehicle!=null) {
 			CarRentals carRental = new CarRentals(
 					request.getStartDate(),
 					request.getEndDate(),
-					request.getReferenceId(),			);// εδω λογικά θα θέλει  Individual i = new (Individual) customer
- 		}
+					request.getReferenceId(),
+					i,
+					car,
+					request.getCateg());// εδω λογικά θα θέλει  Individual i = new (Individual) customer
+ 		
+			estmitaedCost= carRental.CalculateCost();
+			
+			return carRental;
+		}
+		
+		
 		
 		}
+		return null;
 		
 		
 	}

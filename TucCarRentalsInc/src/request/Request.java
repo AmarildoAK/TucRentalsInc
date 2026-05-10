@@ -1,3 +1,6 @@
+
+
+
 package request;
 
 import java.time.LocalDate;
@@ -10,10 +13,10 @@ import storage.Storable;
 import storage.UnMarshalingException;
 import users.Customer;
 
-public abstract class Request<V extends Vehicles,C extends Customer> implements Storable,Comparable<Request<?,?>>{
+public abstract class Request<V extends Vehicles,C extends Customer> implements Storable,Comparable<Request<V,C>>{
 
 	
-	protected String referenceId;
+	private String referenceId;
 	
 	private LocalDate requestDay;
 	protected V vehicle;
@@ -64,10 +67,18 @@ private LocalDate timestamp;
 
 
 
-@Override
-public int compareTo(Request other) {
-	return this.requestDay.compareTo(other.requestDay);
 	
+	public abstract int getPriority();
+		
+@Override
+public int compareTo(Request<V,C> other) {
+
+	int comparison = Integer.compare(getPriority(), other.getPriority());
+	
+	if(comparison == 0) {
+		return this.timestamp.compareTo(other.timestamp);
+	}
+	return comparison;
 }
 
 @Override
@@ -75,9 +86,8 @@ public String marshal() {
 	StringBuffer sb = new StringBuffer("type:").append(this.getClass().getName()).append(",");
 	sb.append("type").append(this.type).append(",");
 	sb.append("requestId").append(this.requestId).append(",");
-	//sb.append("referenceId").append(this.referenceId).append(",");
 	sb.append("timestamp").append(this.timestamp).append(",");
-	//sb.append("vat").append(this.customer.getVAT()).append(",");
+	
 	
 	
 	
@@ -99,29 +109,11 @@ public void unmarshal(String data) throws UnMarshalingException {
 			this.type = keyValue[1];
 		}else if(keyValue[0].trim().equals("requestId")) {
 			this.requestId = keyValue[1];
-		}//else if(keyValue[0].trim().equals("referenceId")) {
-//			this.referenceId = keyValue[1];}
+		}
 		else if(keyValue[0].trim().equals("timestamp")) {
 			this.timestamp = LocalDate.parse(keyValue[1]);
 		}
-//		else if(keyValue[0].trim().equals("vat")) {
-//			try {
-//				this.customer = (C)UserManager.getInstance().findCustomer(keyValue[1]);
-//			}catch(Exception e) {
-//				System.out.println(e.getMessage());
-//			}
-//		}
-//		else if(keyValue[0].trim().equals("startDate")) {
-//			this.startDate = LocalDate.parse(keyValue[1]);
-//		}else if(keyValue[0].trim().equals("endDate")) {
-//			this.endDate = LocalDate.parse(keyValue[1]);
-//		}else if(keyValue[0].trim().equals("category")) {
-//			try {
-//				this.vehicle = (V) VehicleManager.getInstance().findVehicleByCategory(keyValue[1]);
-//			}catch(Exception e) {
-//				System.out.println(e.getMessage());
-//			}
-//		}
+
 		
 		
 	}

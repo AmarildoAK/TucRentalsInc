@@ -1,3 +1,5 @@
+
+
 package request;
 
 import java.time.LocalDate;
@@ -67,14 +69,11 @@ public void unmarshal(String data) throws UnMarshalingException {
 	
 }
 
-
+@Override
+public int getPriority() {
+	// TODO Auto-generated method stub
+	return 0;
 }
 
 
-
-
-
-
-
-
-
+}

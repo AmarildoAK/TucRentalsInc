@@ -1,4 +1,3 @@
-package request;
 
 import java.time.LocalDate;
 
@@ -8,23 +7,46 @@ import managers.VehicleManager;
 import storage.Storable;
 import storage.UnMarshalingException;
 import users.Customer;
+import utils.CarPassengerVehicleType;
 
 public class RentalBookingRequest extends Request<Vehicles,Customer> { // local date den tha eprepe na eixe ????
 
 	
-
-
-	private LocalDate startDate;
-	private LocalDate endDate;
+	
+	protected LocalDate startDate;
+	protected LocalDate endDate;
+	private CarPassengerVehicleType categ;
 	
 	
-	
-	public RentalBookingRequest(String referenceId,String requestId,LocalDate timestamp,String type,LocalDate startDate,LocalDate endDate) {
-		super(referenceId,timestamp,type);
-	   
+	public CarPassengerVehicleType getCateg() {
+		return categ;
 	}
 
-	
+
+
+
+
+
+
+
+
+	public void setCateg(CarPassengerVehicleType categ) {
+		this.categ = categ;
+	}
+
+
+
+
+
+
+
+
+
+	public RentalBookingRequest(String referenceId,String requestId,LocalDate timestamp,String type,LocalDate startDate,LocalDate endDate,CarPassengerVehicleType categ) {
+		super(referenceId,timestamp,type);
+		
+	}
+
 	
 	
 	
@@ -119,5 +141,27 @@ public class RentalBookingRequest extends Request<Vehicles,Customer> { // local 
         
         }
 	}
-	
+
+
+
+
+
+	@Override
+	public int getPriority() {
+		int days = 0;
+		
+		LocalDate indexDate = this.startDate;
+		
+		while(indexDate.isBefore(endDate)) {
+			days++;
+			
+			indexDate = indexDate.plusDays(1);
+		}
+		
+		if(days>0) {
+			return days;
+		}else {
+		return 1;
+	}
+	}
 }

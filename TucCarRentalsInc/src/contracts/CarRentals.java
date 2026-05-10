@@ -21,7 +21,7 @@ public class CarRentals extends Contract<CarPassanger,Individual> {
 	private double estimatedCarRentalCost;
 	
 	
-	public CarRentals(LocalDate startDate,LocalDate endDate,String referenceId,Individual individual,CarPassanger carpass,CarPassengerVehicleType categoryCost,double estimatedCarRentalCost) {
+	public CarRentals(LocalDate startDate,LocalDate endDate,String referenceId,Individual individual,CarPassanger carpass,CarPassengerVehicleType categoryCost) {
 		super(individual,carpass,referenceId,startDate,endDate);
 this.categoryCost = categoryCost;
 this.startDate = startDate;
@@ -226,11 +226,11 @@ public String marshal() {
 
 
 
-//	@Override
-//	public int compareTo(Contract o) {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
+	@Override
+	public int compareTo(Contract o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 
 
