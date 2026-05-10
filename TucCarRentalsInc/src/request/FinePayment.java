@@ -25,6 +25,111 @@ private double amount;
 	}
 
 
+	
+	
+	
+	
+	
+	
+	private String getNoticeId() {
+		return noticeId;
+	}
+
+
+
+
+
+
+
+
+	private void setNoticeId(String noticeId) {
+		this.noticeId = noticeId;
+	}
+
+
+
+
+
+
+
+
+	private String getDescription() {
+		return description;
+	}
+
+
+
+
+
+
+
+
+	private void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+
+
+
+
+
+	public LocalDate getNoticeDay() {
+		return noticeDay;
+	}
+
+
+
+
+
+
+
+
+	private void setNoticeDay(LocalDate noticeDay) {
+		this.noticeDay = noticeDay;
+	}
+
+
+
+
+
+
+
+
+	public double getAmount() {
+		return amount;
+	}
+
+
+
+
+
+
+
+
+	private void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+
+
+
+
+
+
+
+	private static int getCounter() {
+		return counter;
+	}
+
+
+
+
+
+
+
+
 	@Override
 	public int compareTo(Request o) {
 		// TODO Auto-generated method stub

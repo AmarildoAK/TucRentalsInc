@@ -24,6 +24,72 @@ public CustomerPayment(String referenceId, LocalDate timestamp,double amount,Str
 	this.referenceId="PRQ"+counter;
 }
 
+
+
+
+private static int getRequestidCounter() {
+	return requestidCounter;
+}
+
+
+
+
+private static void setRequestidCounter(int requestidCounter) {
+	CustomerPayment.requestidCounter = requestidCounter;
+}
+
+
+
+
+private int getRequestId() {
+	return requestId;
+}
+
+
+
+
+private void setRequestId(int requestId) {
+	this.requestId = requestId;
+}
+
+
+
+
+public double getAmount() {
+	return amount;
+}
+
+
+
+
+private void setAmount(double amount) {
+	this.amount = amount;
+}
+
+
+
+
+private String getReferenceId() {
+	return referenceId;
+}
+
+
+
+
+private void setReferenceId(String referenceId) {
+	this.referenceId = referenceId;
+}
+
+
+
+
+private static int getCounter() {
+	return counter;
+}
+
+
+
+
 @Override
 public int compareTo(Request o) {
 	// TODO Auto-generated method stub

@@ -94,9 +94,9 @@ public Contract<?,?> findContract(String referenceId) {
 	
 	
 
+// edw ti einai protimotero na paroume olo to oxhma h mono string th pinakida ??? 
 
-
-public Contract<?,?> findFineViolation(String licenseplate,LocalDate violationDate) {
+public Contract<?,?> findFineViolation(Vehicles licenseplate,LocalDate violationDate) {
 	for(int i=0;i<contractList.size();i++) {
 		if(contractList.get(i).getCar().getLicenseplate().equals(licenseplate) && contractList.get(i).getStartDate().isBefore(violationDate)&& contractList.get(i).getEndDate().isAfter(violationDate)) {
 			return contractList.get(i);

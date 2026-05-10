@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 import Vehicles.Vehicles;
+import contracts.Contract;
 import request.CustomerPayment;
 import request.FinePayment;
 import request.RentalBookingRequest;
@@ -48,12 +49,12 @@ public RequestProcessor(ContractManager contractManager, StatementManager statem
 	this.targetDate = targetDate;
 	this.currentDate = currentDate;
 
-	this.dailyRequestList = new StorableList<>();
-	this.dailyRequestList = new StorableList<>();
+	this.dailyRequestList = new StorableList<Request<?,?>>();
+
 	
 	try {
 		
-		StorageManager.getInstance().loadObject(this.dailyRequestList,"Data/request/pending");
+		StorageManager.getInstance().loadObject(this.dailyRequestList,"Data/request/pending[YYYY-MM-DD].csv");
 		
 		
 	}catch(Exception e) {
@@ -82,19 +83,52 @@ if(requests instanceof RentalBookingRequest) {
 	
 	RentalBookingRequest requestb = (RentalBookingRequest) requests;
 	
-	//this.contractManager.CreateContract(requestb);
+	this.contractManager.CreateContract(requestb);
 	
 }
 else if(requests instanceof RentalReturn) {
+	RentalReturn requestReturn = (RentalReturn) requests;
+	//this.contractManager.CompletedContract(null);
 	
 }
 else if(requests instanceof RentalCancelationRequest) {
 	
+	RentalCancelationRequest requestCancel = (RentalCancelationRequest) requests;
+	
+	this.contractManager.CancelContract(requestCancel);
+	
 }
 else if(requests instanceof FinePayment) {
 	
+	FinePayment finepay = (FinePayment) requests;
+	
+	Contract<?,?> FineContract = this.contractManager.findFineViolation(finepay.getVehicle(),finepay.getNoticeDay());
+	
+	if(FineContract != null) {
+		
+		Customer FineCustomer = FineContract.getCustomer();
+		
+		TransactionManager.getInstance().payFine(FineCustomer, finepay.getAmount());
+		
+	}else {
+		System.out.println("No fine or contract found");
+	}
+	
 }
 else if(requests instanceof CustomerPayment) {
+	
+	CustomerPayment customerPay = (CustomerPayment) requests;
+	
+	Customer customer = this.userManager.findCustomer(customerPay.getCustomer().getVAT());
+	
+	if(customer != null) {
+		
+		TransactionManager.getInstance().PayBalance(customer,customerPay.getAmount());
+		
+		
+	}else {
+		System.out.println("No user payment found!!!");
+	}
 	
 }
 	
