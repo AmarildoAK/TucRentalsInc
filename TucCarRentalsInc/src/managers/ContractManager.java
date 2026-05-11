@@ -10,12 +10,14 @@ import contracts.Contract;
 import contracts.VanLeases;
 import storage.StorableList;
 import storage.StorageManager;
+//import transaction.Overdue
 import transaction.Wallet;
 import users.Company;
 import users.Customer;
-import users.Individual;
+import users.Individual; 
 import request.RentalBookingRequest;
 import request.RentalCancelationRequest;
+import request.RentalReturn;
 import request.Request;
 public class ContractManager {
 
@@ -135,17 +137,17 @@ public void CancelContract(RentalCancelationRequest request) {
 
 
 
-public void CompletedContract(String contractID) {
+public void CompletedContract(RentalReturn request,String contractID) {
 	c = findContract(contractID);
 	if(c!=null && c.getStatus().equalsIgnoreCase("ACTIVE")) {
 		c.setStatus("Completed");
 		
 		Vehicles rentedCar = c.getCar();
-		
-		
 		rentedCar.setAvailable(true);
+	//	  Overdue charge = new Overdue(request.getReferenceId(),c.getCar(),request.getTimestamp());
+       //   TransactionManager.getInstance().processTransaction(charge,UserManager.getInstance().findCustomerByVat(Individual.class,request.getVat()));
+		c.setStatus("COMPLETED");
 		System.out.println("The contract has been succesfully completed");
-	
 		try {
 			StorageManager.getInstance().storeObject(contractList,"Data/contracts/contracts.csv");
 			System.out.println("The new Contract has been added!!!");

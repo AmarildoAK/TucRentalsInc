@@ -67,6 +67,6 @@ sb.append("contractID").append(this.contractID).append(",");
 	return overduedays;
 	}
 	
-	private int calculateAmount() {// idio kai ayth
+	private 	 int calculateAmount() {// idio kai ayth
 		return extraDayCharge*findextraDays();	}
 }

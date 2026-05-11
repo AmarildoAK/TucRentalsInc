@@ -48,8 +48,8 @@ public RequestProcessor(ContractManager contractManager, StatementManager statem
 	this.targetDate = targetDate;
 	this.currentDate = currentDate;
 
-	this.dailyRequestList = new StorableList<>();
-	this.dailyRequestList = new StorableList<>();
+	this.dailyRequestList = new StorableList<Request<?, ?>>();
+
 	
 	try {
 		
