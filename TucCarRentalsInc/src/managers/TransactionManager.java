@@ -73,7 +73,9 @@ public boolean addCredit(Transaction newCredit) {
 		
 		Wallet customerWallet = customer.getWallet();
 		
-		customerWallet.setAmount(amount);
+		double customerAmount = customerWallet.getAmount();
+		
+		customerWallet.setAmount(customerAmount + amount);
 		
 		System.out.println("The payment has been completed");
 		
@@ -104,6 +106,17 @@ public boolean addCredit(Transaction newCredit) {
 	
 	
 	
-	
+	public void payFine(Customer customer,double amount) {
+		
+Wallet customerWallet = customer.getWallet();
+		
+double customerAmount = customerWallet.getAmount();
+		customerWallet.setAmount(customerAmount  + amount);
+		
+		System.out.println("The fine has been paid succesfully");
+		
+		
+		
+	}
 	
 }
