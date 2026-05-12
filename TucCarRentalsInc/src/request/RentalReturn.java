@@ -70,4 +70,9 @@ public class RentalReturn extends Request<RentalReturn>{
 	public int getPriority() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	@Override
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return false;
 	}}

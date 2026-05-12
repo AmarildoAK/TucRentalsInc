@@ -20,10 +20,12 @@ public abstract class Contract<V extends Vehicles, C extends Customer> implement
 
 	private LocalDate startDate;
 	private LocalDate endDate;
+	private LocalDate actualReturnDate;
 
 	public Contract(C customer,V vehicle,String referenceId,LocalDate startDate,LocalDate endDate) {
 		this.status = "ACTIVE";
 this.refernceId = referenceId;
+this.actualReturnDate=null;
 	}
 
 	
@@ -179,6 +181,30 @@ this.refernceId = referenceId;
 			}
 
 		}
+	}
+
+
+
+
+
+
+
+
+
+	public LocalDate getActualReturnDate() {
+		return actualReturnDate;
+	}
+
+
+
+
+
+
+
+
+
+	public void setActualReturnDate(LocalDate actualReturnDate) {
+		this.actualReturnDate = actualReturnDate;
 	}
 
 }

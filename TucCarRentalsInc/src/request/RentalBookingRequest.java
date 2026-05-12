@@ -175,10 +175,6 @@ public class RentalBookingRequest extends Request<RentalBookingRequest> { // loc
         }
 	}
 
-
-
-
-
 	@Override
 	public int getPriority() {
 		int days = 0;
@@ -196,5 +192,13 @@ public class RentalBookingRequest extends Request<RentalBookingRequest> { // loc
 		}else {
 		return 1;
 	}
+	}
+
+
+
+	@Override
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

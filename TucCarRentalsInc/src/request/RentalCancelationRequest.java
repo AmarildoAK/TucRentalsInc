@@ -79,6 +79,12 @@ public class RentalCancelationRequest extends Request<RentalCancelationRequest> 
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
 
 // mallon tha prepei edo na kanoume mia method find requets by id h opoia tha scanarei ola ta rentalBooking request kai tha epistrefei ayto to request kai tis plhrofories tou 
