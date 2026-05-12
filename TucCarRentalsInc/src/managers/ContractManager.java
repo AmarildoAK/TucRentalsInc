@@ -295,6 +295,7 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 			CarRentals carRental = new CarRentals(
 					request.getStartDate(),
 					request.getEndDate(),
+					
 					request.getReferenceId(),
 					i,
 					car,

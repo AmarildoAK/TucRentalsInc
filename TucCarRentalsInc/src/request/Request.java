@@ -64,6 +64,7 @@ private LocalDate timestamp;
 
 	
 	public abstract int getPriority();
+	public abstract boolean isValid();
 		
 @Override
 public int compareTo(Request<R> other) {
