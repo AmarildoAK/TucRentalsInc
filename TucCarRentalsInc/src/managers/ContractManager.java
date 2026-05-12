@@ -192,7 +192,7 @@ public void CompletedContract(RentalReturn request,Contract<?,?> contract) {
 //	}else {
 //		System.out.println("error while trying for completion");
 //	}
-}
+//}
 
 
 
