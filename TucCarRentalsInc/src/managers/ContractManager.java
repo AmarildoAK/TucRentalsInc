@@ -10,6 +10,7 @@ import contracts.Contract;
 import contracts.VanLeases;
 import storage.StorableList;
 import storage.StorageManager;
+import transaction.CustomerRefund;
 import transaction.Overdue;
 //import transaction.Overdue
 import transaction.Wallet;
@@ -145,22 +146,33 @@ public void CancelContract(RentalCancelationRequest request) {
 
 public void CompletedContract(RentalReturn request,Contract<?,?> contract) {
 
+	LocalDate actualReturn = request.getTimestamp();
+	LocalDate expectedRentalReturn = contract.getEndDate();
+	
 	
 	if(contract instanceof CarRentals) {
+		CarPassanger categoryCar = (CarPassanger)contract.getCar();
 		
 		if(contract.getReferenceId().equals(request.getReferenceId())&& contract.getStatus().equals("ACTIVE")) { // den eimai katholou sigouros gia auto 
 	contract.setStatus("COMPLETED");
 	contract.getCar().setAvailable(true);
 			
-	int days = findextraDays(contract.getEndDate(),request.getTimestamp());
+	
+	
+	if(actualReturn.isAfter(expectedRentalReturn)) {
+		int days = Overdue.findextraDays(contract.getEndDate(),request.getTimestamp());
+		double amountOverdue = Overdue.calculateAmountForCarPassanger(categoryCar.getVehicleCategory(),days);
+		Overdue charge = new Overdue(request.getReferenceId(),request.getTimestamp(),amountOverdue);
+	  TransactionManager.getInstance().PayBalance(contract.getCustomer(), amountOverdue);;
+	}else {
+		//int days = Overdue.findextraDays(contract.getEndDate(),request.getTimestamp());
+		double amountRefund = CustomerRefund.CustomerRefundingCarPassenger();
+		//CustomerRefund refund = new CustomerRefund(request.getReferenceId(),request.getTimestamp(), amountRefund);
+	}
 	
 	
 	
-	CarPassanger categoryCar = (CarPassanger)contract.getCar();
 	
-	double amountOverdue = calculateAmountForCarPassanger(categoryCar.getVehicleCategory(),days);
-	Overdue charge = new Overdue(request.getReferenceId(),request.getTimestamp(),amountOverdue);
-  TransactionManager.getInstance().PayBalance(contract.getCustomer(), amountOverdue);;
 		
 		}
 	}
@@ -348,37 +360,7 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 		
 	}
     
- private int  findextraDays(LocalDate endDate,LocalDate returnDate) {// ayth mallon tha xreaistei na ginei overload gia ta vanleashes
-		
-	 int overduedays =0;
-	 LocalDate indexdate;
-		indexdate= endDate;    //expirationDate;
-	while(indexdate.isBefore(returnDate)) {// na valo allo ena periorismo typoy den exei plhrothei η να καλώ την μέθοδο αυτή αφού δεν πληρωθεί
-		overduedays++;
-		indexdate=indexdate.plusDays(1);
-	}
-	return overduedays;
-	}
-	
-	private double calculateAmountForCarPassanger(CarPassengerVehicleType car,int overdueDay) {// idio kai ayth
-		
-		double getpriceCat = car.getPrice();
-		
-		double overdueCharge = getpriceCat *1.2;
-	
-		double totalAmount = overdueCharge * overdueDay;
-			
-		return totalAmount;	
-	}
-
-	
-	private double calculateAmountForCompanyVan(CompanyVanCategory van,int overdueDay) {
-	
-	double priceVan = van.getMonthlyLease();
-	
-	return priceVan;
-	
-	}
+ 
 
 }
  

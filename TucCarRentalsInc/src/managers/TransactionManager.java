@@ -52,6 +52,7 @@ return instance;
 			transactionList.add(newCharge);
 			return true ;
 		}
+		
 	}
 	
 	public void UpdateWallet(User customer,double newWallet) {// να κάνουμε τύπου customer και να κάνουμε έτσι accessτο wallet καθε customer

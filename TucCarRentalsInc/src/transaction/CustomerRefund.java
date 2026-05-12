@@ -1,5 +1,7 @@
 package transaction;
 
+import java.time.LocalDateTime;
+
 import storage.UnMarshalingException;
 
 public class CustomerRefund extends Credit{
@@ -7,11 +9,11 @@ public class CustomerRefund extends Credit{
 	
 	
 	private Wallet w;
-	private double refundRate = 0.8;
-	private RentalCharge r;
+	private static double refundRate = 0.8;
+	private static RentalCharge r;
 	
-	public CustomerRefund(String referenceId, int amountofReturn) {
-		super(referenceId, amountofReturn);
+	public CustomerRefund(String referenceId,LocalDateTime timestamp, double amountofReturn) {
+		super(referenceId,timestamp, amountofReturn);
 		
 	}
 	
@@ -20,16 +22,17 @@ public class CustomerRefund extends Credit{
 //	}
 
 	
-	public double CustomerRefundingCarPassenger () {
-		return r.rentalChargeByDay() * refundRate;
+	public static double CustomerRefundingCarPassenger () {
+		
+		double total = 0.0;
+		
+		total = r.rentalChargeByDay() * refundRate;
+		return total;
 		
 	}
 	
 	
-	public double CustomerRefundingCopmanyVan () {  // poly pithanon na xreiastoun orismata kai ta dyo
-		return r.rentalChargeByMonth() * refundRate;
-		
-	}
+	
 	
 
 	

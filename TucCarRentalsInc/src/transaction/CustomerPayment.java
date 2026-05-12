@@ -1,5 +1,8 @@
 package transaction;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import storage.UnMarshalingException;
 import users.Customer;
 
@@ -8,8 +11,8 @@ public class CustomerPayment extends Credit {
 	
 	private RentalCharge r;
 	private Wallet w;
-	public CustomerPayment(String referenceId, int amountofReturn) {
-		super(referenceId, amountofReturn);
+	public CustomerPayment(String referenceId,LocalDateTime timestamp, double amountofReturn) {
+		super(referenceId,timestamp, amountofReturn);
 		// TODO Auto-generated constructor stub
 	}
 	
