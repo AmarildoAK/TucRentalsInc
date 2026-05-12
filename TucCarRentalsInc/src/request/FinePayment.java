@@ -8,13 +8,14 @@ import managers.VehicleManager;
 import storage.UnMarshalingException;
 import users.Customer;
 
-public class FinePayment extends Request<Vehicles,Customer>{
+public class FinePayment extends Request<FinePayment>{
 
 	private static final int counter = 000;
 	private String noticeId;
     private String description;
 	private LocalDate noticeDay;
 private double amount;
+private Vehicles vehicle;
 	
 	public FinePayment(String requestId, LocalDate timestamp,LocalDate noticeDay,String type,double amount,String description) {
 		super(requestId, timestamp,type);
