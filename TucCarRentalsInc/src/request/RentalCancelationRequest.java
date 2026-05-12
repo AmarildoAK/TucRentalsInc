@@ -11,7 +11,7 @@ public class RentalCancelationRequest extends Request<RentalCancelationRequest> 
 	
 	
 
-	private int  RentalbookingreferencetID;
+	
 	private Customer customer;
 	public Customer getCustomer() {
 		return customer;
@@ -21,13 +21,12 @@ public class RentalCancelationRequest extends Request<RentalCancelationRequest> 
 		this.customer = customer;
 	}
 
-	private static final int counter = 000;
-	private String referenceId;
+
 
 	public RentalCancelationRequest(String referenceId,LocalDate timestamp,String type) {
 		super(referenceId,timestamp,type);
 		
-		this.referenceId="RCRQ"+counter;
+		
 	}
 
 	@Override

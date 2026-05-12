@@ -9,8 +9,6 @@ import users.Customer;
 
 public class RentalReturn extends Request<RentalReturn>{
 	
-
-	private String referenceId;
 	private Customer customer;
 	
 	public Customer getCustomer() {
