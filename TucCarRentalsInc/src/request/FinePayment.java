@@ -17,6 +17,28 @@ public class FinePayment extends Request<FinePayment>{
 private double amount;
 private Vehicles vehicle;
 	
+	public Vehicles getVehicle() {
+	return vehicle;
+}
+
+
+
+
+
+
+
+
+public void setVehicle(Vehicles vehicle) {
+	this.vehicle = vehicle;
+}
+
+
+
+
+
+
+
+
 	public FinePayment(String requestId, LocalDate timestamp,LocalDate noticeDay,String type,double amount,String description) {
 		super(requestId, timestamp,type);
 		this.noticeId="FRQ"+noticeId;

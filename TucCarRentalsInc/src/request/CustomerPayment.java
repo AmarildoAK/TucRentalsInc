@@ -18,6 +18,20 @@ private static final int counter = 000;
 private String referenceId;
 private Customer customer;
 
+public Customer getCustomer() {
+	return customer;
+}
+
+
+
+
+public void setCustomer(Customer customer) {
+	this.customer = customer;
+}
+
+
+
+
 public CustomerPayment(String referenceId, LocalDate timestamp,double amount,String type) {
 	super(referenceId, timestamp,type);
 	

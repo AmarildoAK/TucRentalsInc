@@ -13,6 +13,12 @@ public class RentalReturn extends Request<RentalReturn>{
 	private String referenceId;
 	private Customer customer;
 	
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 	public RentalReturn(String referenceId, LocalDate timestamp,String type) {
 		super(referenceId, timestamp,type);
 		
