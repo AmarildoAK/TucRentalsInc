@@ -20,6 +20,32 @@ public class RentalBookingRequest extends Request<RentalBookingRequest> { // loc
 	protected LocalDate endDate;
 	private Vehicles vehicle;
 	private Customer customer;
+	public Vehicles getVehicle() {
+		return vehicle;
+	}
+
+
+
+	public void setVehicle(Vehicles vehicle) {
+		this.vehicle = vehicle;
+	}
+
+
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+
+
+
+
 	private CarPassengerVehicleType categ;
 	private CompanyVanCategory categoryVan;
 	

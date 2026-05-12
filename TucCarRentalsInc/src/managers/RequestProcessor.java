@@ -26,11 +26,11 @@ private VehicleManager vehicleManager;
 private int requestid;
 LocalDate targetDate;
 LocalDate currentDate;
-private StorableList<Request<?,?>> dailyRequestList;
+private StorableList<Request<?>> dailyRequestList;
 //
 //private StorableList<RentalBookingRequest> dailyRentalRequestList;αστο ακυρο δεν πρέπει να χρειάζεται καν να το κάνουμε αυτό γιατί αν κάνουμε κάτι τέτοιο θα πρέπει να εξυπηρετούμε όλα τα rentallbookingρε;θεστβ πρώτα κάτι που τελικα δεν είναι και πολύ σωστό
 
-private Queue<Request<?,?>> requestQueue = new PriorityQueue<>();
+private Queue<Request<?>> requestQueue = new PriorityQueue<>();
 
 
 
@@ -50,7 +50,7 @@ public RequestProcessor(ContractManager contractManager, StatementManager statem
 	this.currentDate = currentDate;
 
 
-	this.dailyRequestList = new StorableList<Request<?, ?>>();
+	this.dailyRequestList = new StorableList<Request<?>>();
 
 	
 	
@@ -78,7 +78,7 @@ public void processrequestloader() {
 while(!requestQueue.isEmpty()) {
 	
 	
-Request requests = requestQueue.poll();
+Request<?> requests = requestQueue.poll();
 
 
 if(requests instanceof RentalBookingRequest) {
