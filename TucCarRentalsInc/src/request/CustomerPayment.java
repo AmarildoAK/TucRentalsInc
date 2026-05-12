@@ -10,12 +10,13 @@ import storage.UnMarshalingException;
 import users.Company;
 import users.Customer;
 import users.Individual;
-public class CustomerPayment extends Request<Vehicles,Customer>{
+public class CustomerPayment extends Request<CustomerPayment>{
 private static int requestidCounter =1;
 private int requestId;
 private double amount;
 private static final int counter = 000;
 private String referenceId;
+private Customer customer;
 
 public CustomerPayment(String referenceId, LocalDate timestamp,double amount,String type) {
 	super(referenceId, timestamp,type);

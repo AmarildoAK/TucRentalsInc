@@ -1,11 +1,7 @@
-
-
-
 package request;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import Vehicles.Vehicles;
 import managers.UserManager;
 import managers.VehicleManager;
@@ -13,14 +9,13 @@ import storage.Storable;
 import storage.UnMarshalingException;
 import users.Customer;
 
-public abstract class Request<V extends Vehicles,C extends Customer> implements Storable,Comparable<Request<V,C>>{
+public abstract class Request<R extends Request<R>> implements Storable,Comparable<Request<R>>{
 
 	
 	protected String referenceId;
 	
 	private LocalDate requestDay;
-	protected V vehicle;
-	protected C customer;
+
 private String type;
 private String requestId;
 private LocalDate timestamp;
@@ -33,21 +28,21 @@ private LocalDate timestamp;
 
 	}
 	
-	public V getVehicle() {
-		return vehicle;
-	}
-
-	private void setVehicle(V vehicle) {
-		this.vehicle = vehicle;
-	}
-
-	public C getCustomer() {
-		return customer;
-	}
-
-	private void setCustomer(C customer) {
-		this.customer = customer;
-	}
+//	public V getVehicle() {
+//		return vehicle;
+//	}
+//
+//	private void setVehicle(V vehicle) {
+//		this.vehicle = vehicle;
+//	}
+//
+//	public C getCustomer() {
+//		return customer;
+//	}
+//
+//	private void setCustomer(C customer) {
+//		this.customer = customer;
+//	}
 
 	public String getReferenceId() {
 		return referenceId;
@@ -71,7 +66,7 @@ private LocalDate timestamp;
 	public abstract int getPriority();
 		
 @Override
-public int compareTo(Request<V,C> other) {
+public int compareTo(Request<R> other) {
 
 	int comparison = Integer.compare(getPriority(), other.getPriority());
 	

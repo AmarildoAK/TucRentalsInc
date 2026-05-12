@@ -7,11 +7,12 @@ import managers.UserManager;
 import storage.UnMarshalingException;
 import users.Customer;
 
-public class RentalCancelationRequest extends Request<Vehicles,Customer> {
+public class RentalCancelationRequest extends Request<RentalCancelationRequest> {
 	
 	
 
 	private int  RentalbookingreferencetID;
+	private Customer customer;
 	private static final int counter = 000;
 	private String referenceId;
 

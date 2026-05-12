@@ -12,12 +12,14 @@ import users.Customer;
 import utils.CarPassengerVehicleType;
 import utils.CompanyVanCategory;
 
-public class RentalBookingRequest extends Request<Vehicles,Customer> { // local date den tha eprepe na eixe ????
+public class RentalBookingRequest extends Request<RentalBookingRequest> { // local date den tha eprepe na eixe ????
 
 	
 	
 	protected LocalDate startDate;
 	protected LocalDate endDate;
+	private Vehicles vehicle;
+	private Customer customer;
 	private CarPassengerVehicleType categ;
 	private CompanyVanCategory categoryVan;
 	

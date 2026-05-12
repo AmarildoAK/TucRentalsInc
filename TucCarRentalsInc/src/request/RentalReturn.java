@@ -7,10 +7,11 @@ import managers.UserManager;
 import storage.UnMarshalingException;
 import users.Customer;
 
-public class RentalReturn extends Request<Vehicles,Customer>{
+public class RentalReturn extends Request<RentalReturn>{
 	
 
 	private String referenceId;
+	private Customer customer;
 	
 	public RentalReturn(String referenceId, LocalDate timestamp,String type) {
 		super(referenceId, timestamp,type);
