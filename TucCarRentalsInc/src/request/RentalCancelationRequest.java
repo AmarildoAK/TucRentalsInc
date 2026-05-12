@@ -13,6 +13,13 @@ public class RentalCancelationRequest extends Request<RentalCancelationRequest> 
 
 	private int  RentalbookingreferencetID;
 	private Customer customer;
+	private LocalDate startDate;
+private LocalDate
+	
+	
+	
+	
+	
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -82,7 +89,9 @@ public class RentalCancelationRequest extends Request<RentalCancelationRequest> 
 
 	@Override
 	public boolean isValid() {
-		// TODO Auto-generated method stub
+	if(startDate.isAfter(today)) {
+		return true;
+	}
 		return false;
 	}
 }

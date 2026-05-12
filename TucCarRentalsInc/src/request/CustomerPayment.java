@@ -161,9 +161,12 @@ public int getPriority() {
 
 @Override
 public boolean isValid() {
-	// TODO Auto-generated method stub
-	return false;
-}
+	if(customer.getWallet().getAmount() > 0) {
+		return true;
+	}else {
+		return false;
+	}
+	}
 
 
 }

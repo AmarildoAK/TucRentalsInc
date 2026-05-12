@@ -3,52 +3,37 @@ package statements;
 import java.time.LocalDate;
 
 import Vehicles.Vehicles;
+import managers.TransactionManager;
 import storage.Storable;
 import storage.UnMarshalingException;
+import transaction.Transaction;
 
-public class Statement implements Storable,Comparable<Statement>{
+public class Statement<T extends Transaction> implements Storable,Comparable<Statement<T>>{
 
-	private LocalDate timestamp;
-	private String statementType;
-	private double amount;
+	
 	private String creator;
-	private String description;
-	private int noticeID;
+	private T transaction;
 	
-	public Statement(LocalDate timestamp,String statementType,double amount,String creator,String description,int noticeID) {
+	public Statement(String creator,T transaction) {
 		
-	this.amount = amount;
-	this.creator = creator;
-	this.description = description;
-	this.statementType = statementType;
-	this.timestamp = timestamp;
-	this.noticeID = noticeID;
 	
+	this.creator = creator;
+	this.transaction = transaction;
 	}
 
-	private LocalDate getTimestamp() {
-		return timestamp;
+	
+
+	private T getTransaction() {
+		return transaction;
 	}
 
-	private void setTimestamp(LocalDate timestamp) {
-		this.timestamp = timestamp;
+
+
+	private void setTransaction(T transaction) {
+		this.transaction = transaction;
 	}
 
-	private String getStatementType() {
-		return statementType;
-	}
 
-	private void setStatementType(String statementType) {
-		this.statementType = statementType;
-	}
-
-	private double getAmount() {
-		return amount;
-	}
-
-	private void setAmount(double amount) {
-		this.amount = amount;
-	}
 
 	private String getCreator() {
 		return creator;
@@ -58,32 +43,15 @@ public class Statement implements Storable,Comparable<Statement>{
 		this.creator = creator;
 	}
 
-	private String getDescription() {
-		return description;
-	}
-
-	private void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getNoticeID() {
-		return noticeID;
-	}
-
-	private void setNoticeID(int noticeID) {
-		this.noticeID = noticeID;
-	}
+	
 	
 	public String marshal() {
 		StringBuffer sb = new StringBuffer("type: ").append(this.getClass().getName()).append(";");
 		
 		
-		sb.append("timestamp").append(this.timestamp).append(",");
-		sb.append("amount").append(this.amount).append(",");
-		sb.append("creator").append(this.creator).append(",");
-		sb.append("noticeID").append(this.noticeID).append(",");
-		sb.append("description").append(this.description).append(",");
-		sb.append("statementType").append(this.statementType).append(",");
+		
+		sb.append("creator:").append(this.creator).append(",");
+		sb.append("transaction:").append(this.transaction).append(",");
 		
 		
 
@@ -103,19 +71,13 @@ public void unmarshal(String data) throws UnMarshalingException {
 			
 			if(keyValue[0].trim().equals("creator")) {
 				this.creator = keyValue[1];
-			}else if(keyValue[0].trim().equals("statementType")) {
-				this.statementType = keyValue[1];
-			}else if(keyValue[0].trim().equals("description")) {
-				this.description = keyValue[1];
-			}else if(keyValue[0].trim().equals("timestamp")) {
-				this.timestamp =LocalDate.parse(keyValue[1]);
-			}
-			else if(keyValue[0].trim().equals("amount")) {
-				this.amount = Double.parseDouble(keyValue[1]);
-			}
-			else if(keyValue[0].trim().equals("noticeID")) {
-				this.noticeID = Integer.parseInt(keyValue[1]);
-			}
+			}else if(keyValue[0].trim().equals("transaction")) {
+					try {
+						this.transaction = (T) TransactionManager.getInstance().findTransaction(keyValue[1]);
+					}catch(Exception e ) {
+						System.out.println(e.getMessage());
+					}
+				}
 		}
 	
 	

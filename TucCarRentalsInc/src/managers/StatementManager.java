@@ -27,9 +27,9 @@ public class StatementManager {
 	
 	
 	
-public StorableList<Statement> getStatementsForUser(String VAT){
+public StorableList<Statement<?>> getStatementsForUser(String VAT){
 	File file = new File("Data/statements"+VAT+"_statements.csv");
-	StorableList<Statement>  userStatements = new StorableList<>();
+	StorableList<Statement<?>>  userStatements = new StorableList<>();
 
 	try {
 		StorageManager.getInstance().loadObject(userStatements, "Data/statements"+VAT+"_statements.csv");// na kano metablhth filename pou tha kaloume edo??

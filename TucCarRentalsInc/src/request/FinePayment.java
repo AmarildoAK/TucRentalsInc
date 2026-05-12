@@ -16,7 +16,8 @@ public class FinePayment extends Request<FinePayment>{
 	private LocalDate noticeDay;
 private double amount;
 private Vehicles vehicle;
-	
+private Customer customer;	
+private LocalDate today;
 	public Vehicles getVehicle() {
 	return vehicle;
 }
@@ -225,8 +226,12 @@ public void setVehicle(Vehicles vehicle) {
 
 	@Override
 	public boolean isValid() {
-		// TODO Auto-generated method stub
-		return false;
+		if(vehicle!=null && noticeDay.isBefore(today) && customer.getWallet().getAmount() > 0) {
+			return true;
+		}else {
+			return false;
+		}
+	
 	}
 	
 	

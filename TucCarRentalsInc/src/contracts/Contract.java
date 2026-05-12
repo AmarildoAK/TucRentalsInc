@@ -124,10 +124,7 @@ this.actualReturnDate=null;
 	}
 
 
-//	@Override
-//	public int compareTo(Contract other) {
-//		return this.getContractID() - other.contractID;
-//	} NA ALAJOYME TO OVERRRIDE 
+
 
 	@Override
 	public String marshal() {
