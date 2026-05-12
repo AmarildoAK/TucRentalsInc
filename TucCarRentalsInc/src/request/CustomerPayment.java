@@ -17,7 +17,6 @@ private double amount;
 private static final int counter = 000;
 private String referenceId;
 private Customer customer;
-
 public Customer getCustomer() {
 	return customer;
 }
