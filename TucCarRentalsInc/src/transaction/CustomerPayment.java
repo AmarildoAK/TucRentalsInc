@@ -8,8 +8,8 @@ public class CustomerPayment extends Credit {
 	
 	private RentalCharge r;
 	private Wallet w;
-	public CustomerPayment(int transactionID, int amountofReturn) {
-		super(transactionID, amountofReturn);
+	public CustomerPayment(String referenceId, int amountofReturn) {
+		super(referenceId, amountofReturn);
 		// TODO Auto-generated constructor stub
 	}
 	

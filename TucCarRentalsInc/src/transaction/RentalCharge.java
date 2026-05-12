@@ -28,8 +28,8 @@ public class RentalCharge extends Charge {
 	
 	
 	
-	public RentalCharge(int transactionID, float amount) {
-		super(transactionID, amount);
+	public RentalCharge(String referenceId, float amount) {
+		super(referenceId, amount);
 		// TODO Auto-generated constructor stub
 	}
 

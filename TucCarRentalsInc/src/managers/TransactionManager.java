@@ -33,11 +33,11 @@ return instance;
 		
 	}
 	
-	public Transaction findTransaction(int TransactionID) {
+	public Transaction findTransaction(String TransactionID) {
 		
-		for(int i=0;i<transactionList.size();i++) {
-			if(transactionList.get(i).getTransactionID() == TransactionID) {
-				return transactionList.get(i);
+		for(Transaction t: transactionList) {
+			if(t.getTransactionID().equals(TransactionID)) {
+				return t;
 			}
 		}
 		return null;
@@ -75,7 +75,7 @@ public boolean addCredit(Transaction newCredit) {
 		
 		double customerAmount = customerWallet.getAmount();
 		
-		customerWallet.setAmount(customerAmount + amount);
+		customerWallet.setAmount(customerAmount - amount);
 		
 		System.out.println("The payment has been completed");
 		
@@ -83,14 +83,14 @@ public boolean addCredit(Transaction newCredit) {
 	}
 	
 	
-	public List<Transaction> showWalletStatementsOfUser(Customer VAT){ // to megalo kommatitha ginei sto cli kai mhpws prepei na ginei typou customer h string na to skeftw  
+	public List<Transaction> showWalletStatementsOfUser(Customer customer){ // to megalo kommatitha ginei sto cli kai mhpws prepei na ginei typou customer h string na to skeftw  
 		
 		List<Transaction> customerStatementHistoryWallet = new ArrayList<>();
 		
 		
 	for(Transaction t: this.transactionList) {
 		
-		if(t.getVAT() == VAT) {
+		if(t.getVAT().equals(customer)) {
 			
 			
 			customerStatementHistoryWallet.add(t);

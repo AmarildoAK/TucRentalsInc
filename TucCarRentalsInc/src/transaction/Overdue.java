@@ -14,8 +14,8 @@ public class Overdue extends Charge {
  
 	
 	
-	Overdue(int transactionID, float amount) {
-		super(transactionID, amount);
+	public Overdue(String referenceId, LocalDate timestamp,double amount) {
+		super(referenceId, amount);
 
 	}
 
@@ -44,7 +44,7 @@ sb.append("contractID").append(this.contractID).append(",");
 		for (String part : parts) {
 			String[] keyValue = part.split(":");
 
-			if (keyValue[0].trim().equals("firstName")) {
+			if (keyValue[0].trim().equals("contractId")) {
 				this.contractID = Integer.parseInt(keyValue[1]);
 			}
 		
@@ -57,16 +57,4 @@ sb.append("contractID").append(this.contractID).append(",");
 		return 0;
 	}
 
-	private int  findextraDays() {// ayth mallon tha xreaistei na ginei overload gia ta vanleashes
-		LocalDate indexdate;
-		indexdate=expirationDate;
-	while(indexdate.isBefore(currentDay)) {// na valo allo ena periorismo typoy den exei plhrothei η να καλώ την μέθοδο αυτή αφού δεν πληρωθεί
-		overduedays++;
-		indexdate=indexdate.plusDays(1);
-	}
-	return overduedays;
-	}
-	
-	private 	 int calculateAmount() {// idio kai ayth
-		return extraDayCharge*findextraDays();	}
 }

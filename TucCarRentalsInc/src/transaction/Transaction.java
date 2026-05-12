@@ -7,16 +7,16 @@ import users.Customer;
 public abstract  class Transaction  implements Storable,Comparable<Transaction>{
 // ρεφερψε ιδ να μπει
 	private static int TransactionIdCounter =1;
-	private int TransactionID;
+	private String TransactionID;
 	private double amount;
 	private String name;// mhpos na mpei ayto se customer payment kai refund
 	private Customer VAT;
+	private String referenceId;
 	
 	
+	public Transaction(String ReferenceId,double amount) {
 	
-	public Transaction(int transactionID,double amount) {
-	
-		setTransactionID(TransactionIdCounter++);
+		
 		this.amount=amount;
 	}
 	
@@ -24,6 +24,22 @@ public abstract  class Transaction  implements Storable,Comparable<Transaction>{
 	
 	
 	
+	private String getReferenceId() {
+		return referenceId;
+	}
+
+
+
+
+
+	private void setReferenceId(String referenceId) {
+		this.referenceId = referenceId;
+	}
+
+
+
+
+
 	public Customer getVAT() {
 		return VAT;
 	}
@@ -52,10 +68,10 @@ public abstract  class Transaction  implements Storable,Comparable<Transaction>{
 	private void setName(String name) {
 		this.name = name;
 	}
-	public int getTransactionID() {
+	public String getTransactionID() {
 		return TransactionID;
 	}
-	private void setTransactionID(int transactionID) {
+	private void setTransactionID(String transactionID) {
 		TransactionID = transactionID;
 	}
 
@@ -84,7 +100,7 @@ public abstract  class Transaction  implements Storable,Comparable<Transaction>{
 			String[] keyValue = part.split(":");
 			
 			if(keyValue[0].trim().equals("Status")) {
-				this.TransactionID = Integer.parseInt(keyValue[1]);
+				this.TransactionID = keyValue[1];
 			}else if(keyValue[0].trim().equals("ContractID")) {
 				this.amount = Double.parseDouble(keyValue[1]);
 			

@@ -15,8 +15,8 @@ public class Fine extends Charge  {
 	private ContractManager c;
 	private Vehicles v;
 	
-	public Fine (int transactionID,float amount) {
-		super(transactionID, amount);
+	public Fine (String referenceId,float amount) {
+		super(referenceId, amount);
 	}
 
 	

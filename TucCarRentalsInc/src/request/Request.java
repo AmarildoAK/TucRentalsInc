@@ -57,7 +57,7 @@ private LocalDate timestamp;
 		this.referenceId = referenceId;
 	}
 
-	private LocalDate getTimestamp() {
+	public LocalDate getTimestamp() {
 		return timestamp;
 	}
 

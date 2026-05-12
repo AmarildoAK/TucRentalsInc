@@ -69,7 +69,7 @@ private void setAmount(double amount) {
 
 
 
-private String getReferenceId() {
+public String getReferenceId() {
 	return referenceId;
 }
 

@@ -6,8 +6,8 @@ public abstract class Credit extends Transaction {
 
 	
 
-	public Credit(int transactionID, double amount) {
-		super(transactionID, amount);
+	public Credit(String referenceId, double amount) {
+		super(referenceId, amount);
 	
 	}
 

@@ -12,9 +12,6 @@ public class CarPassanger extends Vehicles {
 	private CarPassengerVehicleType category;
 
 	
-//	private LocalDate rentDate;
-//	private LocalDate expirationDate;// να τα περασω και σαν ορισματα μέσα στον constructor
-//	private long days;
 
 
 
@@ -39,6 +36,16 @@ protected void setType(String type) {
 
 
 
+
+
+public CarPassengerVehicleType getVehicleCategory() {
+	return category;
+}
+
+
+private void setVehicleCategory(CarPassengerVehicleType category) {
+	this.category = category;
+}
 
 
 public String marshal() {

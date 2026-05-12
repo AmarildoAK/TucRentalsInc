@@ -10,8 +10,8 @@ public class CustomerRefund extends Credit{
 	private double refundRate = 0.8;
 	private RentalCharge r;
 	
-	public CustomerRefund(int transactionID, int amountofReturn) {
-		super(transactionID, amountofReturn);
+	public CustomerRefund(String referenceId, int amountofReturn) {
+		super(referenceId, amountofReturn);
 		
 	}
 	

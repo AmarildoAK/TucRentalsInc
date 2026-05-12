@@ -10,11 +10,14 @@ import contracts.Contract;
 import contracts.VanLeases;
 import storage.StorableList;
 import storage.StorageManager;
+import transaction.Overdue;
 //import transaction.Overdue
 import transaction.Wallet;
 import users.Company;
 import users.Customer;
-import users.Individual; 
+import users.Individual;
+import utils.CarPassengerVehicleType;
+import utils.CompanyVanCategory;
 import request.RentalBookingRequest;
 import request.RentalCancelationRequest;
 import request.RentalReturn;
@@ -26,6 +29,9 @@ public class ContractManager {
 	private Wallet wallet;
 	private LocalDate today;
 	private Request request;
+	
+	
+	
 	public static ContractManager instance;
 	
 	public static ContractManager getInstance(){
@@ -137,27 +143,55 @@ public void CancelContract(RentalCancelationRequest request) {
 
 
 
-public void CompletedContract(RentalReturn request,String contractID) {
-	c = findContract(contractID);
-	if(c!=null && c.getStatus().equalsIgnoreCase("ACTIVE")) {
-		c.setStatus("Completed");
-		
-		Vehicles rentedCar = c.getCar();
-		rentedCar.setAvailable(true);
-	//	  Overdue charge = new Overdue(request.getReferenceId(),c.getCar(),request.getTimestamp());
-       //   TransactionManager.getInstance().processTransaction(charge,UserManager.getInstance().findCustomerByVat(Individual.class,request.getVat()));
-		c.setStatus("COMPLETED");
-		System.out.println("The contract has been succesfully completed");
-		try {
-			StorageManager.getInstance().storeObject(contractList,"Data/contracts/contracts.csv");
-			System.out.println("The new Contract has been added!!!");
-		}catch(Exception e){
-			System.out.println("The contract has met an Error"+e.getMessage());
-		}
+public void CompletedContract(RentalReturn request,Contract<?,?> contract) {
+
 	
-	}else {
-		System.out.println("error while trying for completion");
+	if(contract instanceof CarRentals) {
+		
+		if(contract.getReferenceId().equals(request.getReferenceId())&& contract.getStatus().equals("ACTIVE")) { // den eimai katholou sigouros gia auto 
+	contract.setStatus("COMPLETED");
+	contract.getCar().setAvailable(true);
+			
+	int days = findextraDays(contract.getEndDate(),request.getTimestamp());
+	
+	
+	
+	CarPassanger categoryCar = (CarPassanger)contract.getCar();
+	
+	double amountOverdue = calculateAmountForCarPassanger(categoryCar.getVehicleCategory(),days);
+	Overdue charge = new Overdue(request.getReferenceId(),request.getTimestamp(),amountOverdue);
+  TransactionManager.getInstance().PayBalance(contract.getCustomer(), amountOverdue);;
+		
+		}
 	}
+	}
+	
+	
+	
+	
+	
+	
+	
+	//	c = findContract(contractID);
+//	if(c!=null && c.getStatus().equalsIgnoreCase("ACTIVE")) {
+//		c.setStatus("Completed");
+//		
+//		Vehicles rentedCar = c.getCar();
+//		rentedCar.setAvailable(true);
+//	//	  Overdue charge = new Overdue(request.getReferenceId(),c.getCar(),request.getTimestamp());
+//       //   TransactionManager.getInstance().processTransaction(charge,UserManager.getInstance().findCustomerByVat(Individual.class,request.getVat()));
+//		c.setStatus("COMPLETED");
+//		System.out.println("The contract has been succesfully completed");
+//		try {
+//			StorageManager.getInstance().storeObject(contractList,"Data/contracts/contracts.csv");
+//			System.out.println("The new Contract has been added!!!");
+//		}catch(Exception e){
+//			System.out.println("The contract has met an Error"+e.getMessage());
+//		}
+//	
+//	}else {
+//		System.out.println("error while trying for completion");
+//	}
 }
 
 
@@ -314,8 +348,44 @@ public boolean checkFuture(Contract<?,?> c, LocalDate today) {
 		
 	}
     
+ private int  findextraDays(LocalDate endDate,LocalDate returnDate) {// ayth mallon tha xreaistei na ginei overload gia ta vanleashes
+		
+	 int overduedays =0;
+	 LocalDate indexdate;
+		indexdate= endDate;    //expirationDate;
+	while(indexdate.isBefore(returnDate)) {// na valo allo ena periorismo typoy den exei plhrothei η να καλώ την μέθοδο αυτή αφού δεν πληρωθεί
+		overduedays++;
+		indexdate=indexdate.plusDays(1);
+	}
+	return overduedays;
+	}
+	
+	private double calculateAmountForCarPassanger(CarPassengerVehicleType car,int overdueDay) {// idio kai ayth
+		
+		double getpriceCat = car.getPrice();
+		
+		double overdueCharge = getpriceCat *1.2;
+	
+		double totalAmount = overdueCharge * overdueDay;
+			
+		return totalAmount;	
+	}
+
+	
+	private double calculateAmountForCompanyVan(CompanyVanCategory van,int overdueDay) {
+	
+	double priceVan = van.getMonthlyLease();
+	
+	return priceVan;
+	
+	}
 
 }
+ 
+ 
+ 
+
+
  
 
 
