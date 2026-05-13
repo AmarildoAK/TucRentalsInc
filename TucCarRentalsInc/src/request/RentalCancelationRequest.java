@@ -3,6 +3,8 @@ package request;
 import java.time.LocalDate;
 
 import Vehicles.Vehicles;
+import contracts.Contract;
+import managers.ContractManager;
 import managers.UserManager;
 import storage.UnMarshalingException;
 import users.Customer;
@@ -15,18 +17,10 @@ public class RentalCancelationRequest extends Request<RentalCancelationRequest> 
 	private Customer customer;
 	private LocalDate startDate;
 
-	
-	
-	
-	
-	
-	public Customer getCustomer() {
-		return customer;
-	}
+private Contract <?,?> contract;
+private LocalDate today;
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+	
 
 
 
@@ -35,6 +29,52 @@ public class RentalCancelationRequest extends Request<RentalCancelationRequest> 
 		
 		
 	}
+
+
+
+
+
+
+
+	private Customer getCustomer() {
+	return customer;
+}
+
+
+
+
+
+
+
+private void setCustomer(Customer customer) {
+	this.customer = customer;
+}
+
+
+
+
+
+
+
+private LocalDate getStartDate() {
+	return startDate;
+}
+
+
+
+
+
+
+
+private void setStartDate(LocalDate startDate) {
+	this.startDate = startDate;
+}
+
+
+
+
+
+
 
 	@Override
 	public int compareTo(Request o) {
@@ -88,10 +128,37 @@ public class RentalCancelationRequest extends Request<RentalCancelationRequest> 
 
 	@Override
 	public boolean isValid() {
-	if(startDate.isAfter(today)) {
+	
+		if(super.requestId == null || super.requestId.isEmpty()) {
+			return false;
+		}
+		else if(contract == null||super.referenceId == null || super.referenceId.isEmpty()) {
+			return false;
+		}
+		else if(super.getTimestamp() == null) {
+			return false ;
+		}
+		else if(customer == null||customer.getVAT() == null || customer.getVAT().isEmpty()) {
+			return false;
+		}
+		
+		else if(startDate.isAfter(today)) {
+			return false;
+		}
+		
+		Contract<?,?> con = ContractManager.getInstance().findContract(contract.getReferenceId());
+		
+		if(con == null) {
+			return false;
+		}
+		
+		Customer c = UserManager.getInstance().findCustomer(customer.getVAT());
+		
+		if(c == null) {
+			return false;
+		}
+		
 		return true;
-	}
-		return false;
 	}
 }
 
