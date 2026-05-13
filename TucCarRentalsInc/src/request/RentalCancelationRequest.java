@@ -14,7 +14,7 @@ public class RentalCancelationRequest extends Request<RentalCancelationRequest> 
 	
 	private Customer customer;
 	private LocalDate startDate;
-private LocalDate
+
 	
 	
 	

@@ -6,6 +6,14 @@ public class SimulateTimePassing {
 
 	private LocalDate startDate;
 	
+	private static SimulateTimePassing instance;
+	
+	public static SimulateTimePassing getInstance() {
+		if(instance == null) {
+			instance = new SimulateTimePassing();
+		}
+	}
+	
 	private static LocalDate currentDate;
 	public SimulateTimePassing(LocalDate startDate, LocalDate targetDate, LocalDate currentDate) {
 		super();
@@ -14,6 +22,10 @@ public class SimulateTimePassing {
 		SimulateTimePassing.currentDate = currentDate;//why this fixes it?  because its static?
 	}
 		
+	public SimulateTimePassing() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public static LocalDate getCurrentDate() {
 		return currentDate;
 	}

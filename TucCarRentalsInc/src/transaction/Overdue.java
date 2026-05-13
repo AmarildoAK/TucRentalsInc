@@ -45,11 +45,27 @@ public class Overdue extends Charge {
 				
 			return totalAmount;	
 		}
+		
+		public static int  findextraMonths(LocalDate endDate,LocalDate returnDate) {// ayth mallon tha xreaistei na ginei overload gia ta vanleashes
+			
+			 int overduemonths =0;
+			 LocalDate indexdate;
+				indexdate= endDate;    //expirationDate;
+			while(indexdate.isBefore(returnDate)) {// na valo allo ena periorismo typoy den exei plhrothei η να καλώ την μέθοδο αυτή αφού δεν πληρωθεί
+				overduemonths++;
+				indexdate=indexdate.plusMonths(1);
+			}
+			return overduemonths;
+			}
+		
+		
+		
+		
 
 		
-		public static double calculateAmountForCompanyVan(CompanyVanCategory van,int overdueDay) {
+		public static double calculateAmountForCompanyVan(CompanyVanCategory van,int overduemonths) {
 		
-		double priceVan = van.getMonthlyLease();
+		double priceVan = van.getMonthlyLease()*overduemonths;
 		
 		return priceVan;
 		

@@ -2,7 +2,9 @@ package transaction;
 
 import java.time.LocalDateTime;
 
+import Vehicles.CarPassanger;
 import storage.UnMarshalingException;
+import utils.CarPassengerVehicleType;
 
 public class CustomerRefund extends Credit{
 
@@ -11,6 +13,7 @@ public class CustomerRefund extends Credit{
 	private Wallet w;
 	private static double refundRate = 0.8;
 	private static RentalCharge r;
+	public static final double percent=0.8;
 	
 	public CustomerRefund(String referenceId,LocalDateTime timestamp, double amountofReturn) {
 		super(referenceId,timestamp, amountofReturn);
@@ -22,14 +25,15 @@ public class CustomerRefund extends Credit{
 //	}
 
 	
-	public static double CustomerRefundingCarPassenger () {
+	public static double CustomerRefundingCarPassenger (int days,CarPassengerVehicleType car) {
 		
 		double total = 0.0;
 		
-		total = r.rentalChargeByDay() * refundRate;
+		total=days*car.getPrice();
 		return total;
 		
 	}
+	
 	
 	
 	

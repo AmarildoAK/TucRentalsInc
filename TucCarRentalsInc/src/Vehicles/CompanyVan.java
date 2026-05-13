@@ -6,12 +6,12 @@ import utils.CompanyVanCategory;
 
 //import java.time.*;
 public class CompanyVan extends Vehicles {
-    private CompanyVanCategory category;
+    private CompanyVanCategory Vancategory;
     private String type = "CompanyVan";
-    public CompanyVan(String licensePlate,String transmission,String make,String model,int  year,String type,CompanyVanCategory category) {
-        super(licensePlate,transmission, make, model, category.name(),year);
+    public CompanyVan(String licensePlate,String transmission,String make,String model,int  year,String type,CompanyVanCategory Vancategory) {
+        super(licensePlate,transmission, make, model, Vancategory.name(),year);
         this.setType(this.getClass().getName());
-this.category = category;
+this.setVancategory(Vancategory);
     }
 
 
@@ -57,6 +57,20 @@ this.category = category;
     public void setType(String type) {
         this.type = type;
     }
+
+
+
+
+	public CompanyVanCategory getVancategory() {
+		return Vancategory;
+	}
+
+
+
+
+	public void setVancategory(CompanyVanCategory vancategory) {
+		Vancategory = vancategory;
+	}
 
 
 
