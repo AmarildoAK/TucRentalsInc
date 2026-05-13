@@ -17,7 +17,7 @@ public abstract class Request<R extends Request<R>> implements Storable,Comparab
 	private LocalDate requestDay;
 
 private String type;
-private String requestId;
+protected String requestId;
 private LocalDate timestamp;
 
 	

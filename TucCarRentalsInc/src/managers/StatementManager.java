@@ -29,7 +29,7 @@ public class StatementManager {
 	
 public StorableList<Statement<?>> getStatementsForUser(String VAT){
 	File file = new File("Data/statements"+VAT+"_statements.csv");
-	StorableList<Statement<?>>  userStatements = new StorableList<>();
+	StorableList<Statement<?>>  userStatements = new StorableList<Statement<?>>();
 
 	try {
 		StorageManager.getInstance().loadObject(userStatements, "Data/statements"+VAT+"_statements.csv");// na kano metablhth filename pou tha kaloume edo??
@@ -42,8 +42,8 @@ public StorableList<Statement<?>> getStatementsForUser(String VAT){
 }
 
 public void createStatement(Statement snew,String Vat) {
-	StorableList<Statement> userStatements = getStatementsForUser(Vat);
-	for(Statement s: userStatements) {
+	StorableList<Statement<?>> userStatements = getStatementsForUser(Vat);
+	for(Statement<?> s: userStatements) {
 		if (s.getNoticeID()==snew.getNoticeID()) {
 			System.out.println("The statement is already in the list ");
 		}
@@ -70,52 +70,6 @@ public String getAllUserStatements(String Vat) {
 	}
 	return printable;
 }
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
