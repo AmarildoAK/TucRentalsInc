@@ -12,6 +12,7 @@ public class SimulateTimePassing {
 		if(instance == null) {
 			instance = new SimulateTimePassing();
 		}
+		return instance;
 	}
 	
 	private static LocalDate currentDate;

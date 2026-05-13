@@ -23,7 +23,7 @@ public class Statement<T extends Transaction> implements Storable,Comparable<Sta
 
 	
 
-	private T getTransaction() {
+	public T getTransaction() {
 		return transaction;
 	}
 

@@ -41,10 +41,10 @@ public StorableList<Statement<?>> getStatementsForUser(String VAT){
 	return userStatements;
 }
 
-public void createStatement(Statement snew,String Vat) {
+public void createStatement(Statement<?> snew,String Vat) {
 	StorableList<Statement<?>> userStatements = getStatementsForUser(Vat);
 	for(Statement<?> s: userStatements) {
-		if (s.getNoticeID()==snew.getNoticeID()) {
+		if (s.getTransaction().getTransactionID()==snew.getTransaction().getTransactionID()) {
 			System.out.println("The statement is already in the list ");
 		}
 		
@@ -63,7 +63,7 @@ public void createStatement(Statement snew,String Vat) {
 
 public String getAllUserStatements(String Vat) {
 	String  printable="";
-	StorableList<Statement> userStatements = getStatementsForUser(Vat);
+	StorableList<Statement<?>> userStatements = getStatementsForUser(Vat);
 	for(Statement s: userStatements) {
 		printable+=s.toString();
 		
