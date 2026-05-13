@@ -182,14 +182,9 @@ public class ContractManager {
 					double amountOverdue = Overdue.calculateAmountForCompanyVan(categVan.getVancategory(), days);
 					Overdue charge = new Overdue(request.getReferenceId(), request.getTimestamp(), amountOverdue);
 					TransactionManager.getInstance().PayBalance(contract.getCustomer(), amountOverdue);
-					;
+					
 				}
-				else {
-					// int days =
-					// Overdue.findextraDays(contract.getEndDate(),request.getTimestamp());
 				
-//				CustomerRefund refund = new CustomerRefund(request.getReferenceId(),request.getTimestamp(), amountRefund);
-				}
 
 			}
 
@@ -197,27 +192,6 @@ public class ContractManager {
 
 	}
 
-	// c = findContract(contractID);
-//	if(c!=null && c.getStatus().equalsIgnoreCase("ACTIVE")) {
-//		c.setStatus("Completed");
-//		
-//		Vehicles rentedCar = c.getCar();
-//		rentedCar.setAvailable(true);
-//	//	  Overdue charge = new Overdue(request.getReferenceId(),c.getCar(),request.getTimestamp());
-//       //   TransactionManager.getInstance().processTransaction(charge,UserManager.getInstance().findCustomerByVat(Individual.class,request.getVat()));
-//		c.setStatus("COMPLETED");
-//		System.out.println("The contract has been succesfully completed");
-//		try {
-//			StorageManager.getInstance().storeObject(contractList,"Data/contracts/contracts.csv");
-//			System.out.println("The new Contract has been added!!!");
-//		}catch(Exception e){
-//			System.out.println("The contract has met an Error"+e.getMessage());
-//		}
-//	
-//	}else {
-//		System.out.println("error while trying for completion");
-//	}
-//}
 
 	public boolean checkMotion(Contract<?, ?> c, LocalDate today) {
 
