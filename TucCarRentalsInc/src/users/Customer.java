@@ -53,7 +53,7 @@ public abstract class Customer extends User implements Storable {
 		
 		StringBuffer sb = new StringBuffer(super.marshal());
 		
-		sb.append("VAT:").append(this.VAT).append(",");
+		sb.append("vat:").append(this.VAT).append(",");
 		sb.append("balance:").append(this.balance.getAmount()).append(",");
 		sb.append("type:").append(this.type).append(",");
 		
@@ -66,7 +66,7 @@ public abstract class Customer extends User implements Storable {
 		String[] parts = data.split(",");
 		for(String part: parts) {
 			String[] keyValue = part.split(":");
-			if(keyValue[0].equals("VAT")) {
+			if(keyValue[0].equals("vat")) {
 				this.VAT = keyValue[1];
 			}else if(keyValue[0].equals("balance")) {
 				

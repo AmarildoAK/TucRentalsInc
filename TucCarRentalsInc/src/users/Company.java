@@ -4,29 +4,29 @@ import storage.UnMarshalingException;
 
 public class Company extends Customer {
 
-	private String companyName;
+	private String representative;
 	private String type = "Company";
 	
 	
 	public Company(String VAT,String name,String password,String companyName) {
 		super(VAT,name,password);
 		if(CheckCompanyName(companyName)) {
-		this.companyName = companyName;
+		this.representative = companyName;
 		}
 		}
 	public Company() {}
 
 	private String getCompanyName() {
-		return companyName;
+		return representative;
 	}
 
 	
 	private boolean CheckCompanyName(String companyName) {
-		return this.companyName !=null && !this.companyName.trim().isEmpty();
+		return this.representative !=null && !this.representative.trim().isEmpty();
 	}
 	
 	private void setCompanyName(String companyName) {
-		this.companyName = companyName;
+		this.representative = companyName;
 	}
 
 	
@@ -36,7 +36,7 @@ public class Company extends Customer {
 	
 		StringBuffer sb = new StringBuffer(super.marshal());
 		
-		sb.append("companyName:").append(this.companyName).append(",");
+		sb.append("representative:").append(this.representative).append(",");
 		sb.append("type:").append(this.type).append(",");
 		
 		return sb.toString();
@@ -49,8 +49,8 @@ public class Company extends Customer {
 	String[] parts = data.split(",");
 	for(String part: parts) {
 		String[] keyValue = part.split(":");
-	if(keyValue[0].trim().equals("companyName")) {
-		this.companyName = keyValue[1];
+	if(keyValue[0].trim().equals("representative")) {
+		this.representative = keyValue[1];
 	}else if(keyValue[0].trim().equals("type")) {
 		this.type = keyValue[1];
 	}
