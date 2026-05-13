@@ -13,80 +13,43 @@ public abstract class Contract<V extends Vehicles, C extends Customer> implement
 
 	private String status;
 	private String contractID;// mas eipame na to kanoyme string alla an to kanoume String πως θα το αυξάνουμε
-    private String refernceId;
-	
-    private V car;
+	private String refernceId;
+
+	private V car;
 	private C customer;
 
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private LocalDate actualReturnDate;
 
-	public Contract(C customer,V vehicle,String referenceId,LocalDate startDate,LocalDate endDate) {
+	public Contract(C customer, V vehicle, String referenceId, LocalDate startDate, LocalDate endDate) {
 		this.status = "ACTIVE";
-this.refernceId = referenceId;
-this.actualReturnDate=null;
+		this.refernceId = referenceId;
+		this.actualReturnDate = null;
 	}
-	
-	public Contract() {}
 
-	
-	
-	
-	
-
-
-
+	public Contract() {
+	}
 
 	public C getCustomer() {
 		return customer;
 	}
 
-
-
-
-
-
-
-
-
 	private void setCustomer(C customer) {
 		this.customer = customer;
 	}
-
-
-
-
-
-
-
-
 
 	private void setCar(V car) {
 		this.car = car;
 	}
 
-
-
-
-
-
-
-
-
 	public String getReferenceId() {
 		return refernceId;
 	}
 
-
-
-
 	private void setReferenceId(String refernceId) {
 		this.refernceId = refernceId;
 	}
-
-
-
 
 	public String getStatus() {
 		return status;
@@ -104,8 +67,6 @@ this.actualReturnDate=null;
 		this.contractID = contractID;
 	}
 
-
-
 	public LocalDate getStartDate() {
 		return startDate;
 	}
@@ -121,12 +82,10 @@ this.actualReturnDate=null;
 	private void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
+
 	public V getCar() {
-	    return car;
+		return car;
 	}
-
-
-
 
 	@Override
 	public String marshal() {
@@ -137,7 +96,7 @@ this.actualReturnDate=null;
 		sb.append("endDate:").append(this.endDate).append(",");
 		sb.append("startDate:").append(this.startDate).append(",");
 		sb.append("licenseplate:").append(this.car.getLicenseplate()).append(",");
-        sb.append("VAT:").append(this.customer.getVAT()).append(",");
+		sb.append("VAT:").append(this.customer.getVAT()).append(",");
 		return sb.toString();
 
 	}
@@ -158,8 +117,7 @@ this.actualReturnDate=null;
 			} else if (keyValue[0].trim().equals("referenceId")) {
 				this.refernceId = keyValue[1];
 
-			}
-			else if (keyValue[0].trim().equals("licenseplate")) {
+			} else if (keyValue[0].trim().equals("licenseplate")) {
 				try {
 
 					this.car = (V) VehicleManager.getInstance().findVehicle(keyValue[1]);
@@ -170,11 +128,10 @@ this.actualReturnDate=null;
 				this.startDate = LocalDate.parse(keyValue[1]);
 			} else if (keyValue[0].trim().equals("endDate")) {
 				this.endDate = LocalDate.parse(keyValue[1]);
-			}
-			else if (keyValue[0].trim().equals("VAT")) {
+			} else if (keyValue[0].trim().equals("VAT")) {
 				try {
-				this.customer = (C) UserManager.getInstance().findCustomer(keyValue[1]);
-				}catch(Exception e) {
+					this.customer = (C) UserManager.getInstance().findCustomer(keyValue[1]);
+				} catch (Exception e) {
 					System.out.println("User vat has not been allocated");
 				}
 			}
@@ -182,25 +139,9 @@ this.actualReturnDate=null;
 		}
 	}
 
-
-
-
-
-
-
-
-
 	public LocalDate getActualReturnDate() {
 		return actualReturnDate;
 	}
-
-
-
-
-
-
-
-
 
 	public void setActualReturnDate(LocalDate actualReturnDate) {
 		this.actualReturnDate = actualReturnDate;
