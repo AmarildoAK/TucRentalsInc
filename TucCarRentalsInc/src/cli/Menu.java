@@ -38,6 +38,7 @@ public static void main(String[] args) {
 	// αρχικασ να φοα να μην γρτώσω όλη την λίστα μέσα στο manager και τις λίστυες τουες γίονεται το προγραμμα 
 	
 	initApp();
+	System.out.println("Χρήστες που φορτώθηκαν: " + UserManager.getInstance().AllCustomerList());
 	while(true) {
 	System.out.println(Globals.separetor);
 	System.out.println(Globals.LoginPrompt);
@@ -45,6 +46,7 @@ public static void main(String[] args) {
 	 
 	 if(choice == 4) {
 		 System.out.println("EXITING THE PROGRAM");
+		 saveApp();
 		 System.exit(0);
 	 }
 	 
@@ -57,6 +59,12 @@ public static void main(String[] args) {
 
 		 User login = UserManager.getInstance().authenticateAndLogin(usernameOrVAT,password);
 
+		 if(login == null) {
+			 System.out.println("Login failed");
+	 continue;
+		 }
+		 
+		 
 		 switch(choice) {
 		 
 		 case 1:{
@@ -64,21 +72,33 @@ public static void main(String[] args) {
 				 
 				 IndividualCLI.IndividualMenu((Individual)login);
 				 saveApp();
+			 }else {
+				 System.out.println("login as an individual failed");
 			 }
-		 break;}
+		
+			 
+			 break;
+			 
+		 }
 		 
 		 case 2:{
 			 if(login instanceof Company) {
 				 CompanyCLI.companyMenu((Company) login);
 				 saveApp();
 			 
-			 }}
-		 break;
+			 }else {
+				 System.out.println("login as an company failed");
+			 }
+			 break;
+		 }
+		
 		 
 		 case 3:{
 			 if(login instanceof Admin) {
 				 AdminCLI.adminMenu((Admin) login);
 				 saveApp();
+			 }else {
+				 System.out.println("login as an Admin failed");
 			 }
 		 break;
 		 }

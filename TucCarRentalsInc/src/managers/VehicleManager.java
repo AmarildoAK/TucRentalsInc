@@ -28,7 +28,7 @@ private  VehicleManager() {
 	this.vehicleList = new StorableList<>();
 	
 	try {
-		StorageManager.getInstance().loadObject(this.vehicleList,"Data/vehicles/fleet.csv");
+		StorageManager.getInstance().loadObject(this.vehicleList,"Data/fleet.csv");
 		System.out.println("This vehicle have been added succesfully");
 
 	
@@ -193,7 +193,7 @@ this.vehicleList = new StorableList<>();
 
 public void saveVehicle() {
 	try {
-		StorageManager.getInstance().storeObject(vehicleList,"Data/vehicles/fleet.csv");
+		StorageManager.getInstance().storeObject(vehicleList,"Data/fleet.csv");
 		System.out.println("Vehicle succesfully added");
 	}catch(Exception e){
 		System.out.println("Error trying to save vehicle");

@@ -1,9 +1,50 @@
  package storage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StorableList<T extends Storable & Comparable<T>> extends ArrayList<T> implements Storable{
 
+	
+	private static final Map<String,String> typeMap = createMap();
+
+    private static Map<String,String> createMap(){
+
+        Map<String, String> map = new HashMap<>();
+        map.put("Admin", "users.Admin");
+        map.put("Company", "users.Company");
+        map.put("Individual", "users.Individual");
+
+        map.put("CarPassenger","vehicles.PassangerCar");
+        map.put("CompanyVan","vehicles.CommercialVan");
+
+        map.put("RentalBookingRequest", "request.RentalBookingRequest");
+        map.put("CustomerPayment", "request.CustomerPayment");
+        map.put("FinePayment", "request.FinePayment");
+        map.put("RentalCancelation", "request.RentalCancelation");
+        map.put("RentalReturn", "request.RentalReturn");
+
+        map.put("CarRentals", "contract.CarRentals");
+        map.put("VanLeases", "contract.VanLeases");
+
+        map.put("Charge", "transactions.Charge");
+        map.put("Fine", "transactions.Fine");
+        map.put("CustomerPayment", "transactions.CustomerPayment");
+        map.put("Overdue", "transactions.Overdue");
+        map.put("ContractRefund","transactions.ContractRefund");
+
+        map.put("Statement", "statement.Statement");
+
+        return map;
+    }
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public String marshal() {
 		StringBuffer sb = new StringBuffer();
@@ -19,11 +60,27 @@ public class StorableList<T extends Storable & Comparable<T>> extends ArrayList<
 		try {
 			String[] lines = data.split("\n");
 			for(String line: lines) {
+				if(line.trim().isEmpty()) {
+					continue;
+				}
+				
 				String className = "";
+				String[] parts = line.split(",");
 				try {
-					String[] parts = line.split(",");
+					if(parts[0].contains(":")) {
+						className = parts[0].split(":")[1].trim();
+					}else {
+						className = parts[0].trim();
+					}
+				
+					String ClassPath = typeMap.get(className);
+					
+					if(ClassPath == null) {
+						ClassPath = className;
+					}
+					
 					className = parts[0].split(":")[1].trim();
-					Class<?> typeClass = Class.forName(className);
+					Class<?> typeClass = Class.forName(ClassPath);
 					if(typeClass != null) {
 						@SuppressWarnings("Unchecked")
 						T item = (T) typeClass.getDeclaredConstructor().newInstance();
