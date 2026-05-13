@@ -100,6 +100,8 @@ public void unmarshal(String data) throws UnMarshalingException {
 			
 			if(keyValue[0].trim().equals("name")) {// ιδεα για επεκταση στην εξεταση μπορει να μας βαλλουν να αλλάξουμε τα marshall unmarsall  ανάλογα με το που χωρίζεται
 				this.name = keyValue[1];
+		}else if(keyValue[0].trim().equals("password")){
+			this.password = keyValue[1];
 		}
 			
 		}
