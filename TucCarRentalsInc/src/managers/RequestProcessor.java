@@ -83,13 +83,17 @@ Request<?> requests = requestQueue.poll();
 
 if(requests instanceof RentalBookingRequest) {
 	
+	
 	RentalBookingRequest requestb = (RentalBookingRequest) requests;
 	
+	requestb.isValid();
 	this.contractManager.CreateContract(requestb);
 	
 }
 else if(requests instanceof RentalReturn) {
 	RentalReturn requestReturn = (RentalReturn) requests;
+	
+	requestReturn.isValid();
 	//this.contractManager.CompletedContract(null);
 	
 }
@@ -97,6 +101,7 @@ else if(requests instanceof RentalCancelationRequest) {
 	
 	RentalCancelationRequest requestCancel = (RentalCancelationRequest) requests;
 	
+	requestCancel.isValid();
 	this.contractManager.CancelContract(requestCancel);
 	
 }
@@ -104,6 +109,7 @@ else if(requests instanceof FinePayment) {
 	
 	FinePayment finepay = (FinePayment) requests;
 	
+	finepay.isValid();
 	Contract<?,?> FineContract = this.contractManager.findFineViolation(finepay.getVehicle(),finepay.getNoticeDay());
 	
 	if(FineContract != null) {
@@ -121,6 +127,7 @@ else if(requests instanceof CustomerPayment) {
 	
 	CustomerPayment customerPay = (CustomerPayment) requests;
 	
+	customerPay.isValid();
 	Customer customer = this.userManager.findCustomer(customerPay.getCustomer().getVAT());
 	
 	if(customer != null) {

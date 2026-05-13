@@ -175,6 +175,32 @@ public void printVehicles() {
 			}
 		}
 	}
+
+
+public void loadVehicle() {
+this.vehicleList = new StorableList<>();
+	
+	try {
+		StorageManager.getInstance().loadObject(this.vehicleList,"Data/vehicles/fleet.csv");
+		System.out.println("This vehicle have been added succesfully");
+
+	
+	}catch(Exception e) {
+		System.out.println("Error"+e.getMessage());
+
+	}
+}
+
+public void saveVehicle() {
+	try {
+		StorageManager.getInstance().storeObject(vehicleList,"Data/vehicles/fleet.csv");
+		System.out.println("Vehicle succesfully added");
+	}catch(Exception e){
+		System.out.println("Error trying to save vehicle");
+	}
+}
+
+
 }
 
 

@@ -352,4 +352,31 @@ public class ContractManager {
 
 	}
 
+
+
+public void loadContract() {
+	try {
+		StorageManager.getInstance().loadObject(this.contractList, "Data/contracts/contracts.csv");
+		System.out.println("The contracts have been added succesfully");
+	} catch (Exception e) {
+		System.out.println("Error" + e.getMessage());
+
+	}
 }
+
+public void saveContract() {
+	try {
+		StorageManager.getInstance().storeObject(contractList, "Data/contracts/contracts.csv");
+		System.out.println("The new Contract has been added!!!");
+	} catch (Exception e) {
+		System.out.println("The contract has met an Error" + e.getMessage());
+	}
+}
+
+
+
+
+}
+
+
+

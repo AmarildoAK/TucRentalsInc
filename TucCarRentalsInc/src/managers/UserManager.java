@@ -151,7 +151,17 @@ return customerlist;
 }
 
 
-
+public void loadUsers() {
+	this.userlist = new StorableList<>();
+	
+	try {
+		StorageManager.getInstance().loadObject(this.userlist,"Data/agents/agents.csv");
+		System.out.println("The user have been added succesfully");
+		
+	}catch(Exception e) {
+		System.out.println("Error"+e.getMessage());
+	}
+}
 
 
 }

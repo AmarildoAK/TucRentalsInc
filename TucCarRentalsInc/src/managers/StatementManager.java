@@ -11,10 +11,11 @@ import statements.Statement;
 import storage.StorableList;
 import storage.StorageManager;
 import transaction.Wallet;
+import users.User;
 
 public class StatementManager {
 	
-	
+	private StorableList<Statement<?>> statementlist;
 	public static StatementManager instance;
 	
 	public static StatementManager getInstance() {
@@ -36,7 +37,7 @@ public StorableList<Statement<?>> getStatementsForUser(String VAT){
 	} catch (Exception e) {
 		System.out.println("Error loading the file");
 		
-		// TODO: handle exception
+		
 	}
 	return userStatements;
 }
@@ -69,6 +70,30 @@ public String getAllUserStatements(String Vat) {
 		
 	}
 	return printable;
+}
+
+public void loadStatement() {
+	StorableList<Statement<?>> statementlist;
+	
+	try {
+		StorageManager.getInstance().loadObject(this.statementlist, "Data/statements/{{VAT}}.csv");// na kano metablhth filename pou tha kaloume edo??
+	} catch (Exception e) {
+		System.out.println("Error loading the file");
+		
+}
+
+}
+
+
+public void saveStatement() {
+StorableList<Statement<?>> statementlist;
+	
+	try {
+		StorageManager.getInstance().storeObject(this.statementlist, "Data/statements/{{VAT}}.csv");// na kano metablhth filename pou tha kaloume edo??
+	} catch (Exception e) {
+		System.out.println("Error loading the file");
+		
+}
 }
 
 
