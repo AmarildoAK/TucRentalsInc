@@ -16,7 +16,7 @@ public class SimulateTimePassing {
 	}
 	
 	private static LocalDate currentDate;
-	public SimulateTimePassing(LocalDate startDate, LocalDate targetDate, LocalDate currentDate) {
+	public SimulateTimePassing(LocalDate startDate, LocalDate targetDate) {
 		super();
 		this.startDate = startDate;
 		
@@ -45,7 +45,17 @@ public class SimulateTimePassing {
 		currentDate=currentDate.plusDays(1);
 	}
 	public void loopTillTargetDate(LocalDate target) {
-		while(target.isAfter(currentDate)) {addOneDay();}// an kai h loopa ayth poly pithanon na ginei san method sto request processor
+		while(target.isAfter(currentDate)) 
+		{
+			
+			
+			addOneDay();
+			
+		
+		
+		
+		
+		}// an kai h loopa ayth poly pithanon na ginei san method sto request processor
 	}
 	
 	

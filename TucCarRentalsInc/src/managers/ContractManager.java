@@ -160,7 +160,7 @@ public class ContractManager {
 				else {
 					// int days =
 					// Overdue.findextraDays(contract.getEndDate(),request.getTimestamp());
-					double amountRefund = CustomerRefund.CustomerRefundingCarPassenger(0, null);
+//					double amountRefund = CustomerRefund.CustomerRefundingCarPassenger(0, null);
 //		CustomerRefund refund = new CustomerRefund(request.getReferenceId(),request.getTimestamp(), amountRefund);
 				}
 
