@@ -63,6 +63,7 @@ private Contract<?,?> contract;
 		super(referenceId, timestamp, type);
 
 	}
+	public RentalBookingRequest() {}
 
 	public LocalDate getStartDate() {
 		return startDate;

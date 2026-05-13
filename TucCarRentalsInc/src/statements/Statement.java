@@ -15,11 +15,12 @@ public class Statement<T extends Transaction> implements Storable,Comparable<Sta
 	private T transaction;
 	
 	public Statement(String creator,T transaction) {
-		
-	
 	this.creator = creator;
 	this.transaction = transaction;
 	}
+	 
+	
+	public Statement(){}
 
 	
 

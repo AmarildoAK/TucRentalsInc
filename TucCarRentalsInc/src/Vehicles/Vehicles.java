@@ -30,6 +30,7 @@ public abstract class Vehicles implements Storable,Comparable<Vehicles> {
 	this.year=year;
 	}
 	}
+	public Vehicles() {}
 
 	
 	

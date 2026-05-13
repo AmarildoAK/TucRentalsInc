@@ -28,6 +28,8 @@ private LocalDate timestamp;
 
 	}
 	
+	public Request() {}
+	
 //	public V getVehicle() {
 //		return vehicle;
 //	}

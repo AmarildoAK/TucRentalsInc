@@ -21,6 +21,7 @@ public abstract class User implements Storable,Comparable<User>{
 	    this.name = name;
 		}
 	}
+	public User() {}
 
 
 

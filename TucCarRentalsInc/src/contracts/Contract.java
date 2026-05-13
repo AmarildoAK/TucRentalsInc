@@ -27,6 +27,8 @@ public abstract class Contract<V extends Vehicles, C extends Customer> implement
 this.refernceId = referenceId;
 this.actualReturnDate=null;
 	}
+	
+	public Contract() {}
 
 	
 	

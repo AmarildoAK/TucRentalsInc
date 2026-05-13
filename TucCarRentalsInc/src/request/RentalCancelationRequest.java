@@ -27,8 +27,8 @@ private LocalDate today;
 	public RentalCancelationRequest(String referenceId,LocalDate timestamp,String type) {
 		super(referenceId,timestamp,type);
 		
-		
 	}
+	public RentalCancelationRequest (){}
 
 
 

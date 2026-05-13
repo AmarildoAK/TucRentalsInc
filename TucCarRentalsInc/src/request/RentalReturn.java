@@ -30,9 +30,8 @@ public class RentalReturn extends Request<RentalReturn>{
 	}
 	public RentalReturn(String referenceId, LocalDate timestamp,String type) {
 		super(referenceId, timestamp,type);
-		
-		
 	}
+	public RentalReturn() {}
 	@Override
 	public int compareTo(Request o) {
 		// TODO Auto-generated method stub

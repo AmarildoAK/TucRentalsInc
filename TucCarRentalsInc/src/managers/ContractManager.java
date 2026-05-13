@@ -42,6 +42,7 @@ public class ContractManager {
 		return instance;
 	}
 
+
 	public ContractManager() {
 		this.contractList = new StorableList<Contract<?, ?>>();
 
@@ -53,6 +54,7 @@ public class ContractManager {
 
 		}
 	}
+	
 
 	private StorableList<Contract<?, ?>> getContractList() {
 		return contractList;

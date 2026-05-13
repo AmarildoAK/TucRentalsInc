@@ -16,6 +16,7 @@ public class Individual  extends Customer{
 		super(VAT,name,password);
 	
 	}
+	public Individual() {}
 
 
 	

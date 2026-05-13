@@ -57,6 +57,7 @@ public class FinePayment extends Request<FinePayment> {
 		this.noticeDate = noticeDay;
 
 	}
+	public FinePayment() {}
 
 	private String getNoticeId() {
 		return noticeId;

@@ -19,6 +19,9 @@ if(CheckUserName(username)) {
 
 
 }
+public Admin() {
+	
+}
 
 
 

@@ -13,6 +13,7 @@ public class CompanyVan extends Vehicles {
         this.setType(this.getClass().getName());
 this.setVancategory(Vancategory);
     }
+    public CompanyVan() {}
 
 
 

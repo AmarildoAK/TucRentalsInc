@@ -40,8 +40,9 @@ public CustomerPayment(String referenceId, LocalDate timestamp,double amount,Str
 	super(referenceId, timestamp,type);
 	
 	this.amount = amount;
-	this.referenceId="PRQ"+counter;
+
 }
+public CustomerPayment() {}
 
 
 

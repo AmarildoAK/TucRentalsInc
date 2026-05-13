@@ -23,6 +23,7 @@ public class CarPassanger extends Vehicles {
 //		this.rentDate=rentDate;
 			
 	}
+	public CarPassanger() {}
 	
 	
 public String getType() {

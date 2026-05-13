@@ -14,6 +14,7 @@ public class Company extends Customer {
 		this.companyName = companyName;
 		}
 		}
+	public Company() {}
 
 	private String getCompanyName() {
 		return companyName;
