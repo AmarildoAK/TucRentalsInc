@@ -82,7 +82,7 @@ public abstract class User implements Storable,Comparable<User>{
 		
 		sb.append("password:").append(this.password).append(",");
 		sb.append("name:").append(this.name).append(",");
-		sb.append("type:").append(this.type).append(",");
+		
 		
 		return sb.toString();
 	}

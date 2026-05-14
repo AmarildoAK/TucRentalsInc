@@ -30,21 +30,7 @@ this.setVancategory(Vancategory);
     public void unmarshal(String data) throws UnMarshalingException {
         super.unmarshal(data);
 
-        if(data == null) {
-            throw new UnMarshalingException("Empty Data");
-            }
-
-
-        String[] parts = data.split(",");
-        for (String part : parts) {
-            String[] keyValue = part.split(":");
-
-            if (keyValue[0].trim().equals("type")) {
-                this.type = keyValue[1];
-            }
-
-        }
-
+       
         }
 
 

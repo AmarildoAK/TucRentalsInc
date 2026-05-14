@@ -78,7 +78,7 @@ public abstract  class Transaction  implements Storable,Comparable<Transaction>{
 
 	@Override
 	public String marshal() {
-		StringBuffer sb = new StringBuffer("type: ").append(this.getClass().getName()).append(";");
+		StringBuffer sb = new StringBuffer("transactionType: ").append(this.getClass().getName()).append(";");
 
 		sb.append("amount").append(this.amount).append(",");
 		sb.append("TransactionID").append(this.TransactionID).append(",");

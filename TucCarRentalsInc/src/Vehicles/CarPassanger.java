@@ -49,24 +49,24 @@ public class CarPassanger extends Vehicles {
 	public void unmarshal(String data) throws UnMarshalingException {
 		super.unmarshal(data);
 
-		if (data == null) {
-			throw new UnMarshalingException("Empty Data");
-		}
-
-		String[] parts = data.split(",");
-		for (String part : parts) {
-			String[] keyValue = part.split(":");
-
-			if (keyValue[0].trim().equals("type")) {
-				this.type = keyValue[1];
-			}
-
-		}
-	}
+//		if (data == null) {
+//			throw new UnMarshalingException("Empty Data");
+//		}
+//
+//		String[] parts = data.split(",");
+//		for (String part : parts) {
+//			String[] keyValue = part.split(":");
+//
+//			if (keyValue[0].trim().equals("type")) {
+//				this.type = keyValue[1];
+//			}
+//
+//		}
+//	}
 
 //Duration duration =Duration.between(rentDate, expirationDate);
 //days=duration.toDays();
 
 // αυτα λογικα θα τα διαβαζουμε μέσα απο τα files που είδη έχουμε
 //edo na kano enum gia ton xrono kai na ton peraso mesa tis times ana mera 
-}
+}}
