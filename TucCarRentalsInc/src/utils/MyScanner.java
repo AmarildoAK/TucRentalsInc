@@ -1,5 +1,6 @@
 package utils;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class MyScanner {
@@ -28,7 +29,12 @@ public static double readDouble() {
 	return value;
 	
 }
-
+//public static LocalDate readLocalDate() {
+////	LocalDate value = scan.next();
+//	scan.nextLine();
+//	return value;
+//	
+//}
 
 }
 	

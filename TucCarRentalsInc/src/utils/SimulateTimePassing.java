@@ -2,9 +2,12 @@ package utils;
 
 import java.time.LocalDate;
 
+import managers.RequestProcessor;
+
 public class SimulateTimePassing {
 
 	private LocalDate startDate;
+	
 	
 	private static SimulateTimePassing instance;
 	
@@ -48,7 +51,7 @@ public class SimulateTimePassing {
 		while(target.isAfter(currentDate)) 
 		{
 			
-			
+			 RequestProcessor.getInstance().processrequestloader(currentDate);
 			addOneDay();
 			
 		

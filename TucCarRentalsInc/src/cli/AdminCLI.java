@@ -32,6 +32,9 @@ case 2:{
 	break;
 }
 case 3:{
+	System.out.println("Give me a start Date");
+	
+	System.out.println("Give me an end Date");
 	System.out.println("Staring the time simulation ");// ωραία άρα εδώ απλ΄ατο καλούμαι και έπειτα μέσα στην μέθοδο time passing ρωτάμε τονuser μέσα στο request processor
 	
 	break;

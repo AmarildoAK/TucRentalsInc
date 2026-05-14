@@ -27,27 +27,25 @@ private int requestid;
 LocalDate targetDate;
 LocalDate currentDate;
 private StorableList<Request<?>> dailyRequestList;
+private StorableList<Request<?>> dailyFailedRequestList;
+private StorableList<Request<?>> dailyProccessedRequestList;
 //
 //private StorableList<RentalBookingRequest> dailyRentalRequestList;αστο ακυρο δεν πρέπει να χρειάζεται καν να το κάνουμε αυτό γιατί αν κάνουμε κάτι τέτοιο θα πρέπει να εξυπηρετούμε όλα τα rentallbookingρε;θεστβ πρώτα κάτι που τελικα δεν είναι και πολύ σωστό
 
 private Queue<Request<?>> requestQueue = new PriorityQueue<>();
 
 
+private static RequestProcessor instance;
+
+public static RequestProcessor getInstance() {
+	if(instance == null) {
+		instance = new RequestProcessor();
+	}
+return instance;
+}
 
 
-
-public RequestProcessor(ContractManager contractManager, StatementManager statementManager,
-		TransactionManager transactionManager, UserManager userManager, VehicleManager vehicleManager, int requestid,
-		LocalDate targetDate, LocalDate currentDate) {
-	super();
-	this.contractManager = contractManager;
-	this.statementManager = statementManager;
-	this.transactionManager = transactionManager;
-	this.userManager = userManager;
-	this.vehicleManager = vehicleManager;
-	this.requestid = requestid;
-	this.targetDate = targetDate;
-	this.currentDate = currentDate;
+public RequestProcessor() {
 
 
 	this.dailyRequestList = new StorableList<Request<?>>();
@@ -65,15 +63,12 @@ public RequestProcessor(ContractManager contractManager, StatementManager statem
 
 }
 
-public void processrequestloader() {
+public void processrequestloader(LocalDate currentDate) {
 	
 	for(Request requests:this.dailyRequestList) {
 		requestQueue.add(requests);
 	}
 	
-	
-
-
 
 while(!requestQueue.isEmpty()) {
 	
@@ -92,8 +87,11 @@ if(requests instanceof RentalBookingRequest) {
 }
 else if(requests instanceof RentalReturn) {
 	RentalReturn requestReturn = (RentalReturn) requests;
+	if(requestReturn.isValid()) {
+		dailyProccessedRequestList.add(requestReturn);
+	}
+	else {dailyFailedRequestList.add(requestReturn);}
 	
-	requestReturn.isValid();
 	//this.contractManager.CompletedContract(null);
 	
 }
@@ -101,15 +99,16 @@ else if(requests instanceof RentalCancelationRequest) {
 	
 	RentalCancelationRequest requestCancel = (RentalCancelationRequest) requests;
 	
-	requestCancel.isValid();
+	if(requestCancel.isValid()) {
 	this.contractManager.CancelContract(requestCancel);
-	
+	dailyProccessedRequestList.add(requestCancel);
+	}else {dailyFailedRequestList.add(requestCancel);}
 }
 else if(requests instanceof FinePayment) {
 	
 	FinePayment finepay = (FinePayment) requests;
 	
-	finepay.isValid();
+	if(finepay.isValid()) {
 	Contract<?,?> FineContract = this.contractManager.findFineViolation(finepay.getVehicle(),finepay.getNoticeDay());
 	
 	if(FineContract != null) {
@@ -121,37 +120,34 @@ else if(requests instanceof FinePayment) {
 	}else {
 		System.out.println("No fine or contract found");
 	}
+	dailyProccessedRequestList.add(finepay);
+	}else {dailyFailedRequestList.add(finepay);}
 	
 }
 else if(requests instanceof CustomerPayment) {
 	
 	CustomerPayment customerPay = (CustomerPayment) requests;
 	
-	customerPay.isValid();
+	if(customerPay.isValid()) {
 	Customer customer = this.userManager.findCustomer(customerPay.getCustomer().getVAT());
 	
 	if(customer != null) {
 		
 		TransactionManager.getInstance().PayBalance(customer,customerPay.getAmount());
-		
-		
+
 	}else {
 		System.out.println("No user payment found!!!");
 	}
+	dailyProccessedRequestList.add(customerPay);}else {dailyFailedRequestList.add(customerPay);}
+	
+	
+	}
+	
+	
 	
 }
-	
-	
-	
-}
 
 }
-
-
-
-
-
-
 
 
 //public void SimulateTimePassing() {
