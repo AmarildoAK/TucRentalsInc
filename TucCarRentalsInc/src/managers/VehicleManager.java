@@ -181,7 +181,7 @@ public void loadVehicle() {
 this.vehicleList = new StorableList<>();
 	
 	try {
-		StorageManager.getInstance().loadObject(this.vehicleList,"Data/vehicles/fleet.csv");
+		StorageManager.getInstance().loadObject(this.vehicleList,"Data/fleet.csv");
 		System.out.println("This vehicle have been added succesfully");
 
 	
