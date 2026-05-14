@@ -167,11 +167,11 @@ public void printVehicles() {
 		
 		if (vehicleList.get(i) instanceof CarPassanger) {
 			CarPassanger c = (CarPassanger) vehicleList.get(i);
-			System.out.println("type: "+c.getType()+"plate"+c.getLicenseplate()+"make"+c.getMake()+"model"+c.getModel()+"transminssion"+c.getTransmission()+"year"+c.getYear());	 
+			System.out.println("type: "+c.getType()+" plate: "+c.getLicenseplate()+" make: "+c.getMake()+" model: "+c.getModel()+" transminssion: "+c.getTransmission()+" year: "+c.getYear());	 
 		}
 		else if (vehicleList.get(i) instanceof CompanyVan) {
 			CompanyVan v = (CompanyVan) vehicleList.get(i);
-				System.out.println("type: "+v.getType()+"plate"+v.getLicenseplate()+"make"+v.getMake()+"model"+v.getModel()+"transminssion"+v.getTransmission()+"year"+v.getYear());	 
+				System.out.println("type: "+v.getType()+" plate: "+v.getLicenseplate()+" make: "+v.getMake()+" model: "+v.getModel()+" transminssion: "+v.getTransmission()+" year: "+v.getYear());	 
 			}
 		}
 	}
@@ -181,7 +181,7 @@ public void loadVehicle() {
 this.vehicleList = new StorableList<>();
 	
 	try {
-		StorageManager.getInstance().loadObject(this.vehicleList,"Data/fleet.csv");
+		StorageManager.getInstance().loadObject(this.vehicleList,"Data/vehicles/fleet.csv");
 		System.out.println("This vehicle have been added succesfully");
 
 	

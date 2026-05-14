@@ -76,7 +76,7 @@ public abstract class User implements Storable,Comparable<User>{
 	}
 
 	public String marshal() {
-		StringBuffer sb = new StringBuffer("type: ").append(this.getClass().getName()).append(";");
+		StringBuffer sb = new StringBuffer("type: ");//.append(this.getClass().getName()).append(";");
 		
 		
 		

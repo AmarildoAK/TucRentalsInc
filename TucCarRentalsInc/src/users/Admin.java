@@ -67,7 +67,7 @@ public String marshal() {
 	StringBuffer sb = new StringBuffer(super.marshal());
 	
 	sb.append("username:").append(this.username).append(",");
-	sb.append("type:").append(this.type).append(",");
+	
 	
 	return sb.toString();
 }

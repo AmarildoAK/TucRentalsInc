@@ -17,16 +17,16 @@ public class Menu {
 		
 		ContractManager.getInstance().loadContract();
 		UserManager.getInstance().loadUsers();
-		VehicleManager.getInstance().loadVehicle();
-		StatementManager.getInstance().loadStatement();
-	}
+	VehicleManager.getInstance().loadVehicle();
+		
+}
 	
 	public static void saveApp() {
 		
 		ContractManager.getInstance().saveContract();
 		UserManager.getInstance().saveUser();
 		VehicleManager.getInstance().saveVehicle();
-		StatementManager.getInstance().saveStatement();
+		
 		
 	}
 	
@@ -71,7 +71,7 @@ public static void main(String[] args) {
 			 if(login instanceof Individual) {
 				 
 				 IndividualCLI.IndividualMenu((Individual)login);
-				 saveApp();
+				 
 			 }else {
 				 System.out.println("login as an individual failed");
 			 }
@@ -84,7 +84,7 @@ public static void main(String[] args) {
 		 case 2:{
 			 if(login instanceof Company) {
 				 CompanyCLI.companyMenu((Company) login);
-				 saveApp();
+				 
 			 
 			 }else {
 				 System.out.println("login as an company failed");
@@ -96,7 +96,7 @@ public static void main(String[] args) {
 		 case 3:{
 			 if(login instanceof Admin) {
 				 AdminCLI.adminMenu((Admin) login);
-				 saveApp();
+				 
 			 }else {
 				 System.out.println("login as an Admin failed");
 			 }

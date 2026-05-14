@@ -21,14 +21,13 @@ this.setVancategory(Vancategory);
     public String marshal() {
 
         StringBuffer sb = new StringBuffer(super.marshal());
-
-        sb.append("type:").append(this.type).append(",");
-
         return sb.toString();
     }
 
     public void unmarshal(String data) throws UnMarshalingException {
-        super.unmarshal(data);
+        
+    	
+    	super.unmarshal(data);
 
        
         }

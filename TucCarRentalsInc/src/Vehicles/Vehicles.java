@@ -146,7 +146,7 @@ private boolean CheckCategory(String category) {
 		
 		
 		sb.append("type:").append(this.type).append(",");
-		sb.append("licenseplate:").append(this.licenseplate).append(",");
+		sb.append("plate:").append(this.licenseplate).append(",");
 		sb.append("make:").append(this.make).append(",");
 		sb.append("model:").append(this.model).append(",");
 		sb.append("transmission:").append(this.transmission).append(",");
@@ -171,7 +171,7 @@ private boolean CheckCategory(String category) {
 			if (keyValue[0].trim().equals("type")) {
 				this.type = keyValue[1];
 			}
-			else if(keyValue[0].trim().equals("licenseplate")) {
+			else if(keyValue[0].trim().equals("plate")) {
 				this.licenseplate = keyValue[1];
 			}
 			else if(keyValue[0].trim().equals("make")) {

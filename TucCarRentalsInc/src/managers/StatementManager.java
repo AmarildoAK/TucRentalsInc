@@ -72,29 +72,6 @@ public String getAllUserStatements(String Vat) {
 	return printable;
 }
 
-public void loadStatement() {
-	StorableList<Statement<?>> statementlist;
-	
-	try {
-		StorageManager.getInstance().loadObject(this.statementlist, "Data/statements/{{VAT}}.csv");// na kano metablhth filename pou tha kaloume edo??
-	} catch (Exception e) {
-		System.out.println("Error loading the file");
-		
-}
-
-}
-
-
-public void saveStatement() {
-StorableList<Statement<?>> statementlist;
-	
-	try {
-		StorageManager.getInstance().storeObject(this.statementlist, "Data/statements/{{VAT}}.csv");// na kano metablhth filename pou tha kaloume edo??
-	} catch (Exception e) {
-		System.out.println("Error loading the file");
-		
-}
-}
 
 
 }

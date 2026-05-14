@@ -34,11 +34,10 @@ public class Company extends Customer {
 	@Override
 	public String marshal() {
 	
-		StringBuffer sb = new StringBuffer(super.marshal());
+		StringBuffer sb = new StringBuffer(	super.marshal());
 		
 		sb.append("representative:").append(this.representative).append(",");
-		sb.append("type:").append(this.type).append(",");
-		
+	
 		return sb.toString();
 	}
 	
@@ -51,8 +50,6 @@ public class Company extends Customer {
 		String[] keyValue = part.split(":");
 	if(keyValue[0].trim().equals("representative")) {
 		this.representative = keyValue[1];
-	}else if(keyValue[0].trim().equals("type")) {
-		this.type = keyValue[1];
 	}
 	
 	

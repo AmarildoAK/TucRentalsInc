@@ -16,8 +16,8 @@ public class StorableList<T extends Storable & Comparable<T>> extends ArrayList<
         map.put("Company", "users.Company");
         map.put("Individual", "users.Individual");
 
-        map.put("PassengerCar","vehicles.CarPassenger");
-        map.put("CommercialVan","vehicles.CompanyVan");
+        map.put("PassengerCar","Vehicles.CarPassanger");
+        map.put("CommercialVan","Vehicles.CompanyVan");
 
         map.put("RentalBookingRequest", "request.RentalBookingRequest");
         map.put("CustomerPayment", "request.CustomerPayment");
@@ -78,7 +78,7 @@ public class StorableList<T extends Storable & Comparable<T>> extends ArrayList<
 						ClassPath = className;
 					}
 					
-					className = parts[0].split(":")[1].trim();
+					//className = parts[0].split(":")[1].trim();
 					Class<?> typeClass = Class.forName(ClassPath);
 					if(typeClass != null) {
 						@SuppressWarnings("Unchecked")

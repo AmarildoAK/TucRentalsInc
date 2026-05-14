@@ -17,7 +17,9 @@ public abstract class Customer extends User implements Storable {
 		this.balance = new Wallet(0.0);
 		}
 		}
-	public Customer() {}
+	public Customer() {
+		this.balance = new Wallet(0.0);
+	}
 
 
 	public String getVAT() {

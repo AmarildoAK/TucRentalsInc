@@ -22,10 +22,8 @@ public class Individual  extends Customer{
 	
 	@Override
 	public String marshal() {
-	
-		StringBuffer sb = new StringBuffer(super.marshal());
-		sb.append("type:").append(this.type).append(",");
 		
+		StringBuffer sb = new StringBuffer(super.marshal());
 		return sb.toString();
 	}
 
@@ -41,9 +39,7 @@ public class Individual  extends Customer{
 		for(String part: parts) {
 			String[] keyValue = part.split(":");
 			
-			if(keyValue[0].trim().equals("type")) { 
-				this.type = keyValue[1];
-		}
+			
 		}
 	}
 

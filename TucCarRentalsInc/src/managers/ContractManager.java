@@ -47,7 +47,7 @@ public class ContractManager {
 		this.contractList = new StorableList<Contract<?, ?>>();
 
 		try {
-			StorageManager.getInstance().loadObject(this.contractList, "Data/contracts.csv");
+			StorageManager.getInstance().loadObject(this.contractList, "Data/contracts/contracts.csv");
 			System.out.println("The contracts have been added succesfully");
 		} catch (Exception e) {
 			System.out.println("Error" + e.getMessage());
@@ -117,7 +117,7 @@ public class ContractManager {
 		System.out.println("Contract cancelled succesfully");
 
 		try {
-			StorageManager.getInstance().storeObject(contractList, "Data/contracts.csv");
+			StorageManager.getInstance().storeObject(contractList, "Data/contracts/contracts.csv");
 			System.out.println("The new Contract has been cancelled!!!");
 		} catch (Exception e) {
 			System.out.println("The contract has met an Error" + e.getMessage());
@@ -330,7 +330,7 @@ public class ContractManager {
 
 public void loadContract() {
 	try {
-		StorageManager.getInstance().loadObject(this.contractList, "Data/contracts.csv");
+		StorageManager.getInstance().loadObject(this.contractList, "Data/contracts/contracts.csv");
 		System.out.println("The contracts have been added succesfully");
 	} catch (Exception e) {
 		System.out.println("Error" + e.getMessage());
@@ -340,7 +340,7 @@ public void loadContract() {
 
 public void saveContract() {
 	try {
-		StorageManager.getInstance().storeObject(contractList, "Data/contracts.csv");
+		StorageManager.getInstance().storeObject(contractList, "Data/contracts/contracts.csv");
 		System.out.println("The new Contract has been added!!!");
 	} catch (Exception e) {
 		System.out.println("The contract has met an Error" + e.getMessage());
