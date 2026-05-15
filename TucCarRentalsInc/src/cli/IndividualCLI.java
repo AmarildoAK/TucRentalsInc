@@ -20,13 +20,15 @@ public class IndividualCLI {
 			System.out.println("Showing the balance overview of the user .......");
 	
 			System.out.println("Balance: "+login.getWallet().getAmount());//ayto mhpws na ginei methodos?
+	
 			System.out.println("Active contracts:...");
 			System.out.println(ContractManager.getInstance().getInMotionContracts(login));
 			
 			System.out.println("Future contracts:");
 			System.out.println(ContractManager.getInstance().getFutureContracts(login));
 			break;
-		}
+	
+	}
 		case 2:{
 			
 			System.out.println("Executing payment transaction....");// na fww=najo ton transcation manager

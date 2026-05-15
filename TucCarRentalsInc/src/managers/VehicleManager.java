@@ -28,16 +28,16 @@ private  VehicleManager() {
 	this.vehicleList = new StorableList<>();
 	
 	try {
-		StorageManager.getInstance().loadObject(this.vehicleList,"Data/vehicles/fleet.csv");
+		StorageManager.getInstance().loadObject(this.vehicleList,"data/vehicles/fleet.csv");
 		System.out.println("This vehicle have been added succesfully");
 
 	
 	}catch(Exception e) {
 		System.out.println("Error"+e.getMessage());
 
-	}
 }
 
+}
 
 
 private StorableList<Vehicles> getVehicleList() {
@@ -163,15 +163,15 @@ return null;
 	
 
 public void printVehicles() {
-	for (int i = 0; i < vehicleList.size(); i++) {
+	for (Vehicles v:this.vehicleList) {
 		
-		if (vehicleList.get(i) instanceof CarPassanger) {
-			CarPassanger c = (CarPassanger) vehicleList.get(i);
+		if (v instanceof CarPassanger) {
+			CarPassanger c = (CarPassanger) v;
 			System.out.println("type: "+c.getType()+" plate: "+c.getLicenseplate()+" make: "+c.getMake()+" model: "+c.getModel()+" transminssion: "+c.getTransmission()+" year: "+c.getYear());	 
 		}
-		else if (vehicleList.get(i) instanceof CompanyVan) {
-			CompanyVan v = (CompanyVan) vehicleList.get(i);
-				System.out.println("type: "+v.getType()+" plate: "+v.getLicenseplate()+" make: "+v.getMake()+" model: "+v.getModel()+" transminssion: "+v.getTransmission()+" year: "+v.getYear());	 
+		else if (v instanceof CompanyVan) {
+			CompanyVan van = (CompanyVan) v;
+				System.out.println("type: "+van.getType()+" plate: "+van.getLicenseplate()+" make: "+van.getMake()+" model: "+van.getModel()+" transminssion: "+van.getTransmission()+" year: "+van.getYear());	 
 			}
 		}
 	}

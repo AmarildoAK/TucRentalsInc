@@ -47,14 +47,14 @@ public class ContractManager {
 		this.contractList = new StorableList<Contract<?, ?>>();
 
 		try {
-			StorageManager.getInstance().loadObject(this.contractList, "Data/contracts/contracts.csv");
+			StorageManager.getInstance().loadObject(this.contractList, "data/contracts/contracts.csv");
 			System.out.println("The contracts have been added succesfully");
 		} catch (Exception e) {
 			System.out.println("Error" + e.getMessage());
 
 		}
+
 	}
-	
 
 	private StorableList<Contract<?, ?>> getContractList() {
 		return contractList;

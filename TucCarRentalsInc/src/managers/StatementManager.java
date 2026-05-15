@@ -33,7 +33,7 @@ public StorableList<Statement<?>> getStatementsForUser(String VAT){
 	StorableList<Statement<?>>  userStatements = new StorableList<Statement<?>>();
 
 	try {
-		StorageManager.getInstance().loadObject(userStatements, "Data/statements"+VAT+"_statements.csv");// na kano metablhth filename pou tha kaloume edo??
+		StorageManager.getInstance().loadObject(userStatements, "data/statements"+VAT+"_statements.csv");// na kano metablhth filename pou tha kaloume edo??
 	} catch (Exception e) {
 		System.out.println("Error loading the file");
 		

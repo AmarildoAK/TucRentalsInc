@@ -1,0 +1,6 @@
+type:Admin,name:Super User,password:1234,username:admin,
+type:Individual,name:Nikos Giatrakos,password:1234,vat:111222333,balance:0.0,
+type:Individual,name:Anna Pappa,password:1234,vat:444555666,balance:0.0,
+type:Company,name:Tech Solutions A.E.,password:1234,vat:999888777,balance:0.0,representative:Maria Papadopoulou,
+type:Individual,name:Giorgos Karas,password:1234,vat:123123123,balance:0.0,
+type:Company,name:Logistics O.E.,password:1234,vat:555444333,balance:0.0,representative:Kostas Mitsou,

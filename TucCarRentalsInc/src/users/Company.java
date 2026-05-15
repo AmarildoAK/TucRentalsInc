@@ -22,7 +22,7 @@ public class Company extends Customer {
 
 	
 	private boolean CheckCompanyName(String companyName) {
-		return this.representative !=null && !this.representative.trim().isEmpty();
+		return representative !=null && !representative.trim().isEmpty();
 	}
 	
 	private void setCompanyName(String companyName) {

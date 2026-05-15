@@ -142,15 +142,15 @@ private boolean CheckCategory(String category) {
 	
 	@Override
 	public String marshal() {
-		StringBuffer sb = new StringBuffer("type: ").append(this.getClass().getName()).append(";");
+		StringBuffer sb = new StringBuffer("type: ").append(this.getClass().getName()).append(",");
 		
 		
-		sb.append("type:").append(this.type).append(",");
+		
 		sb.append("plate:").append(this.licenseplate).append(",");
 		sb.append("make:").append(this.make).append(",");
 		sb.append("model:").append(this.model).append(",");
 		sb.append("transmission:").append(this.transmission).append(",");
-		sb.append("year").append(this.year).append(",");
+		sb.append("year:").append(this.year).append(",");
 		
 		return sb.toString();
 	}

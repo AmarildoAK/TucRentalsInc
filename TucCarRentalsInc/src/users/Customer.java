@@ -18,7 +18,7 @@ public abstract class Customer extends User implements Storable {
 		}
 		}
 	public Customer() {
-		this.balance = new Wallet(0.0);
+		//this.balance = new Wallet(0.0);
 	}
 
 
@@ -28,7 +28,7 @@ public abstract class Customer extends User implements Storable {
 
 
 	private boolean CheckUserVAT(String VAT) { // akoma den eimai sigouros ean einai typou string h typou int
-		return this.VAT != null && !this.VAT.trim().isEmpty();
+		return VAT != null && !VAT.trim().isEmpty();
 	}
 	
 	private void setVAT(String vAT) {

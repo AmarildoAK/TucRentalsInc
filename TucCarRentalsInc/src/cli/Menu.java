@@ -15,9 +15,9 @@ public class Menu {
 	
 	public static void initApp() {
 		
-		ContractManager.getInstance().loadContract();
-		UserManager.getInstance().loadUsers();
-	VehicleManager.getInstance().loadVehicle();
+		ContractManager.getInstance();
+		UserManager.getInstance();
+	VehicleManager.getInstance();
 		
 }
 	
@@ -47,7 +47,7 @@ public static void main(String[] args) {
 	 if(choice == 4) {
 		 System.out.println("EXITING THE PROGRAM");
 		 saveApp();
-		 System.exit(0);
+		 break;
 	 }
 	 
 	 
@@ -101,6 +101,10 @@ public static void main(String[] args) {
 				 System.out.println("login as an Admin failed");
 			 }
 		 break;
+		 }
+		 case 4:{
+			 System.out.println("EXITING THE PROGRAM");
+			 break;
 		 }
 		 
 

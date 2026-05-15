@@ -49,7 +49,7 @@ public abstract class User implements Storable,Comparable<User>{
 
 	
 	private boolean Checkname(String name) {
-		return this.name!=null && !name.trim().isEmpty();
+		return name!=null && !name.trim().isEmpty();
 	}
 	
 	
@@ -76,12 +76,12 @@ public abstract class User implements Storable,Comparable<User>{
 	}
 
 	public String marshal() {
-		StringBuffer sb = new StringBuffer("type: ");//.append(this.getClass().getName()).append(";");
+		StringBuffer sb = new StringBuffer("type:").append(this.getClass().getSimpleName()).append(",");
 		
 		
 		
-		sb.append("password:").append(this.password).append(",");
 		sb.append("name:").append(this.name).append(",");
+		sb.append("password:").append(this.password).append(",");
 		
 		
 		return sb.toString();

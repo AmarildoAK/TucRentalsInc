@@ -38,7 +38,7 @@ public class UserManager {
 		this.userlist = new StorableList<>();
 		
 		try {
-			StorageManager.getInstance().loadObject(this.userlist,"Data/agents/agents.csv");
+			StorageManager.getInstance().loadObject(this.userlist,"data/agents/agents.csv");
 			System.out.println("The user have been added succesfully");
 			
 		}catch(Exception e) {
