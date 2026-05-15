@@ -38,7 +38,6 @@ public static void main(String[] args) {
 	// αρχικασ να φοα να μην γρτώσω όλη την λίστα μέσα στο manager και τις λίστυες τουες γίονεται το προγραμμα 
 	
 	initApp();
-	System.out.println("Χρήστες που φορτώθηκαν: " + UserManager.getInstance().AllCustomerList());
 	while(true) {
 	System.out.println(Globals.separetor);
 	System.out.println(Globals.LoginPrompt);
