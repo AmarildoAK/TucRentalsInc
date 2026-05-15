@@ -11,10 +11,19 @@ public  class CompanyCLI {
 public static  void companyMenu(Company login) {// mhpws aytes tis methodoys na tis kano static?
 	System.out.println(Globals.separetor);
 	System.out.println(Globals.CompanyPrompt);
-	int choice = MyScanner.readInt();
-	switch (choice) {
+	int choice = 0;
+	
+	while(choice!=4) {
+		choice = MyScanner.readInt();
+		switch (choice) {
 	
 	// pali prepei na kano ena parathyro login ;h register kai meta na fortwsw ton xrhsth an einai login
+	case 0:{
+		System.out.println(Globals.separetor);
+		System.out.println(Globals.CompanyPrompt);
+		break;
+	}
+	
 	case 1: {
 		System.out.println("Showing the balance overview of the user .......");
 		// kai pairno to wallet toy user
@@ -52,8 +61,9 @@ public static  void companyMenu(Company login) {// mhpws aytes tis methodoys na 
 		System.exit(0);
 		break;
 	}
-	}
 	
+	}
+	}
 	
 	
 	

@@ -117,8 +117,8 @@ public class UserManager {
 public void showBalance(Customer customer) {
 	
 	if(customer !=null) {
-		Wallet customerWallet = customer.getWallet();
-		System.out.println(customerWallet.getAmount());
+		Wallet customerWallet = customer.getBalance();
+		System.out.println("Customer:"+customer.getName()+" Amount:"+customerWallet.getAmount());
 	
 	}else {
 		System.out.println("There has been an error trying to print the balance of the user");

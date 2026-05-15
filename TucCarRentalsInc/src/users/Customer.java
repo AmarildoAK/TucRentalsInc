@@ -38,7 +38,7 @@ public abstract class Customer extends User implements Storable {
 
 	
 	
-	private Wallet getBalance() {
+	public Wallet getBalance() {
 		return balance;
 	}
 

@@ -10,7 +10,7 @@ public abstract  class Transaction  implements Storable,Comparable<Transaction>{
 	private String TransactionID;
 	private double amount;
 	private String name;// mhpos na mpei ayto se customer payment kai refund
-	private Customer VAT;
+	private Customer customer;
 	private String referenceId;
 	
 	
@@ -40,16 +40,16 @@ public abstract  class Transaction  implements Storable,Comparable<Transaction>{
 
 
 
-	public Customer getVAT() {
-		return VAT;
+	public Customer getCustomer() {
+		return customer;
 	}
 
 
 
 
 
-	private void setVAT(Customer vAT) {
-		VAT = vAT;
+	private void setVAT(Customer customer) {
+		customer = customer;
 	}
 
 

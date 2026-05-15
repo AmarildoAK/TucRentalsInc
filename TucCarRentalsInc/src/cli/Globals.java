@@ -34,6 +34,6 @@ public class Globals {
 	public static final String CustomerAdminSubMenu = "Type 1 to see the list of Customers\n"+
 	                                                  "Type 2 to show Balance of users\n"+
 			                                          "Type 3 to search for wallet statement of a user\n"
-			                                          +"Type 0 to quit of the sub Menu\n";
+			                                          +"Type 4 to quit of the sub Menu\n";
 	
 }

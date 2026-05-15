@@ -83,9 +83,12 @@ public class TransactionManager {
 
 		List<Transaction> customerStatementHistoryWallet = new ArrayList<>();
 
+		
+	    
+	 
 		for (Transaction t : this.transactionList) {
 
-			if (t.getVAT().equals(customer)) {
+			if (t.getCustomer().getVAT().equals(customer.getVAT())) {
 
 				customerStatementHistoryWallet.add(t);
 

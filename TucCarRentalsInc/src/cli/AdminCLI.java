@@ -91,11 +91,22 @@ private static void customerSubMenu() {
 		
 		System.out.println(Globals.separetor);
 		System.out.println(Globals.CustomerAdminSubMenu);
-		int choice = MyScanner.readInt();
+		int choice = 0;
 		
-		switch(choice) {
 		
-		case 1: {
+		while(choice!=4) {
+		
+			choice = MyScanner.readInt();
+			switch(choice) {
+		
+			case 0:{
+				
+				System.out.println(Globals.separetor);
+				System.out.println(Globals.CustomerAdminSubMenu);
+				break;
+			}
+			
+			case 1: {
 			System.out.println("--USER LIST--");
 			List<Customer> userlist = UserManager.getInstance().AllCustomerList();
 		
@@ -114,13 +125,20 @@ private static void customerSubMenu() {
 	
 			System.out.println("Give the VAT of the user you want to see:");
 		String VAT = MyScanner.readString();
-		
+		if(VAT.trim().isEmpty()) {
+			VAT = MyScanner.readString();
+		}
 		Customer customer = UserManager.getInstance().findCustomer(VAT);
 		
-		TransactionManager.getInstance().showWalletStatementsOfUser(customer);
+		if(customer!=null) {
+		System.out.println(TransactionManager.getInstance().showWalletStatementsOfUser(customer));
+		
+		}else {
+			System.out.println("Customer not found!!!");
+		}
 		break;}
 		
-		case 0:{
+		case 4:{
 			back = true;
 			break;}
 			
@@ -130,7 +148,8 @@ private static void customerSubMenu() {
 			
 			
 	}
-}
+		}
+		}
 
 
 

@@ -14,12 +14,22 @@ public class IndividualCLI {
 	public static void IndividualMenu(Individual login) {
 		System.out.println(Globals.separetor);
 		System.out.println(Globals.IndividualPrompt);
-		int choice = MyScanner.readInt();
+		int choice = 0;
+		while(choice!=4) {
+			
+			choice = MyScanner.readInt();
 		switch (choice) {
+		 
+		
+		case 0:{
+			System.out.println(Globals.separetor);
+			System.out.println(Globals.IndividualPrompt);
+			break;
+		}
 		case 1: {
 			System.out.println("Showing the balance overview of the user .......");
 	
-			System.out.println("Balance: "+login.getWallet().getAmount());//ayto mhpws na ginei methodos?
+			System.out.println("Balance: "+login.getBalance().getAmount());//ayto mhpws na ginei methodos?
 	
 			System.out.println("Active contracts:...");
 			System.out.println(ContractManager.getInstance().getInMotionContracts(login));
@@ -53,8 +63,9 @@ public class IndividualCLI {
 		}
 		case 4:{
 			System.out.println("exit the individual menu");
-			System.exit(0);
+			
 			break;
 		}
-	}
+		}
+		}
 }}
