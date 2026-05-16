@@ -16,13 +16,12 @@ public class StorableList<T extends Storable & Comparable<T>> extends ArrayList<
         map.put("Company", "users.Company");
         map.put("Individual", "users.Individual");
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
         map.put("PassengerCar","Vehicles.CarPassenger");
-=======
+//=======
         map.put("PassengerCar","Vehicles.CarPassanger");
->>>>>>> branch 'master' of https://github.com/AmarildoAK/TucRentalsInc
+//>>>>>>> branch 'master' of https://github.com/AmarildoAK/TucRentalsInc
         map.put("CommercialVan","Vehicles.CompanyVan");
-
         map.put("RentalBookingRequest", "request.RentalBookingRequest");
         map.put("CustomerPayment", "request.CustomerPayment");
         map.put("FinePayment", "request.FinePayment");
