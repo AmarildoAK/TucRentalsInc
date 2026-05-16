@@ -16,8 +16,8 @@ public class StorableList<T extends Storable & Comparable<T>> extends ArrayList<
         map.put("Company", "users.Company");
         map.put("Individual", "users.Individual");
 
-        map.put("PassengerCar","vehicles.CarPassenger");
-        map.put("CommercialVan","vehicles.CompanyVan");
+        map.put("PassengerCar","Vehicles.CarPassenger");
+        map.put("CommercialVan","Vehicles.CompanyVan");
 
         map.put("RentalBookingRequest", "request.RentalBookingRequest");
         map.put("CustomerPayment", "request.CustomerPayment");

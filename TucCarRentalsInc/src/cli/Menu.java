@@ -46,7 +46,8 @@ public static void main(String[] args) {
 	 
 	 if(choice == 4) {
 		 System.out.println("EXITING THE PROGRAM");
-		 saveApp();
+//		 saveApp(); gia na lysoyme ta themata mas poly prosorina
+		 
 		 System.exit(0);
 	 }
 	 
