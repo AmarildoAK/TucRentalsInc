@@ -15,18 +15,18 @@ public class Menu {
 	
 	public static void initApp() {
 		
-		ContractManager.getInstance().loadContract();
-		UserManager.getInstance().loadUsers();
-		VehicleManager.getInstance().loadVehicle();
-		StatementManager.getInstance().loadStatement();
-	}
+		ContractManager.getInstance();
+		UserManager.getInstance();
+	VehicleManager.getInstance();
+		
+}
 	
 	public static void saveApp() {
 		
 		ContractManager.getInstance().saveContract();
 		UserManager.getInstance().saveUser();
 		VehicleManager.getInstance().saveVehicle();
-		StatementManager.getInstance().saveStatement();
+		
 		
 	}
 	
@@ -38,7 +38,6 @@ public static void main(String[] args) {
 	// αρχικασ να φοα να μην γρτώσω όλη την λίστα μέσα στο manager και τις λίστυες τουες γίονεται το προγραμμα 
 	
 	initApp();
-	System.out.println("Χρήστες που φορτώθηκαν: " + UserManager.getInstance().AllCustomerList());
 	while(true) {
 	System.out.println(Globals.separetor);
 	System.out.println(Globals.LoginPrompt);
@@ -46,9 +45,14 @@ public static void main(String[] args) {
 	 
 	 if(choice == 4) {
 		 System.out.println("EXITING THE PROGRAM");
+
 //		 saveApp(); gia na lysoyme ta themata mas poly prosorina
 		 
 		 System.exit(0);
+
+		 saveApp();
+		 break;
+//github.com/AmarildoAK/TucRentalsInc
 	 }
 	 
 	 
@@ -72,7 +76,7 @@ public static void main(String[] args) {
 			 if(login instanceof Individual) {
 				 
 				 IndividualCLI.IndividualMenu((Individual)login);
-				 saveApp();
+				 
 			 }else {
 				 System.out.println("login as an individual failed");
 			 }
@@ -85,7 +89,7 @@ public static void main(String[] args) {
 		 case 2:{
 			 if(login instanceof Company) {
 				 CompanyCLI.companyMenu((Company) login);
-				 saveApp();
+				 
 			 
 			 }else {
 				 System.out.println("login as an company failed");
@@ -97,11 +101,15 @@ public static void main(String[] args) {
 		 case 3:{
 			 if(login instanceof Admin) {
 				 AdminCLI.adminMenu((Admin) login);
-				 saveApp();
+				 
 			 }else {
 				 System.out.println("login as an Admin failed");
 			 }
 		 break;
+		 }
+		 case 4:{
+			 System.out.println("EXITING THE PROGRAM");
+			 break;
 		 }
 		 
 
